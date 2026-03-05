@@ -2,6 +2,8 @@ baseURL = "https://portfolio.soyjoel.com/"
 languageCode = "es-es"
 title = "Bienvenido a mi Portfolio"
 theme = "terminal"
+logoText = "Ghxstsec"
+logoHomeLinkText = "Ir al inicio"
 
 [params]
   # El color principal (puede ser "orange", "red", "blue", "green", "pink")
