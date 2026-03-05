@@ -4,14 +4,35 @@
     float: none;      /* Algunos temas usan float, esto lo anula */
 }
 
-/* Quitar la raya vertical de los bordes */
-.content, .container, .main, .post {
-    border-left: none !important;
-    border-right: none !important;
-    border: none !important;
+/* 1. Centrado absoluto del contenedor */
+.container {
+    margin: 0 auto !important;
+    max-width: 860px !important;
+    float: none !important;
 }
 
-/* A veces el tema la pone en el separador del listado de posts */
-.post-header {
+/* 2. Eliminar TODAS las rayas laterales posibles */
+* {
+    border-left: none !important;
+    border-right: none !important;
+}
+
+/* 3. Específicos del tema Terminal que suelen poner la raya */
+.content, 
+.main, 
+.wrapper, 
+body, 
+html,
+.list {
     border: none !important;
+    box-shadow: none !important;
+}
+
+/* 4. Si la raya es un "pseudo-elemento" (truco visual común) */
+.content::before, 
+.content::after,
+.main::before,
+.main::after {
+    display: none !important;
+    content: none !important;
 }
