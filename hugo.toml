@@ -19,6 +19,10 @@ theme = "terminal"
   
 [menu]
   [[menu.main]]
+    name = "About"
+    url = "/about"
+    weight = 10
+  [[menu.main]]
     name = "Writeups"
     url = "/writeups"
     weight = 1
@@ -34,7 +38,4 @@ theme = "terminal"
     name = "Blog"
     url = "/posts"
     weight = 4
-  [[menu.main]]
-    name = "About"
-    url = "/about"
-    weight = 10
+  
