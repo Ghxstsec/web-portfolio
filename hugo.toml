@@ -10,7 +10,9 @@ theme = "terminal"
   terminalText = "root@hacker:~#"
   # Descripción para buscadores
   description = "Portafolio de Ciberseguridad, Writeups y Proyectos"
-
+  # CSS 	
+  customCSS = ["css/custom.css"]
+  
 [menu]
   [[menu.main]]
     name = "Writeups"

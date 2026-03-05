@@ -1,0 +1,5 @@
+.container {
+    max-width: 800px; /* O el ancho que prefieras */
+    margin: 0 auto;   /* Esto es lo que hace la magia de centrar */
+    float: none;      /* Algunos temas usan float, esto lo anula */
+}
