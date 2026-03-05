@@ -3,3 +3,15 @@
     margin: 0 auto;   /* Esto es lo que hace la magia de centrar */
     float: none;      /* Algunos temas usan float, esto lo anula */
 }
+
+/* Quitar la raya vertical de los bordes */
+.content, .container, .main, .post {
+    border-left: none !important;
+    border-right: none !important;
+    border: none !important;
+}
+
+/* A veces el tema la pone en el separador del listado de posts */
+.post-header {
+    border: none !important;
+}
