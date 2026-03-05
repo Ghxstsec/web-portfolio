@@ -6,7 +6,7 @@ layout: "page"
 
 # < > G H X S T S E C _
 
-![Lain](/img/171265.gif)
+![Lain](/images/lain.gif)
 
 > "Seguidme en mis otras redes sociales: soyjoel.com"
 
