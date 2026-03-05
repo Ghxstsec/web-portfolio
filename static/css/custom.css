@@ -5,9 +5,11 @@
     float: none !important;
     
     /* 2. Configuración de los Bordes */
-    border-left: 2px solid #2ecc71 !important;  /* Borde izquierdo verde */
-    border-right: 2px solid #2ecc71 !important; /* Borde derecho verde */
+    border-left: 2px solid #d4a373 !important;  /* Borde izquierdo verde */
+    border-right: 2px solid #d4a373 !important; /* Borde derecho verde */
     
+    box-shadow: inset 0 0 10px rgba(139, 94, 60, 0.05);
+
     /* 3. Espaciado interno para que el texto no toque el borde */
     padding-left: 40px !important;
     padding-right: 40px !important;
@@ -29,14 +31,14 @@
 
 /* Esto alinea el contenido de los posts al centro con un ancho máximo legible */
 .post-content, .post {
-    max-width: 850px !important; /* Ancho ideal para lectura */
+    max-width: 950px !important; /* Ancho ideal para lectura */
     margin: 0 auto !important;    /* Lo centra automáticamente */
     text-align: justify;         /* Opcional: justifica el texto para que se vea ordenado */
 }
 
 /* Alinea también la lista de posts en la página de inicio */
 .posts-list {
-    max-width: 850px !important;
+    max-width: 950px !important;
     margin: 0 auto !important;
 }
 
@@ -51,7 +53,7 @@
 /* Alinea los títulos de los writeups */
 .post-title, .post-info {
     text-align: center;
-    max-width: 850px !important;
+    max-width: 950px !important;
     margin: 10px auto !important;
 }
 
@@ -70,7 +72,7 @@
 .post-content h1, 
 .post-content h2, 
 .post-content h3 {
-    max-width: 850px; /* El ancho de lectura ideal */
+    max-width: 950px; /* El ancho de lectura ideal */
     width: 100%;
     margin-left: auto !important;
     margin-right: auto !important;
