@@ -26,3 +26,66 @@
         max-width: 100% !important;
     }
 }
+
+/* Esto alinea el contenido de los posts al centro con un ancho máximo legible */
+.post-content, .post {
+    max-width: 850px !important; /* Ancho ideal para lectura */
+    margin: 0 auto !important;    /* Lo centra automáticamente */
+    text-align: justify;         /* Opcional: justifica el texto para que se vea ordenado */
+}
+
+/* Alinea también la lista de posts en la página de inicio */
+.posts-list {
+    max-width: 850px !important;
+    margin: 0 auto !important;
+}
+
+/* Asegura que las imágenes no se salgan y se centren */
+.post-content img {
+    display: block;
+    margin: 20px auto !important;
+    max-width: 100%;
+    height: auto;
+}
+
+/* Alinea los títulos de los writeups */
+.post-title, .post-info {
+    text-align: center;
+    max-width: 850px !important;
+    margin: 10px auto !important;
+}
+
+/* 1. Centrar el cuerpo del post (Markdown) */
+.post-content {
+    display: flex;
+    flex-direction: column;
+    align-items: center; /* Centra los bloques hijos */
+    width: 100%;
+}
+
+/* 2. Asegurar que párrafos y listas no se estiren al 100% */
+.post-content p, 
+.post-content ul, 
+.post-content ol, 
+.post-content h1, 
+.post-content h2, 
+.post-content h3 {
+    max-width: 850px; /* El ancho de lectura ideal */
+    width: 100%;
+    margin-left: auto !important;
+    margin-right: auto !important;
+}
+
+/* 3. Centrar los bloques de código (nmap, payloads, etc.) */
+.post-content .highlight, 
+.post-content pre {
+    max-width: 1000px; /* Los códigos pueden ser un poco más anchos */
+    width: 100%;
+    margin: 20px auto !important;
+}
+
+/* 4. Centrar títulos y metadatos (fecha, autor) */
+.post-title, .post-info {
+    text-align: center;
+    width: 100%;
+}
