@@ -3,20 +3,13 @@ languageCode = "es-es"
 title = "Bienvenido a mi Portfolio"
 theme = "terminal"
 
-
 [params]
-  # El color principal (puede ser "orange", "red", "blue", "green", "pink")
   themeColor = "green"
-  # Texto que aparece junto al cursor en el header
   terminalText = "root@hacker:~#"
-  # Descripción para buscadores
   description = "Portafolio de Ciberseguridad, Writeups y Proyectos"
-  # CSS 	
-  customCSS = ["css/custom.css"]
-  # Logo
   logoText = "Ghxstsec"
   logoHomeLinkText = "Ir al inicio"
-  
+
 [menu]
   [[menu.main]]
     name = "Sobre Mi"
@@ -24,7 +17,7 @@ theme = "terminal"
     weight = 1
   [[menu.main]]
     name = "Writeups"
-    url = "/writeups/"
+    url = "/writeups"
     weight = 2
   [[menu.main]]
     name = "Proyectos"
@@ -38,4 +31,3 @@ theme = "terminal"
     name = "Blog"
     url = "/posts"
     weight = 4
-  
