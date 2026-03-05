@@ -6,7 +6,7 @@ layout: "page"
 
 # < > G H X S T S E C _
 
-> "Explorando las sombras del código para construir un futuro más seguro."
+> "Seguidme en mis otras redes sociales: soyjoel.com"
 
 ---
 
@@ -17,15 +17,13 @@ layout: "page"
 | **Rol** | Red Teamer & Pentester | CTF Player | Content Creator |
 | **Ubicación** | [REDATED] |
 | **Estado** | <span style="color: #00ff00;">ONLINE</span> |
-
----
-
+| Certs | eJPT, eCPPT, CPTS Soon, CRTSv2 Soon |
 ### 🛠️ Tech Stack & Herramientas
 
 ```bash
 $ neofetch --skills
 
-       .---.          USER: ghxstsec
+       .---.          USER: Ghxstsec
       /     \         OS: Debian / Arch Linux
       | (O) |         HOST: portfolio.soyjoel.com
       |   < |         KERNEL: 6.x.x-ghxst
@@ -34,7 +32,7 @@ $ neofetch --skills
                       
                       SKILLS:
                       -------
-                      [##########] Python (Scripting)
-                      [##########] Cybersecurity (CTF)
-                      [##########] Linux Admin (Hardening)
-                      [##########] Git / Devops
+                      -----------> Python (Scripting)
+                      -----------> Ethical Hacking
+                      -----------> Linux Admin (Hardening)
+                      -----------> Git / Devops
