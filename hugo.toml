@@ -2,8 +2,7 @@ baseURL = "https://portfolio.soyjoel.com/"
 languageCode = "es-es"
 title = "Bienvenido a mi Portfolio"
 theme = "terminal"
-logoText = "Ghxstsec"
-logoHomeLinkText = "Ir al inicio"
+
 
 [params]
   # El color principal (puede ser "orange", "red", "blue", "green", "pink")
@@ -14,6 +13,9 @@ logoHomeLinkText = "Ir al inicio"
   description = "Portafolio de Ciberseguridad, Writeups y Proyectos"
   # CSS 	
   customCSS = ["css/custom.css"]
+  # Logo
+  logoText = "Ghxstsec"
+  logoHomeLinkText = "Ir al inicio"
   
 [menu]
   [[menu.main]]
