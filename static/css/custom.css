@@ -1,38 +1,28 @@
+/* 1. Centrado y Ancho del contenedor */
 .container {
-    max-width: 800px; /* O el ancho que prefieras */
-    margin: 0 auto;   /* Esto es lo que hace la magia de centrar */
-    float: none;      /* Algunos temas usan float, esto lo anula */
-}
-
-/* 1. Centrado absoluto del contenedor */
-.container {
-    margin: 0 auto !important;
-    max-width: 860px !important;
+    max-width: 1400px !important; /* Panel ancho */
+    margin: 0 auto !important;    /* Centrado mágico */
     float: none !important;
+    
+    /* 2. Configuración de los Bordes */
+    border-left: 2px solid #2ecc71 !important;  /* Borde izquierdo verde */
+    border-right: 2px solid #2ecc71 !important; /* Borde derecho verde */
+    
+    /* 3. Espaciado interno para que el texto no toque el borde */
+    padding-left: 40px !important;
+    padding-right: 40px !important;
+    
+    /* 4. Altura para que el borde llegue al final de la pantalla */
+    min-height: 100vh;
 }
 
-/* 2. Eliminar TODAS las rayas laterales posibles */
-* {
-    border-left: none !important;
-    border-right: none !important;
-}
-
-/* 3. Específicos del tema Terminal que suelen poner la raya */
-.content, 
-.main, 
-.wrapper, 
-body, 
-html,
-.list {
-    border: none !important;
-    box-shadow: none !important;
-}
-
-/* 4. Si la raya es un "pseudo-elemento" (truco visual común) */
-.content::before, 
-.content::after,
-.main::before,
-.main::after {
-    display: none !important;
-    content: none !important;
+/* 5. Ajuste para móviles (opcional: quitar bordes en pantallas pequeñas) */
+@media (max-width: 768px) {
+    .container {
+        border-left: none !important;
+        border-right: none !important;
+        padding-left: 20px !important;
+        padding-right: 20px !important;
+        max-width: 100% !important;
+    }
 }
