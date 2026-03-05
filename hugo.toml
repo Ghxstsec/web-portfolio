@@ -24,7 +24,7 @@ theme = "terminal"
     weight = 1
   [[menu.main]]
     name = "Writeups"
-    url = "/writeups"
+    url = "/writeups/"
     weight = 2
   [[menu.main]]
     name = "Proyectos"
