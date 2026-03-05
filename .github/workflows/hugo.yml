@@ -30,14 +30,13 @@ jobs:
           sudo dpkg -i hugo.deb
 
       - name: Build Site
-        working-directory: ./soyjoel.com
         run: |
           hugo --minify --baseURL "https://portfolio.soyjoel.com/"
 
       - name: Upload Artifact
         uses: actions/upload-pages-artifact@v3
         with:
-          path: ./soyjoel.com/public
+          path: ./public
 
   deploy:
     runs-on: ubuntu-latest
