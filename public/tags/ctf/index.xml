@@ -2,17 +2,17 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>CTF on Bienvenido a mi Portfolio</title>
-    <link>http://localhost:1313/tags/ctf/</link>
+    <link>http://localhost:42509/tags/ctf/</link>
     <description>Recent content in CTF on Bienvenido a mi Portfolio</description>
     <generator>Hugo</generator>
     <language>es-es</language>
     <lastBuildDate>Thu, 05 Mar 2026 00:00:00 +0000</lastBuildDate>
-    <atom:link href="http://localhost:1313/tags/ctf/index.xml" rel="self" type="application/rss+xml" />
+    <atom:link href="http://localhost:42509/tags/ctf/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>LFI.elf - DockerLabs</title>
-      <link>http://localhost:1313/writeups/dockerlabs/lfielf_dockerlabs/</link>
+      <link>http://localhost:42509/writeups/dockerlabs/lfielf_dockerlabs/</link>
       <pubDate>Thu, 05 Mar 2026 00:00:00 +0000</pubDate>
-      <guid>http://localhost:1313/writeups/dockerlabs/lfielf_dockerlabs/</guid>
+      <guid>http://localhost:42509/writeups/dockerlabs/lfielf_dockerlabs/</guid>
       <description>Write-up Máquina LFI.elf de DockerLabs Por aquí tenéis mi write-up para la máquina lfi.elf de la plataforma dockerlabs.es&#xA;¡Una vez estando la máquina deployeada, comenzamos!&#xA;ENUMERACION INICIAL Como siempre, comenzamos con el escaneo con nmap, yo uso este comando&#xA;nmap -p- -Pn -n -sCV -min-rate 5000 -T5 -oN targeted -v 172.17.0.2 Nos tira esto:&#xA;Así que asumimos que va a ser hacking web, vamos a ver la web&#xA;Así que doy por hecho que va a haber algún tipo de archivo escondido, posiblemente en el root directory de la web, así que enumeramos con gobuster</description>
     </item>
   </channel>

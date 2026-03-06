@@ -2,42 +2,51 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
   xmlns:xhtml="http://www.w3.org/1999/xhtml">
   <url>
-    <loc>http://localhost:1313/writeups/dockerlabs/</loc>
+    <loc>http://localhost:42509/writeups/dockerlabs/</loc>
     <lastmod>2026-03-06T00:00:00+00:00</lastmod>
   </url><url>
-    <loc>http://localhost:1313/writeups/dockerlabs/dance-samba_dockerlabs/</loc>
+    <loc>http://localhost:42509/writeups/dockerlabs/dance-samba_dockerlabs/</loc>
     <lastmod>2026-03-06T00:00:00+00:00</lastmod>
   </url><url>
-    <loc>http://localhost:1313/writeups/</loc>
+    <loc>http://localhost:42509/writeups/dockerlabs/pingpong/</loc>
     <lastmod>2026-03-06T00:00:00+00:00</lastmod>
   </url><url>
-    <loc>http://localhost:1313/tags/ctf/</loc>
+    <loc>http://localhost:42509/writeups/</loc>
+    <lastmod>2026-03-06T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>http://localhost:42509/tags/ctf/</loc>
     <lastmod>2026-03-05T00:00:00+00:00</lastmod>
   </url><url>
-    <loc>http://localhost:1313/tags/dockerlabs/</loc>
+    <loc>http://localhost:42509/tags/dockerlabs/</loc>
     <lastmod>2026-03-05T00:00:00+00:00</lastmod>
   </url><url>
-    <loc>http://localhost:1313/</loc>
+    <loc>http://localhost:42509/</loc>
     <lastmod>2026-03-05T00:00:00+00:00</lastmod>
   </url><url>
-    <loc>http://localhost:1313/tags/lfi/</loc>
+    <loc>http://localhost:42509/tags/lfi/</loc>
     <lastmod>2026-03-05T00:00:00+00:00</lastmod>
   </url><url>
-    <loc>http://localhost:1313/writeups/dockerlabs/lfielf_dockerlabs/</loc>
+    <loc>http://localhost:42509/writeups/dockerlabs/lfielf_dockerlabs/</loc>
     <lastmod>2026-03-05T00:00:00+00:00</lastmod>
   </url><url>
-    <loc>http://localhost:1313/tags/</loc>
+    <loc>http://localhost:42509/tags/</loc>
     <lastmod>2026-03-05T00:00:00+00:00</lastmod>
   </url><url>
-    <loc>http://localhost:1313/writeups/dockerlabs/profetas_dockerlabs/</loc>
+    <loc>http://localhost:42509/writeups/dockerlabs/profetas_dockerlabs/</loc>
     <lastmod>2026-03-05T00:00:00+00:00</lastmod>
   </url><url>
-    <loc>http://localhost:1313/categories/</loc>
+    <loc>http://localhost:42509/categories/</loc>
   </url><url>
-    <loc>http://localhost:1313/writeups/hackthebox/</loc>
+    <loc>http://localhost:42509/writeups/hackthebox/</loc>
   </url><url>
-    <loc>http://localhost:1313/certificaciones/</loc>
+    <loc>http://localhost:42509/writeups/hackthebox/editorial/</loc>
   </url><url>
-    <loc>http://localhost:1313/writeups/tryhackme/</loc>
+    <loc>http://localhost:42509/writeups/hackthebox/permx/</loc>
+  </url><url>
+    <loc>http://localhost:42509/certificaciones/</loc>
+  </url><url>
+    <loc>http://localhost:42509/writeups/tryhackme/</loc>
+  </url><url>
+    <loc>http://localhost:42509/writeups/dockerlabs/puzzle/</loc>
   </url>
 </urlset>

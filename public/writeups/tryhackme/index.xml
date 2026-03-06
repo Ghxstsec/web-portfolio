@@ -2,10 +2,10 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>Try Hack Me on Bienvenido a mi Portfolio</title>
-    <link>http://localhost:1313/writeups/tryhackme/</link>
+    <link>http://localhost:42509/writeups/tryhackme/</link>
     <description>Recent content in Try Hack Me on Bienvenido a mi Portfolio</description>
     <generator>Hugo</generator>
     <language>es-es</language>
-    <atom:link href="http://localhost:1313/writeups/tryhackme/index.xml" rel="self" type="application/rss+xml" />
+    <atom:link href="http://localhost:42509/writeups/tryhackme/index.xml" rel="self" type="application/rss+xml" />
   </channel>
 </rss>

@@ -2,10 +2,24 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>Hack The Box on Bienvenido a mi Portfolio</title>
-    <link>http://localhost:1313/writeups/hackthebox/</link>
+    <link>http://localhost:42509/writeups/hackthebox/</link>
     <description>Recent content in Hack The Box on Bienvenido a mi Portfolio</description>
     <generator>Hugo</generator>
     <language>es-es</language>
-    <atom:link href="http://localhost:1313/writeups/hackthebox/index.xml" rel="self" type="application/rss+xml" />
+    <atom:link href="http://localhost:42509/writeups/hackthebox/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Hack The Box: Editorial</title>
+      <link>http://localhost:42509/writeups/hackthebox/editorial/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      <guid>http://localhost:42509/writeups/hackthebox/editorial/</guid>
+      <description>Editorial | Hack The Box Writeup Ladies and Gentlemen, here you have this Write Up, enjoy.&#xA;Starting With Enumeration Port Discovery: NMAP&#xA;Website Testing We can see an HTTP port open, 80, let’s see:&#xA;We can see a editorial website with some books published, but, something calls my attention, the ‘Publish with Us’ Tab:&#xA;Hmm, you can upload files, let’s see if its blocked by file extension, Pull out your reverse shells!</description>
+    </item>
+    <item>
+      <title>HackTheBox: PermX</title>
+      <link>http://localhost:42509/writeups/hackthebox/permx/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      <guid>http://localhost:42509/writeups/hackthebox/permx/</guid>
+      <description>PermX Write-up Hack The Box Welcome to the best writeup for PermX (just kidding)&#xA;Let’s start: First, we are going to start with enumeration.&#xA;ENUMERATION nmap -sC -sV -v 10.129.42.112 Starting Nmap 7.94SVN ( https://nmap.org ) at 2024-07-07 09:37 IST NSE: Loaded 156 scripts for scanning. NSE: Script Pre-scanning. Initiating NSE at 09:37 Completed NSE at 09:37, 0.00s elapsed Initiating NSE at 09:37 Completed NSE at 09:37, 0.00s elapsed Initiating NSE at 09:37 Completed NSE at 09:37, 0.</description>
+    </item>
   </channel>
 </rss>

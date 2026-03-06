@@ -2,32 +2,46 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>DockerLabs on Bienvenido a mi Portfolio</title>
-    <link>http://localhost:1313/writeups/dockerlabs/</link>
+    <link>http://localhost:42509/writeups/dockerlabs/</link>
     <description>Recent content in DockerLabs on Bienvenido a mi Portfolio</description>
     <generator>Hugo</generator>
     <language>es-es</language>
     <lastBuildDate>Fri, 06 Mar 2026 00:00:00 +0000</lastBuildDate>
-    <atom:link href="http://localhost:1313/writeups/dockerlabs/index.xml" rel="self" type="application/rss+xml" />
+    <atom:link href="http://localhost:42509/writeups/dockerlabs/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>Write-up maquina dance-samba de DockerLabs</title>
-      <link>http://localhost:1313/writeups/dockerlabs/dance-samba_dockerlabs/</link>
+      <link>http://localhost:42509/writeups/dockerlabs/dance-samba_dockerlabs/</link>
       <pubDate>Fri, 06 Mar 2026 00:00:00 +0000</pubDate>
-      <guid>http://localhost:1313/writeups/dockerlabs/dance-samba_dockerlabs/</guid>
+      <guid>http://localhost:42509/writeups/dockerlabs/dance-samba_dockerlabs/</guid>
       <description>Writeup dockerlabs dance-samba Primero encendemos la máquina:&#xA;Y como siempre empezaremos con la enumeración con NMAP&#xA;Podemos ver un FTP y un Samba, vamos primero a por el FTP&#xA;Podemos ver que muy seguramente tengamos un usuario que se llama “Macarena” y seguramente use la contraseña “donald”&#xA;Vamos a intentar acceder a Samba con esas credenciales, pero primero enumeramos los shares del Samba&#xA;nxc smb 172.17.0.2 -u &amp;#39;macarena&amp;#39; -p &amp;#39;donald&amp;#39; Aquí podremos ver el user.</description>
     </item>
     <item>
+      <title>Write-up PingPong DockerLabs</title>
+      <link>http://localhost:42509/writeups/dockerlabs/pingpong/</link>
+      <pubDate>Fri, 06 Mar 2026 00:00:00 +0000</pubDate>
+      <guid>http://localhost:42509/writeups/dockerlabs/pingpong/</guid>
+      <description>Write-Up máquina PingPong de DockerLabs [ES] Bueno, por aquí os dejo mi write-up de la máquina “Ping Pong” de la plataforma DockerLabs, Creada por “El Pingüino de Mario”&#xA;Reconocimiento Inicial Y Enumeración Yo normalmente comienzo efectuando un escaneo de puertos a la IP principal, para ver qué puertos tiene abiertos, me da este resultado:&#xA;sudo nmap -p- -Pn -n -sCV -min-rate 5000 -T5 -oN targeted -v 172.17.0.2 Podemos ver varios tipos de web:</description>
+    </item>
+    <item>
       <title>LFI.elf - DockerLabs</title>
-      <link>http://localhost:1313/writeups/dockerlabs/lfielf_dockerlabs/</link>
+      <link>http://localhost:42509/writeups/dockerlabs/lfielf_dockerlabs/</link>
       <pubDate>Thu, 05 Mar 2026 00:00:00 +0000</pubDate>
-      <guid>http://localhost:1313/writeups/dockerlabs/lfielf_dockerlabs/</guid>
+      <guid>http://localhost:42509/writeups/dockerlabs/lfielf_dockerlabs/</guid>
       <description>Write-up Máquina LFI.elf de DockerLabs Por aquí tenéis mi write-up para la máquina lfi.elf de la plataforma dockerlabs.es&#xA;¡Una vez estando la máquina deployeada, comenzamos!&#xA;ENUMERACION INICIAL Como siempre, comenzamos con el escaneo con nmap, yo uso este comando&#xA;nmap -p- -Pn -n -sCV -min-rate 5000 -T5 -oN targeted -v 172.17.0.2 Nos tira esto:&#xA;Así que asumimos que va a ser hacking web, vamos a ver la web&#xA;Así que doy por hecho que va a haber algún tipo de archivo escondido, posiblemente en el root directory de la web, así que enumeramos con gobuster</description>
     </item>
     <item>
       <title>Write-up maquina Profetas DockerLabs</title>
-      <link>http://localhost:1313/writeups/dockerlabs/profetas_dockerlabs/</link>
+      <link>http://localhost:42509/writeups/dockerlabs/profetas_dockerlabs/</link>
       <pubDate>Thu, 05 Mar 2026 00:00:00 +0000</pubDate>
-      <guid>http://localhost:1313/writeups/dockerlabs/profetas_dockerlabs/</guid>
+      <guid>http://localhost:42509/writeups/dockerlabs/profetas_dockerlabs/</guid>
       <description>Write-up máquina Profetas DockerLabs Por aquí os dejo mi write-up para esta máquina de DockerLabs&#xA;Una vez desplegada la máquina con el script automático, comenzamos con la auditoria:&#xA;Enumeración Como siempre, empezamos con un escaneo de puertos con nmap, el comando que uso yo es:&#xA;sudo nmap -p- -Pn -n -sCV -min-rate 5000 -T5 -oN targeted -v 172.17.0.2 te explico un poco los parametros de el comando por aqui:&#xA;sudo: para ejecutarlo como administrador, en caso de que haga falta.</description>
+    </item>
+    <item>
+      <title>Write-up Puzzle DockerLabs</title>
+      <link>http://localhost:42509/writeups/dockerlabs/puzzle/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      <guid>http://localhost:42509/writeups/dockerlabs/puzzle/</guid>
+      <description>Puzzle Write-up Docker Labs 🐧 Bueno, por aqui os dejo mi write-up de la maquina puzzle de Dockerlabs, de dificultad media&#xA;RECONOCIMIENTO INICIAL Como en cualquier CTF, empezaremos con la enumeracion de puertos con nmap&#xA;nmap -p- -Pn -sCV -min-rate 5000 -T5 -oN targeted 172.17.0.2 Que nos da este resultado:&#xA;Podemos ver muchas entradas en el robots.txt, pero no parece ser interesante del todo, ya que lo mas importante esta al final escondido del archivo robots.</description>
     </item>
   </channel>
 </rss>

