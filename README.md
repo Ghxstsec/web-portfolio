@@ -16,7 +16,7 @@ Este portfolio ha sido construido utilizando **Hugo** (un generador de sitios es
 *   **Write-ups dinámicos:** Organización por plataformas (DockerLabs, HackTheBox, TryHackMe).
 *   **Gestión de Certificaciones:** Panel visual para credenciales verificables (eJPT, eCPPT, Google Cyber).
 *   **Diseño Responsivo:** Adaptado para dispositivos móviles y escritorio.
-*   **Alta Performance:** Carga ultra rápida gracias a la arquitectura de Hugo.
+*   **Alto Rendimiento:** Carga ultra rápida gracias a la arquitectura de Hugo.
 
 ---
 
@@ -24,7 +24,7 @@ Este portfolio ha sido construido utilizando **Hugo** (un generador de sitios es
 
 *   **Core:** [Hugo](https://gohugo.io/) (Framework de Go).
 *   **Lenguajes:** HTML5, CSS3 (Flexbox/Grid), JavaScript (ES6).
-*   **Despliegue:** GitHub Pages / Vercel (O el que uses).
+*   **Despliegue:** GitHub Pages.
 *   **Formato de contenido:** Markdown (.md).
 
 ---
