@@ -12,22 +12,23 @@ theme = "terminal"
 
 [menu]
   [[menu.main]]
-    name = "Sobre Mi"
-    url = "/about"
-    weight = 1
-  [[menu.main]]
     name = "Writeups"
     url = "/writeups"
-    weight = 2
+    weight = 1
   [[menu.main]]
     name = "Proyectos"
     url = "/proyectos"
-    weight = 5
+    weight = 4
   [[menu.main]]
     name = "Certificaciones"
     url = "/certificaciones"
-    weight = 3
+    weight = 2
   [[menu.main]]
     name = "Blog"
     url = "/posts"
-    weight = 4
+    weight = 3
+
+[markup]
+  [markup.goldmark]
+    [markup.goldmark.renderer]
+      unsafe = true

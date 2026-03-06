@@ -1,4 +1,5 @@
 ---
-title: "Mis Writeups"
-description: "Recopilación de auditorías y resolución de máquinas CTF"
+title: "Writeups"
+date: 2026-03-06
 ---
+Aquí encontrarás mis últimos análisis de máquinas y retos CTF.

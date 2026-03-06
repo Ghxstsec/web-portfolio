@@ -12,9 +12,6 @@ Write-up Máquina LFI.elf de DockerLabs
 
 ![captionless image](https://miro.medium.com/v2/resize:fit:1400/format:webp/1*9OmGubnfOloCL3s9ymnLEw.png)
 
-by [Joel Morillas Pagan (Ghxstsec)](https://medium.com/@ghxstsec?source=post_page---byline--f68e4c44e21f---------------------------------------)
-
-
 Por aquí tenéis mi write-up para la máquina lfi.elf de la plataforma dockerlabs.es
 
 ¡Una vez estando la máquina deployeada, comenzamos!
@@ -231,7 +228,7 @@ Por si queréis conocerme un poco mas:
 
 👋 Sobre el autor
 
-¡Hola! Soy Ghxstsec (Joel Morillas), un entusiasta de la ciberseguridad y pentester. Me dedico a documentar mi viaje por el complejo mundo de la seguridad ofensiva.
+¡Hola! Soy Ghxstsec, un entusiasta de la ciberseguridad y pentester. Me dedico a documentar mi viaje por el complejo mundo de la seguridad ofensiva.
 
 Actualmente, poseo las certificaciones eJPTv2, eCPPTv3 y Google Cybersecurity Professional Certificate. Mi objetivo es intentar ayudar a sobrellevar la brecha entre el aprendizaje teórico y la práctica, al tiempo que comparto mis experiencias sinceras con la comunidad. Cuando no estoy en una maratón de exámenes de 24 horas, me puedes encontrar haciendo ejercicios en Try Hack Me o investigando los últimos artículos sobre ciberseguridad.
 
