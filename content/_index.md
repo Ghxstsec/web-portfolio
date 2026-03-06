@@ -47,9 +47,9 @@ $ neofetch --skills
 ### 🔥 ÚLTIMOS ARTÍCULOS (WRITEUPS)
 Explora mis informes detallados sobre máquinas vulneradas y análisis de seguridad:
 
-* [**Máquina 01: DevVortex (HTB)**](/writeups/) - Explotación de Joomla y escalada de privilegios.
-* [**Máquina 02: Analytics (HTB)**](/posts/analytics) - RCE mediante Metabase (CVE-2023-38646).
-* [**Reto Forense: Memory Dump**](/posts/forensics-mem) - Análisis de volcado de memoria con Volatility.
+* [**Máquina 01: DanceSamba (DL)**](/writeups/dockerlabs/dance-samba_dockerlabs) - Explotación de Joomla y escalada de privilegios.
+* [**Máquina 02: Lfi.elf (DL)**](/writeups/dockerlabs/lfielf_dockerlabs) - RCE mediante Metabase (CVE-2023-38646).
+* [**Máquina 03: Profetas (DL)**](/writeups/dockerlabs/profetas_dockerlabs) - Análisis de volcado de memoria con Volatility.
 
 ---
 
