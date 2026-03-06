@@ -1,0 +1,337 @@
+<!DOCTYPE html>
+<html lang="en">
+<head><script src="/livereload.js?mindelay=10&amp;v=2&amp;port=1313&amp;path=livereload" data-no-instant defer></script>
+  
+    <title>Write-up maquina Profetas DockerLabs :: Bienvenido a mi Portfolio</title>
+  
+  <meta http-equiv="content-type" content="text/html; charset=utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="description" content="Guía completa paso a paso (Writeup) para vulnerar la máquina Profetas de DockerLabs. Aprende cómo explotar una vulnerabilidad XXE (XML External Entity) para leer archivos sensibles, extraer la clave id_rsa de Jeremías y escalar privilegios hasta ser Root." />
+<meta name="keywords" content="" />
+
+  <meta name="robots" content="noodp" />
+
+<link rel="canonical" href="http://localhost:1313/writeups/dockerlabs/profetas_dockerlabs/" />
+
+
+  
+
+
+
+
+
+  
+  <link rel="stylesheet" href="http://localhost:1313/css/buttons.min.86f6b4c106b6c6eb690ae5203d36b442c1f66f718ff4e8164fa86cf6c61ad641.css">
+
+  
+  <link rel="stylesheet" href="http://localhost:1313/css/code.min.d529ea4b2fb8d34328d7d31afc5466d5f7bc2f0bc9abdd98b69385335d7baee4.css">
+
+  
+  <link rel="stylesheet" href="http://localhost:1313/css/fonts.min.5bb7ed13e1d00d8ff39ea84af26737007eb5051b157b86fc24487c94f3dc8bbe.css">
+
+  
+  <link rel="stylesheet" href="http://localhost:1313/css/footer.min.eb8dfc2c6a7eafa36cd3ba92d63e69e849e2200e0002a228d137f236b09ecd75.css">
+
+  
+  <link rel="stylesheet" href="http://localhost:1313/css/gist.min.a751e8b0abe1ba8bc53ced52a38b19d8950fe78ca29454ea8c2595cf26aad5c0.css">
+
+  
+  <link rel="stylesheet" href="http://localhost:1313/css/header.min.75c7eb0e2872d95ff48109c6647d0223a38db52e2561dd87966eb5fc7c6bdac6.css">
+
+  
+  <link rel="stylesheet" href="http://localhost:1313/css/main.min.36833afd348409fc6c3d09d0897c5833d9d5bf1ff31f5e60ea3ee42ce2b1268c.css">
+
+  
+  <link rel="stylesheet" href="http://localhost:1313/css/menu.min.3c17467ebeb3d38663dce68f71f519901124fa5cbb4519b2fb0667a21e9aca39.css">
+
+  
+  <link rel="stylesheet" href="http://localhost:1313/css/pagination.min.bbb986dbce00a5ce5aca0504b7925fc1c581992a4bf57f163e5d69cc1db7d836.css">
+
+  
+  <link rel="stylesheet" href="http://localhost:1313/css/post.min.e6dddd258e64c83e05cec0cd49c05216742d42fc8ecbfbe6b67083412b609bd3.css">
+
+  
+  <link rel="stylesheet" href="http://localhost:1313/css/syntax.min.a0773cce9310cb6d8ed23e50f005448facf29a53001b57e038828daa466b25c0.css">
+
+  
+  <link rel="stylesheet" href="http://localhost:1313/css/terminal.min.e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855.css">
+
+  
+  <link rel="stylesheet" href="http://localhost:1313/css/terms.min.b81791663c3790e738e571cdbf802312390d30e4b1d8dc9d814a5b5454d0ac11.css">
+
+
+
+
+
+
+
+<link rel="shortcut icon" href="http://localhost:1313/favicon.png">
+<link rel="apple-touch-icon" href="http://localhost:1313/apple-touch-icon.png">
+
+
+<meta name="twitter:card" content="summary" />
+
+
+
+<meta property="og:locale" content="en" />
+<meta property="og:type" content="article" />
+<meta property="og:title" content="Write-up maquina Profetas DockerLabs">
+<meta property="og:description" content="Guía completa paso a paso (Writeup) para vulnerar la máquina Profetas de DockerLabs. Aprende cómo explotar una vulnerabilidad XXE (XML External Entity) para leer archivos sensibles, extraer la clave id_rsa de Jeremías y escalar privilegios hasta ser Root." />
+<meta property="og:url" content="http://localhost:1313/writeups/dockerlabs/profetas_dockerlabs/" />
+<meta property="og:site_name" content="Bienvenido a mi Portfolio" />
+
+  <meta property="og:image" content="http://localhost:1313/og-image.png">
+
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="627">
+
+
+  <meta property="article:published_time" content="2026-03-05 00:00:00 &#43;0000 UTC" />
+
+
+
+
+
+
+
+
+
+
+
+<link rel="stylesheet" href="http://localhost:1313/css/custom.css">
+
+
+</head>
+<body>
+
+
+<div class="container">
+
+  <header class="header">
+  <div class="header__inner">
+    <div class="header__logo">
+      <a href="http://localhost:1313/">
+  <div class="logo">
+    Ghxstsec
+  </div>
+</a>
+
+    </div>
+    
+      <ul class="menu menu--mobile">
+  <li class="menu__trigger">Menu&nbsp;▾</li>
+  <li>
+    <ul class="menu__dropdown">
+      
+        
+          <li><a href="/">Inicio</a></li>
+        
+      
+        
+          <li><a href="/writeups">Writeups</a></li>
+        
+      
+        
+          <li><a href="/certificaciones">Certificaciones</a></li>
+        
+      
+        
+          <li><a href="/posts">Blog</a></li>
+        
+      
+      
+    </ul>
+  </li>
+</ul>
+
+    
+    
+  </div>
+  
+    <nav class="navigation-menu">
+  <ul class="navigation-menu__inner menu--desktop">
+    
+      
+        
+          <li><a href="/" >Inicio</a></li>
+        
+      
+        
+          <li><a href="/writeups" >Writeups</a></li>
+        
+      
+        
+          <li><a href="/certificaciones" >Certificaciones</a></li>
+        
+      
+        
+          <li><a href="/posts" >Blog</a></li>
+        
+      
+    
+  </ul>
+</nav>
+
+  
+</header>
+
+
+  <div class="content">
+    
+<article class="post">
+  <h1 class="post-title">
+    <a href="http://localhost:1313/writeups/dockerlabs/profetas_dockerlabs/">Write-up maquina Profetas DockerLabs</a>
+  </h1>
+  <div class="post-meta"><time class="post-date">2026-03-05</time><span class="post-author">Ghxstsec</span></div>
+
+  
+  
+
+
+  
+
+  <div class="post-content"><div>
+        <h1 id="write-up-máquina-profetas-dockerlabs">Write-up máquina Profetas DockerLabs<a href="#write-up-máquina-profetas-dockerlabs" class="hanchor" ariaLabel="Anchor">#</a> </h1>
+<p>Por aquí os dejo mi write-up para esta máquina de DockerLabs</p>
+<p>Una vez desplegada la máquina con el script automático, comenzamos con la auditoria:</p>
+<h2 id="enumeración">Enumeración<a href="#enumeración" class="hanchor" ariaLabel="Anchor">#</a> </h2>
+<p>Como siempre, empezamos con un escaneo de puertos con nmap, el comando que uso yo es:</p>
+<pre tabindex="0"><code>sudo nmap -p- -Pn -n -sCV -min-rate 5000 -T5 -oN targeted -v 172.17.0.2
+</code></pre><blockquote>
+<p>te explico un poco los parametros de el comando por aqui:</p>
+<p><strong>sudo</strong>: para ejecutarlo como administrador, en caso de que haga falta.</p>
+<p><strong>-p</strong>-: para escanear todo el rango de puertos: 1–65535</p>
+<p><strong>-Pn</strong>: Omitir el ping inicial, en caso de firewall</p>
+<p><strong>-n</strong>: no hacer resolucion DNS</p>
+<p><strong>-sCV</strong>: escaneo con scripts basicos de reconocimiento, tanto servicios como las versiones de los servicios</p>
+<p><strong>-min-rate 5000</strong>: marcar la cantidad de paquetes minima</p>
+<p><strong>-T5</strong>: basicamente a que velocidad quieres que vaya el escaneo, mayor el numero, mayor el ruido causado</p>
+<p><strong>-oN</strong>: exportar el escaneo a un archivo en formato normal</p>
+<p><strong>targeted</strong>: nombre del archivo al que exportar</p>
+<p><strong>-v</strong>: verbose</p>
+<p><strong><IP></strong>: La IP a la que quieres hacer el escaneo</p>
+</blockquote>
+<p><img src="https://miro.medium.com/v2/resize:fit:1400/format:webp/1*IAJzOhyVCN--28EX8RQkOA.png" alt="Resultado del escaneo de nmap"></p>
+<p>Podemos ver SSH, que en esta máquina es bastante importante, lo veremos más adelante.</p>
+<p>Vamos con la web:</p>
+<p><img src="https://miro.medium.com/v2/resize:fit:1400/format:webp/1*sumOtJdK2lfCzXeIjD3I3Q.png" alt="captionless image"></p>
+<p>En la descripción de la máquina en DockerLabs podremos ver el flujo de vulnerabilidades usado en esta máquina, así que sabemos que habrá una <strong>SQLi</strong></p>
+<p><img src="https://miro.medium.com/v2/resize:fit:920/format:webp/1*h_IH-IjJEom4fjt4D54hiA.png" alt="captionless image"></p>
+<p>El payload usado es usar el usuario listado en la imagen de encima, junto con cualquier password.</p>
+<p><img src="https://miro.medium.com/v2/resize:fit:1400/format:webp/1*UCk1r9QM5JJSB7J6fOPwCA.png" alt="Primera web"></p>
+<p>¿Okay? Bueno, podremos ver que tenemos un botón que simplemente actualiza unos “servicios” con nombres de profetas. Vamos a ver el código fuente:</p>
+<p><img src="https://miro.medium.com/v2/resize:fit:1270/format:webp/1*mBhBDYL9K3NnO5HZDs_GDA.png" alt="captionless image"></p>
+<p>Si bajamos abajo del todo del código fuente nos podemos encontrar una cadena de base 64, en la web se ve que está en color negro, acompañado con el fondo, así que no se ve a simple vista, pero lo puedes subrayar, y se empezaría a ver, vamos a decodificar la cadena de base 64</p>
+<p><img src="https://miro.medium.com/v2/resize:fit:1400/format:webp/1*3kErZ6s49z8go3uuHoQjTA.png" alt="captionless image"></p>
+<p>hmmm, interesante, o sea podemos deducir que los profetas listados en la web, usan la misma contraseña que su usuario, o su nombre, sin el prefijo de “srv-”</p>
+<p>bueno, si pulsamos cerrar sesión podemos ver que nos lleva directamente a este portal de inicio de sesión:</p>
+<p><img src="https://miro.medium.com/v2/resize:fit:1160/format:webp/1*rXPGhcIDgfIJt4wgH61g9Q.png" alt="captionless image"></p>
+<p>Podemos ver un usuario en la parte baja del formulario: notadmin, así que probaremos a inventar un email, como ejemplo uso: <strong><a href="mailto:notadmin@notadmin.com">notadmin@notadmin.com</a></strong></p>
+<p><img src="https://miro.medium.com/v2/resize:fit:1164/format:webp/1*2KWzwX9wxcdYqnTgSqz9BQ.png" alt="captionless image"></p>
+<p>Pero si probamos con otro usuario podemos ver que el código de error cambia completamente:</p>
+<p><img src="https://miro.medium.com/v2/resize:fit:1132/format:webp/1*qpesnj7BdmYmn6wpRABZgA.png" alt="captionless image"></p>
+<p>Así que vamos con el usuario <strong><a href="mailto:notadmin@notadmin.com">notadmin@notadmin.com</a></strong></p>
+<p>¿Os acordáis del SQLi? Si sabes lo básico sabrás que puedes usar casi el mismo payload pero en la contraseña, que sería este payload:</p>
+<p><img src="https://miro.medium.com/v2/resize:fit:200/format:webp/1*1HO5M48kvdpaZnYL-TR35Q.png" alt="captionless image"></p>
+<p>(No lo puedo poner por texto, ya que médium se cae)</p>
+<p>Así que probamos con el usuario anteriormente encontrado y con el payload anterior nombrado:</p>
+<p><img src="https://miro.medium.com/v2/resize:fit:1400/format:webp/1*MXs5xT-IKDQUEu4QF07yYw.png" alt="captionless image"></p>
+<p>¿Facilillo no?</p>
+<p>Bueno, vamos al portal2</p>
+<p><img src="https://miro.medium.com/v2/resize:fit:1400/format:webp/1*SlHBj_FD-zE5OV4NIi37uA.png" alt="captionless image"></p>
+<p>pues se usa <strong>XML</strong>, pues vamos a por un XXE no? (XML External Entity)</p>
+<p>Le pido a Gemini que me haga un payload para esta vulnerabilidad</p>
+<p><img src="https://miro.medium.com/v2/resize:fit:1400/format:webp/1*rgq3kdgZ39MqRPKh8akDTg.png" alt="(Lo siento mucho, pues si pongo este codigo en un bloque de codigo, cae medium por alguna razon.)"><img src="https://miro.medium.com/v2/resize:fit:1400/format:webp/1*WAHjyGfXb2ReUm_n_UAU3g.png" alt="captionless image"></p>
+<p>¿Os acordáis de la cadena de base 64? Los usuarios usan la misma contraseña que su nombre de usuario.</p>
+<p>Podemos ver que tenemos los usuarios <strong>Jeremías y ezequiel</strong> a nivel de sistema, creamos nuestra wordlists para la fuerza bruta con hydra:</p>
+<pre tabindex="0"><code>jeremias
+ezequiel
+</code></pre><p><img src="https://miro.medium.com/v2/resize:fit:1400/format:webp/1*6fylpdsXL_qfCbslVBKvOQ.png" alt="captionless image"></p>
+<p>Entramos por SSH y tendremos el user flag (Se puede compartir, ya que la plataforma de DockerLabs no tiene ningún sistema definido de flags)</p>
+<p><img src="https://miro.medium.com/v2/resize:fit:1310/format:webp/1*Fh3pcvrTEU4PU7xLWCDBXw.png" alt="captionless image"></p>
+<p>Podemos ver que tenemos un archivo <strong>.pyc (Python, Bytecode), El único problema de estos archivos es que están compilados, entonces están ofuscados, pero hay herramientas para desobfuscarlos:</strong></p>
+<h2 id="github---zraxpycdc-c-python-bytecode-disassembler-and-decompiler">[GitHub - zrax/pycdc: C++ python bytecode disassembler and decompiler<a href="#github---zraxpycdc-c-python-bytecode-disassembler-and-decompiler" class="hanchor" ariaLabel="Anchor">#</a> </h2>
+<h3 id="c-python-bytecode-disassembler-and-decompiler-contribute-to-zraxpycdc-development-by-creating-an-account-on-github">C++ python bytecode disassembler and decompiler. Contribute to zrax/pycdc development by creating an account on GitHub.<a href="#c-python-bytecode-disassembler-and-decompiler-contribute-to-zraxpycdc-development-by-creating-an-account-on-github" class="hanchor" ariaLabel="Anchor">#</a> </h3>
+<p>github.com](<a href="https://github.com/zrax/pycdc?source=post_page-----8ad0a852297c---------------------------------------">https://github.com/zrax/pycdc?source=post_page-----8ad0a852297c---------------------------------------</a>)</p>
+<p>Tendrás que compilarlo con CMake, una vez compilado su uso será así:</p>
+<pre tabindex="0"><code>./pycdc/pycdas ezequiel.pyc
+</code></pre><p>Nos devolverá un código bastante largo, pero al final podremos ver algo interesante:</p>
+<p><img src="https://miro.medium.com/v2/resize:fit:1076/format:webp/1*Y7QXiHqNT2oowEx_AmA5hg.png" alt="captionless image"></p>
+<p>parece la contraseña, pero bueno, para que no os calentéis la cabeza, resulta que es juntando las dos cadenas de texto</p>
+<pre tabindex="0"><code>234r3fsd2-34fsdrr32
+</code></pre><p>El nombre del archivo nos dirá a qué usuario deberíamos probar de iniciar sesión, así que probamos con SSH:</p>
+<p><img src="https://miro.medium.com/v2/resize:fit:1314/format:webp/1*OCF-1qBCpdKl_-z-1MOL9w.png" alt="captionless image"></p>
+<p>Si vemos el archivo “acces0.txt” podemos ver esto:</p>
+<p><img src="https://miro.medium.com/v2/resize:fit:1400/format:webp/1*Px6xNwlaYLxKRsbjUgCxWw.png" alt="captionless image"></p>
+<p>¿Pero como lo podemos leer? Ejecutamos <strong>sudo -l para verlo:</strong></p>
+<p><img src="https://miro.medium.com/v2/resize:fit:1400/format:webp/1*3W0y38OgUQu44ONfBjDLiA.png" alt="captionless image"></p>
+<p>¿Què és croc?</p>
+<p><img src="https://miro.medium.com/v2/resize:fit:1400/format:webp/1*s2e2cRv7e9gsWNhz0gm2Ww.png" alt="captionless image"></p>
+<p>Desde aquí podrás instalar la herramienta croc:</p>
+<h2 id="github---schollzcroc-easily-and-securely-send-things-from-one-computer-to-another-package">[GitHub - schollz/croc: Easily and securely send things from one computer to another :package:<a href="#github---schollzcroc-easily-and-securely-send-things-from-one-computer-to-another-package" class="hanchor" ariaLabel="Anchor">#</a> </h2>
+<h3 id="easily-and-securely-send-things-from-one-computer-to-another-crocodile-package---github---schollzcroc-easily-and">Easily and securely send things from one computer to another :crocodile: :package: - GitHub - schollz/croc: Easily and…<a href="#easily-and-securely-send-things-from-one-computer-to-another-crocodile-package---github---schollzcroc-easily-and" class="hanchor" ariaLabel="Anchor">#</a> </h3>
+<p>github.com](<a href="https://github.com/schollz/croc?source=post_page-----8ad0a852297c---------------------------------------">https://github.com/schollz/croc?source=post_page-----8ad0a852297c---------------------------------------</a>)</p>
+<p>lo ejecutaremos en la máquina remota:</p>
+<p><img src="https://miro.medium.com/v2/resize:fit:1400/format:webp/1*a8JFuPctrnHgHZeDjbD-Hw.png" alt="captionless image"></p>
+<p>Así tendremos alojado el archivo en la máquina remota, y desde nuestra máquina local haremos esto:</p>
+<p><img src="https://miro.medium.com/v2/resize:fit:1220/format:webp/1*Wbx7MHL2ujAEYfD8cNlikA.png" alt="captionless image"></p>
+<p>veremos el archivo:</p>
+<p><img src="https://miro.medium.com/v2/resize:fit:708/format:webp/1*graZD4J4OxXVIO04fG0_lA.png" alt="captionless image"></p>
+<p>Así que iniciaremos sesión como root:</p>
+<p><img src="https://miro.medium.com/v2/resize:fit:778/format:webp/1*BOEJ1AhY4RHHrE4ERRG9Ag.png" alt="captionless image"></p>
+<p>Y hasta ahí llegaría la máquina de hoy, espero que os haya encantado, si os ha gustado podéis seguirme tanto por aquí como en mis otras redes sociales para enteraros de todos los recursos que explique :)</p>
+<pre tabindex="0"><code>👋 Sobre el autor
+
+¡Hola! Soy Ghxstsec, un entusiasta de la ciberseguridad y pentester. Me dedico a documentar mi viaje por el complejo mundo de la seguridad ofensiva.
+
+Actualmente, poseo las certificaciones eJPTv2 y eCPPTv3. Mi objetivo es intentar ayudar a sobrellevar la brecha entre el aprendizaje teórico y la práctica, al tiempo que comparto mis experiencias sinceras con la comunidad. Cuando no estoy en una maratón de exámenes de 24 horas, me puedes encontrar haciendo ejercicios en Try Hack Me o investigando los últimos artículos sobre ciberseguridad.
+
+✉️ Conéctate conmigo:
+
+LinkedIn: [LinkedIn](https://www.linkedin.com/in/joel-morillas-aka-ghxstsec-16a988260/)
+GitHub: [GitHub](https://github.com/Ghxstsec)
+Twitter/X: [Twitter](https://x.com/Louikizz)
+Try Hack Me: [THM](https://tryhackme.com/p/Ghxstsec)
+
+¡Muchas gracias por leer todo el artículo! ¡Te deseo mucha suerte en tus próximos logros! 😊
+</code></pre>
+      </div></div>
+
+  
+
+  
+    
+
+  
+</article>
+
+  </div>
+
+  
+    <footer class="footer">
+  <div class="footer__inner">
+    
+      <div class="copyright">
+        <span>© 2026 Powered by <a href="https://gohugo.io">Hugo</a></span>
+    
+      <span>:: <a href="https://github.com/panr/hugo-theme-terminal" target="_blank">Theme</a> made by <a href="https://github.com/panr" target="_blank">panr</a></span>
+      </div>
+  </div>
+</footer>
+
+
+
+
+
+
+<script type="text/javascript" src="/bundle.min.js"></script>
+
+
+
+
+
+  
+</div>
+
+</body>
+</html>

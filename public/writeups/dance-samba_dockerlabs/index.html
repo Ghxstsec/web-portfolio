@@ -1,0 +1,297 @@
+<!DOCTYPE html>
+<html lang="en">
+<head><script src="/livereload.js?mindelay=10&amp;v=2&amp;port=1313&amp;path=livereload" data-no-instant defer></script>
+  
+    <title>Write-up maquina dance-samba de DockerLabs :: Bienvenido a mi Portfolio</title>
+  
+  <meta http-equiv="content-type" content="text/html; charset=utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="description" content="Guia completa paso a paso de como resolver la maquina dance-samba de la plataforma DockerLabs. A traves de enumeracion de FTP, envenenamiento de SSH y Missconfigurations en el binario Sudo" />
+<meta name="keywords" content="" />
+
+  <meta name="robots" content="noodp" />
+
+<link rel="canonical" href="http://localhost:1313/writeups/dance-samba_dockerlabs/" />
+
+
+  
+
+
+
+
+
+  
+  <link rel="stylesheet" href="http://localhost:1313/css/buttons.min.86f6b4c106b6c6eb690ae5203d36b442c1f66f718ff4e8164fa86cf6c61ad641.css">
+
+  
+  <link rel="stylesheet" href="http://localhost:1313/css/code.min.d529ea4b2fb8d34328d7d31afc5466d5f7bc2f0bc9abdd98b69385335d7baee4.css">
+
+  
+  <link rel="stylesheet" href="http://localhost:1313/css/fonts.min.5bb7ed13e1d00d8ff39ea84af26737007eb5051b157b86fc24487c94f3dc8bbe.css">
+
+  
+  <link rel="stylesheet" href="http://localhost:1313/css/footer.min.eb8dfc2c6a7eafa36cd3ba92d63e69e849e2200e0002a228d137f236b09ecd75.css">
+
+  
+  <link rel="stylesheet" href="http://localhost:1313/css/gist.min.a751e8b0abe1ba8bc53ced52a38b19d8950fe78ca29454ea8c2595cf26aad5c0.css">
+
+  
+  <link rel="stylesheet" href="http://localhost:1313/css/header.min.75c7eb0e2872d95ff48109c6647d0223a38db52e2561dd87966eb5fc7c6bdac6.css">
+
+  
+  <link rel="stylesheet" href="http://localhost:1313/css/main.min.36833afd348409fc6c3d09d0897c5833d9d5bf1ff31f5e60ea3ee42ce2b1268c.css">
+
+  
+  <link rel="stylesheet" href="http://localhost:1313/css/menu.min.3c17467ebeb3d38663dce68f71f519901124fa5cbb4519b2fb0667a21e9aca39.css">
+
+  
+  <link rel="stylesheet" href="http://localhost:1313/css/pagination.min.bbb986dbce00a5ce5aca0504b7925fc1c581992a4bf57f163e5d69cc1db7d836.css">
+
+  
+  <link rel="stylesheet" href="http://localhost:1313/css/post.min.e6dddd258e64c83e05cec0cd49c05216742d42fc8ecbfbe6b67083412b609bd3.css">
+
+  
+  <link rel="stylesheet" href="http://localhost:1313/css/syntax.min.a0773cce9310cb6d8ed23e50f005448facf29a53001b57e038828daa466b25c0.css">
+
+  
+  <link rel="stylesheet" href="http://localhost:1313/css/terminal.min.e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855.css">
+
+  
+  <link rel="stylesheet" href="http://localhost:1313/css/terms.min.b81791663c3790e738e571cdbf802312390d30e4b1d8dc9d814a5b5454d0ac11.css">
+
+
+
+
+
+
+
+<link rel="shortcut icon" href="http://localhost:1313/favicon.png">
+<link rel="apple-touch-icon" href="http://localhost:1313/apple-touch-icon.png">
+
+
+<meta name="twitter:card" content="summary" />
+
+
+
+<meta property="og:locale" content="en" />
+<meta property="og:type" content="article" />
+<meta property="og:title" content="Write-up maquina dance-samba de DockerLabs">
+<meta property="og:description" content="Guia completa paso a paso de como resolver la maquina dance-samba de la plataforma DockerLabs. A traves de enumeracion de FTP, envenenamiento de SSH y Missconfigurations en el binario Sudo" />
+<meta property="og:url" content="http://localhost:1313/writeups/dance-samba_dockerlabs/" />
+<meta property="og:site_name" content="Bienvenido a mi Portfolio" />
+
+  <meta property="og:image" content="http://localhost:1313/og-image.png">
+
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="627">
+
+
+  <meta property="article:published_time" content="2026-03-06 00:00:00 &#43;0000 UTC" />
+
+
+
+
+
+
+
+
+
+
+
+<link rel="stylesheet" href="http://localhost:1313/css/custom.css">
+
+
+</head>
+<body>
+
+
+<div class="container">
+
+  <header class="header">
+  <div class="header__inner">
+    <div class="header__logo">
+      <a href="http://localhost:1313/">
+  <div class="logo">
+    Ghxstsec
+  </div>
+</a>
+
+    </div>
+    
+      <ul class="menu menu--mobile">
+  <li class="menu__trigger">Menu&nbsp;▾</li>
+  <li>
+    <ul class="menu__dropdown">
+      
+        
+          <li><a href="/writeups">Writeups</a></li>
+        
+      
+        
+          <li><a href="/certificaciones">Certificaciones</a></li>
+        
+      
+        
+          <li><a href="/posts">Blog</a></li>
+        
+      
+        
+          <li><a href="/proyectos">Proyectos</a></li>
+        
+      
+      
+    </ul>
+  </li>
+</ul>
+
+    
+    
+  </div>
+  
+    <nav class="navigation-menu">
+  <ul class="navigation-menu__inner menu--desktop">
+    
+      
+        
+          <li><a href="/writeups" >Writeups</a></li>
+        
+      
+        
+          <li><a href="/certificaciones" >Certificaciones</a></li>
+        
+      
+        
+          <li><a href="/posts" >Blog</a></li>
+        
+      
+        
+          <li><a href="/proyectos" >Proyectos</a></li>
+        
+      
+    
+  </ul>
+</nav>
+
+  
+</header>
+
+
+  <div class="content">
+    
+<article class="post">
+  <h1 class="post-title">
+    <a href="http://localhost:1313/writeups/dance-samba_dockerlabs/">Write-up maquina dance-samba de DockerLabs</a>
+  </h1>
+  <div class="post-meta"><time class="post-date">2026-03-06</time><span class="post-author">Ghxstsec</span></div>
+
+  
+  
+
+
+  
+
+  <div class="post-content"><div>
+        <p>Member-only story</p>
+<h1 id="writeup-dockerlabs-dance-samba">Writeup dockerlabs dance-samba<a href="#writeup-dockerlabs-dance-samba" class="hanchor" ariaLabel="Anchor">#</a> </h1>
+<p>Primero encendemos la máquina:</p>
+<p><img src="https://miro.medium.com/v2/resize:fit:1284/format:webp/1*0CrS2K5xXbubVPQWaYkHRw.png" alt="captionless image"></p>
+<p>Y como siempre empezaremos con la enumeración con NMAP</p>
+<p><img src="https://miro.medium.com/v2/resize:fit:1400/format:webp/1*2htGECbcDSHfem174qqPrA.png" alt="captionless image"></p>
+<p>Podemos ver un FTP y un Samba, vamos primero a por el FTP</p>
+<p><img src="https://miro.medium.com/v2/resize:fit:1400/format:webp/1*wgVx-nNLY2XTKNCMus6YNw.png" alt="captionless image"></p>
+<p>Podemos ver que muy seguramente tengamos un usuario que se llama “Macarena” y seguramente use la contraseña “donald”</p>
+<p>Vamos a intentar acceder a Samba con esas credenciales, pero primero enumeramos los shares del Samba</p>
+<pre tabindex="0"><code>nxc smb 172.17.0.2 -u &#39;macarena&#39; -p &#39;donald&#39;
+</code></pre><p><img src="https://miro.medium.com/v2/resize:fit:1400/format:webp/1*RDwGbQUVR4kbGGtoLS1fSg.png" alt="Samba shares"><img src="https://miro.medium.com/v2/resize:fit:1400/format:webp/1*Jr0WZ7pI-VqK7fmvUwDfpA.png" alt="captionless image"></p>
+<p>Aquí podremos ver el user.txt.</p>
+<p>Aquí podremos ver el user.txt.</p>
+<p>Pensando en como conseguir acceso a la máquina víctima, podemos ver que en samba hay una carpeta llamada .bash_history, entonces muy seguramente podremos incluir una carpeta .ssh y unas authorized_keys, creando acceso a la máquina con nuestra clave privada y al mismo tiempo persistencia</p>
+<p>Así procedo:</p>
+<p>Primero generamos unas keys:</p>
+<pre tabindex="0"><code>ssh-keygen -f id_rsa
+</code></pre><p><img src="https://miro.medium.com/v2/resize:fit:1400/format:webp/1*qNoxC9iPMwtAhX9nxIjdug.png" alt="captionless image"></p>
+<p>cambiamos el nombre de id_rsa.pub a authorized_keys</p>
+<p><img src="https://miro.medium.com/v2/resize:fit:1400/format:webp/1*NdKaWoHj03yWviVqGAk78A.png" alt="captionless image"></p>
+<p>Iniciamos sesión en el samba víctima y creamos la carpeta .ssh</p>
+<p><img src="https://miro.medium.com/v2/resize:fit:1400/format:webp/1*kDERs4szQKai00zTtLBIsQ.png" alt="captionless image"></p>
+<p>Subimos nuestro archivo de authorized_keys</p>
+<p><img src="https://miro.medium.com/v2/resize:fit:1400/format:webp/1*qQPMsMB2tA33Aoxk4P3bEg.png" alt="captionless image"></p>
+<p>e iniciamos sesión:</p>
+<pre tabindex="0"><code>ssh macarena@172.17.0.2 -i id_rsa
+</code></pre><p>en este momento tocará enumerar la máquina, haciendo la búsqueda de archivos ocultos tipicos, por ejemplo en /opt o /tmp o otros directorios en /home, podemos encontrar esto en /home/secret:</p>
+<p><img src="https://miro.medium.com/v2/resize:fit:986/format:webp/1*vlbNZiN-w6Zb1oas9el_wA.png" alt="captionless image"></p>
+<p>lo pasamos por cyberchef con el recipe “magic”</p>
+<p><img src="https://miro.medium.com/v2/resize:fit:1400/format:webp/1*FNNgu5ss1qGKH0pkOZS1nA.png" alt="captionless image"></p>
+<p>Así que tenemos la contraseña de macarena, vamos a ver él sudo -l que tiene para este usuario</p>
+<p><img src="https://miro.medium.com/v2/resize:fit:1400/format:webp/1*CRbcOIJKa5pKxfOxVK6bUg.png" alt="captionless image"></p>
+<p>Durante la enumeración anterior de la máquina víctima pudimos ver en el directorio /opt con un archivo un tanto raro dentro, vamos a revisarlo con sudo y el comando file</p>
+<pre tabindex="0"><code>sudo -u root /usr/bin/file -f /opt/password.txt
+</code></pre><p><img src="https://miro.medium.com/v2/resize:fit:1400/format:webp/1*eIQxzVcudtN7utE6W3k4UQ.png" alt="captionless image"></p>
+<p>asi que asi terminaria esta maquina:</p>
+<pre tabindex="0"><code>macarena@441ea389a49f:/opt$ su root
+Password: 
+su: Authentication failure
+macarena@441ea389a49f:/opt$ su root
+Password: 
+root@441ea389a49f:/opt# ls
+password.txt
+root@441ea389a49f:/opt# cd /root
+root@441ea389a49f:~# ls
+root.txt  true_root.txt
+root@441ea389a49f:~# cat root.txt 
+It&#39;s not that easy, first root.
+root@441ea389a49f:~# cat true_root.txt 
+efb6984b9b0eb57451aca3f93c8ce6b7
+root@441ea389a49f:~# 
+</code></pre><p>Muchas gracias por llegar hasta aquí, y si me quieres conocer un poco más; abajo tienes mis enlaces de interés.</p>
+<p>¡Saludos!</p>
+<p>👋 Sobre el autor</p>
+<p>¡Hola! Soy Ghxstsec, un entusiasta de la ciberseguridad y pentester. Me dedico a documentar mi viaje por el complejo mundo de la seguridad ofensiva.</p>
+<p>Actualmente, poseo las certificaciones eJPTv2, eCPPTv3 y Google Cybersecurity Professional Certificate. Mi objetivo es intentar ayudar a sobrellevar la brecha entre el aprendizaje teórico y la práctica, al tiempo que comparto mis experiencias sinceras con la comunidad. Cuando no estoy en una maratón de exámenes de 24 horas, me puedes encontrar haciendo ejercicios en Try Hack Me o investigando los últimos artículos sobre ciberseguridad.</p>
+<p>✉️ Conéctate conmigo:</p>
+<p>LinkedIn: <a href="https://www.linkedin.com/in/joel-morillas-aka-ghxstsec-16a988260/">LinkedIn</a>
+GitHub: <a href="https://github.com/Ghxstsec">GitHub</a>
+Twitter/X: <a href="https://x.com/Louikizz">Twitter</a>
+Try Hack Me: <a href="https://tryhackme.com/p/Ghxstsec">THM</a></p>
+<p>¡Muchas gracias por leer todo el artículo! ¡Te deseo mucha suerte en tus próximos logros! 😊</p>
+
+      </div></div>
+
+  
+
+  
+    
+
+  
+</article>
+
+  </div>
+
+  
+    <footer class="footer">
+  <div class="footer__inner">
+    
+      <div class="copyright">
+        <span>© 2026 Powered by <a href="https://gohugo.io">Hugo</a></span>
+    
+      <span>:: <a href="https://github.com/panr/hugo-theme-terminal" target="_blank">Theme</a> made by <a href="https://github.com/panr" target="_blank">panr</a></span>
+      </div>
+  </div>
+</footer>
+
+
+
+
+
+
+<script type="text/javascript" src="/bundle.min.js"></script>
+
+
+
+
+
+  
+</div>
+
+</body>
+</html>

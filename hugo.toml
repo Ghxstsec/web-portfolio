@@ -14,19 +14,20 @@ theme = "terminal"
   [[menu.main]]
     name = "Writeups"
     url = "/writeups"
-    weight = 1
-  [[menu.main]]
-    name = "Proyectos"
-    url = "/proyectos"
-    weight = 4
+    weight = 2
   [[menu.main]]
     name = "Certificaciones"
     url = "/certificaciones"
-    weight = 2
+    weight = 3
   [[menu.main]]
     name = "Blog"
     url = "/posts"
-    weight = 3
+    weight = 4
+  [[menu.main]]
+    name = "Inicio"
+    url = "/"
+    weight = 1
+    
 
 [markup]
   [markup.goldmark]

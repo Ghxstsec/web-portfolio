@@ -10,10 +10,10 @@
     <atom:link href="http://localhost:1313/tags/ctf/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>LFI.elf - DockerLabs</title>
-      <link>http://localhost:1313/writeups/lfielf_dockerlabs/</link>
+      <link>http://localhost:1313/writeups/dockerlabs/lfielf_dockerlabs/</link>
       <pubDate>Thu, 05 Mar 2026 00:00:00 +0000</pubDate>
-      <guid>http://localhost:1313/writeups/lfielf_dockerlabs/</guid>
-      <description>Write-up Máquina LFI.elf de DockerLabs by Joel Morillas Pagan (Ghxstsec)&#xA;Por aquí tenéis mi write-up para la máquina lfi.elf de la plataforma dockerlabs.es&#xA;¡Una vez estando la máquina deployeada, comenzamos!&#xA;ENUMERACION INICIAL Como siempre, comenzamos con el escaneo con nmap, yo uso este comando&#xA;nmap -p- -Pn -n -sCV -min-rate 5000 -T5 -oN targeted -v 172.17.0.2 Nos tira esto:&#xA;Así que asumimos que va a ser hacking web, vamos a ver la web</description>
+      <guid>http://localhost:1313/writeups/dockerlabs/lfielf_dockerlabs/</guid>
+      <description>Write-up Máquina LFI.elf de DockerLabs Por aquí tenéis mi write-up para la máquina lfi.elf de la plataforma dockerlabs.es&#xA;¡Una vez estando la máquina deployeada, comenzamos!&#xA;ENUMERACION INICIAL Como siempre, comenzamos con el escaneo con nmap, yo uso este comando&#xA;nmap -p- -Pn -n -sCV -min-rate 5000 -T5 -oN targeted -v 172.17.0.2 Nos tira esto:&#xA;Así que asumimos que va a ser hacking web, vamos a ver la web&#xA;Así que doy por hecho que va a haber algún tipo de archivo escondido, posiblemente en el root directory de la web, así que enumeramos con gobuster</description>
     </item>
   </channel>
 </rss>

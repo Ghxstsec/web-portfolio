@@ -1,10 +1,14 @@
 ---
 title: "LFI.elf - DockerLabs"
 date: 2026-03-05
-author: "Joel Morillas Pagan (Ghxstsec)"
+creator: "d1se0"
+rating: 5 
+dificultad: Dificil  
 description: "Resolución paso a paso de la máquina LFI.elf de DockerLabs. Explotación de Local File Inclusion."
 tags: ["DockerLabs", "LFI", "CTF"]
 showFullContent: false
+draft: false
+type: "post"
 ---
 
 Write-up Máquina LFI.elf de DockerLabs

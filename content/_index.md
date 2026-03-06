@@ -47,7 +47,7 @@ $ neofetch --skills
 ### 🔥 ÚLTIMOS ARTÍCULOS (WRITEUPS)
 Explora mis informes detallados sobre máquinas vulneradas y análisis de seguridad:
 
-* [**Máquina 01: DevVortex (HTB)**](/posts/devvortex) - Explotación de Joomla y escalada de privilegios.
+* [**Máquina 01: DevVortex (HTB)**](/writeups/) - Explotación de Joomla y escalada de privilegios.
 * [**Máquina 02: Analytics (HTB)**](/posts/analytics) - RCE mediante Metabase (CVE-2023-38646).
 * [**Reto Forense: Memory Dump**](/posts/forensics-mem) - Análisis de volcado de memoria con Volatility.
 
@@ -56,8 +56,8 @@ Explora mis informes detallados sobre máquinas vulneradas y análisis de seguri
 ### 🌐 CONEXIONES EXTERNAS
 | Plataforma | Enlace |
 | :--- | :--- |
-| **GitHub** | [github.com/tu-usuario](https://github.com/Ghxstsec) |
-| **HackTheBox** | [htb.com/profile/tu-id](https://app.hackthebox.com/profile/1336836) |
-| **LinkedIn** | [linkedin.com/in/tu-user](https://linkedin.com/in/joel-morillas-aka-ghxstsec-16a988260/) |
+| **GitHub** | [github.com/Ghxstsec](https://github.com/Ghxstsec) |
+| **HackTheBox** | [htb.com/profile/1336836](https://app.hackthebox.com/profile/1336836) |
+| **LinkedIn** | [linkedin.com/in/joel-morillas](https://linkedin.com/in/joel-morillas-aka-ghxstsec-16a988260/) |
 
 > Teneis mis otros enlaces de interes aqui: [soyjoel.com](https://soyjoel.com)

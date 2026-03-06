@@ -2,12 +2,13 @@
 title: "Write-up maquina dance-samba de DockerLabs"
 description: "Guia completa paso a paso de como resolver la maquina dance-samba de la plataforma DockerLabs. A traves de enumeracion de FTP, envenenamiento de SSH y Missconfigurations en el binario Sudo"
 date: 2026-03-06
+creator: "d1se0"
+rating: 4.6
+dificultad: "medio"
 author: "Ghxstsec"
 draft: false
 type: "post"
 ---
-
-Member-only story
 
 Writeup dockerlabs dance-samba
 ==============================

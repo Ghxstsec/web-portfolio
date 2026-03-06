@@ -2,6 +2,12 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
   xmlns:xhtml="http://www.w3.org/1999/xhtml">
   <url>
+    <loc>http://localhost:1313/writeups/dockerlabs/</loc>
+    <lastmod>2026-03-06T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>http://localhost:1313/writeups/dockerlabs/dance-samba_dockerlabs/</loc>
+    <lastmod>2026-03-06T00:00:00+00:00</lastmod>
+  </url><url>
     <loc>http://localhost:1313/writeups/</loc>
     <lastmod>2026-03-06T00:00:00+00:00</lastmod>
   </url><url>
@@ -17,15 +23,21 @@
     <loc>http://localhost:1313/tags/lfi/</loc>
     <lastmod>2026-03-05T00:00:00+00:00</lastmod>
   </url><url>
-    <loc>http://localhost:1313/writeups/lfielf_dockerlabs/</loc>
+    <loc>http://localhost:1313/writeups/dockerlabs/lfielf_dockerlabs/</loc>
     <lastmod>2026-03-05T00:00:00+00:00</lastmod>
   </url><url>
     <loc>http://localhost:1313/tags/</loc>
     <lastmod>2026-03-05T00:00:00+00:00</lastmod>
   </url><url>
-    <loc>http://localhost:1313/writeups/profetas_dockerlabs/</loc>
+    <loc>http://localhost:1313/writeups/dockerlabs/profetas_dockerlabs/</loc>
     <lastmod>2026-03-05T00:00:00+00:00</lastmod>
   </url><url>
     <loc>http://localhost:1313/categories/</loc>
+  </url><url>
+    <loc>http://localhost:1313/writeups/hackthebox/</loc>
+  </url><url>
+    <loc>http://localhost:1313/certificaciones/</loc>
+  </url><url>
+    <loc>http://localhost:1313/writeups/tryhackme/</loc>
   </url>
 </urlset>

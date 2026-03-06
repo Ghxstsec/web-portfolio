@@ -2,7 +2,10 @@
 title: "Write-up maquina Profetas DockerLabs"
 description: "Guía completa paso a paso (Writeup) para vulnerar la máquina Profetas de DockerLabs. Aprende cómo explotar una vulnerabilidad XXE (XML External Entity) para leer archivos sensibles, extraer la clave id_rsa de Jeremías y escalar privilegios hasta ser Root."
 date: 2026-03-05
-author: "Joel Morillas Pagan (Ghxstsec)"
+author: "Ghxstsec"
+creator: "mikisbd"
+rating: 4.2 
+dificultad: "Medio"
 draft: false
 type: "post"
 ---

@@ -2,7 +2,7 @@
 <html lang="en">
 <head><script src="/livereload.js?mindelay=10&amp;v=2&amp;port=1313&amp;path=livereload" data-no-instant defer></script>
   
-    <title>404 Page not found :: Bienvenido a mi Portfolio</title>
+    <title>Hack The Box :: Bienvenido a mi Portfolio</title>
   
   <meta http-equiv="content-type" content="text/html; charset=utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -11,7 +11,7 @@
 
   <meta name="robots" content="noodp" />
 
-<link rel="canonical" href="http://localhost:1313/404.html" />
+<link rel="canonical" href="http://localhost:1313/writeups/hackthebox/" />
 
 
   
@@ -75,9 +75,9 @@
 
 <meta property="og:locale" content="en" />
 <meta property="og:type" content="website" />
-<meta property="og:title" content="404 Page not found">
+<meta property="og:title" content="Hack The Box">
 <meta property="og:description" content="" />
-<meta property="og:url" content="http://localhost:1313/404.html" />
+<meta property="og:url" content="http://localhost:1313/writeups/hackthebox/" />
 <meta property="og:site_name" content="Bienvenido a mi Portfolio" />
 
   <meta property="og:image" content="http://localhost:1313/og-image.png">
@@ -88,6 +88,8 @@
 
 
 
+
+  <link href="/writeups/hackthebox/index.xml" rel="alternate" type="application/rss+xml" title="Bienvenido a mi Portfolio" />
 
 
 
@@ -176,14 +178,141 @@
 
   <div class="content">
     
-  <div class="post">
-    <h1 class="post-title">404 — Page not found...</h1>
+<main class="writeups-wrapper">
 
-    <div class="post-content">
-      <a href="http://localhost:1313/">Back to home page&nbsp;→</a>
-    </div>
+  
+    
+      
+        
+        <header class="section-header">
+          <h1 class="page-title">Hack The Box</h1>
+        </header>
 
-  </div>
+        <div class="machines-grid">
+          
+        </div>
+      
+    
+  
+
+</main>
+
+<style>
+   
+  .writeups-wrapper { max-width: 1300px; margin: 0 auto; padding: 40px 20px; color: #fff; font-family: 'Segoe UI', system-ui, sans-serif; }
+  .page-title { text-align: center; margin-bottom: 50px; font-size: 2.2rem; text-transform: uppercase; font-weight: 800; letter-spacing: 1px; }
+
+   
+  .machines-grid { 
+    display: grid; 
+    grid-template-columns: repeat(auto-fill, minmax(500px, 1fr)); 
+    gap: 30px; 
+  }
+
+  .machine-card {
+    display: flex; 
+    background: #111926; 
+    border: 1px solid #1f2a3a; 
+    border-radius: 12px;
+    text-decoration: none !important; 
+    color: inherit; 
+    height: 200px; 
+    overflow: hidden; 
+    transition: all 0.3s ease;
+  }
+  .machine-card:hover { transform: translateY(-5px); border-color: #ff9d00; box-shadow: 0 10px 30px rgba(0,0,0,0.5); }
+
+   
+  .card-left { 
+    width: 180px; 
+    display: flex; 
+    align-items: center; 
+    justify-content: center; 
+    background: #0d141f; 
+    flex-shrink: 0; 
+    position: relative;  
+  }
+
+  .avatar-circle {
+    width: 115px; 
+    height: 115px; 
+    border-radius: 50%; 
+    border: 3px solid #d4af37;
+    display: flex; 
+    align-items: center; 
+    justify-content: center; 
+    overflow: hidden; 
+    background: #050a11;
+    position: relative;  
+    box-shadow: 0 0 15px rgba(212, 175, 55, 0.2);  
+  }
+
+  .avatar-circle img { width: 100%; height: 100%; object-fit: cover; }
+
+   
+  .placeholder-icon {
+    font-size: 4rem;  
+    line-height: 115px;  
+    display: block;
+    margin: 0;
+    position: absolute;  
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);  
+    text-align: center;
+    width: 100%;
+  }
+
+   
+  .card-right { 
+    flex-grow: 1; 
+    padding: 25px; 
+    display: flex; 
+    flex-direction: column; 
+    justify-content: space-between; 
+    overflow: hidden; 
+  }
+  
+  .machine-title { 
+    font-size: 1.4rem; 
+    margin: 0; 
+    font-weight: 700; 
+    color: #fff; 
+    white-space: nowrap; 
+    overflow: hidden; 
+    text-overflow: ellipsis; 
+  }
+  
+  .tags-row { display: flex; gap: 12px; margin-top: 10px; align-items: center; }
+  .badge.difficulty { padding: 4px 12px; border-radius: 4px; font-size: 0.7rem; font-weight: bold; border: 1px solid #333; background: rgba(0,0,0,0.2); }
+  .badge.facil { color: #00e676; border-color: #00e676; }
+  .badge.medio { color: #ff9100; border-color: #ff9100; }
+  .badge.dificil { color: #ff5252; border-color: #ff5252; }
+  .rating { color: #ffd740; font-size: 0.85rem; }
+
+  .card-footer {
+    display: flex; 
+    justify-content: space-between; 
+    align-items: flex-end;
+    border-top: 1px solid rgba(255,255,255,0.05); 
+    padding-top: 15px;
+    margin-top: auto;
+  }
+  .label { font-size: 0.6rem; color: #555; display: block; margin-bottom: 2px; }
+  .author { color: #ff9100; font-weight: bold; font-size: 1.1rem; }
+  .date-text { font-size: 0.8rem; color: #333; font-family: monospace; }
+
+   
+  .categories-grid { display: flex; gap: 20px; }
+  .category-card { flex: 1; background: #111; padding: 40px; border: 1px solid #333; border-radius: 12px; text-align: center; text-decoration: none; color: #fff; }
+  .category-card:hover { border-color: #00ff00; }
+
+  @media (max-width: 1000px) {
+    .machines-grid { grid-template-columns: 1fr; }
+    .machine-card { height: auto; min-height: 180px; }
+    .card-left { width: 150px; }
+  }
+</style>
 
   </div>
 
