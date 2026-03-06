@@ -4,7 +4,7 @@ description: "Guia completa de la enumeracion y la explotacion de la maquina puz
 date: 2026-1-03
 creator: "Pyth0nK1d"
 rating: 5 
-dificultad: "Media"
+dificultad: "Medio"
 author: "Ghxstsec"
 draft: false
 type: "post"
