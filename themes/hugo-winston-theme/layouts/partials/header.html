@@ -1,0 +1,217 @@
+<header class="header">
+  <div class="header-container">
+    <a class="header-logo" href="{{ .Site.BaseURL }}">
+      <span class="logo-symbol">◆</span>
+      <span class="logo-text">Ghxstsec</span>
+    </a>
+    
+    <nav class="menu-main">
+      <ul>
+        {{ $currentPage := . }}
+        {{ range .Site.Menus.main }}
+          {{ if not (and (eq .Identifier "about") (not $.Site.Params.showAboutPage)) }}
+            <li class="{{ if or (eq .URL $currentPage.RelPermalink) (and (ne .URL "/") (hasPrefix $currentPage.RelPermalink .URL)) }}active{{ end }}">
+              <a href="{{ .URL }}">{{ .Name }}</a>
+            </li>
+          {{ end }}
+        {{ end }}
+      </ul>
+    </nav>
+    
+    <button class="mobile-toggle" id="mobile-toggle" aria-label="Toggle menu">
+      <span class="bar"></span>
+      <span class="bar"></span>
+      <span class="bar"></span>
+    </button>
+  </div>
+</header>
+
+<div class="mobile-menu" id="mobile-menu">
+  <nav>
+    {{ range .Site.Menus.main }}
+      <a href="{{ .URL }}">{{ .Name }}</a>
+    {{ end }}
+  </nav>
+</div>
+
+<style>
+.header {
+  background: rgba(10, 14, 20, 0.98);
+  backdrop-filter: blur(12px);
+  border-bottom: 1px solid var(--border);
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  z-index: 1000;
+}
+
+.header-container {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 14px 24px;
+  height: 60px;
+  box-sizing: border-box;
+}
+
+.header-logo {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-family: 'Ubuntu Mono', monospace;
+  font-size: 1.2rem;
+  font-weight: 700;
+  color: var(--text) !important;
+  text-decoration: none !important;
+}
+
+.logo-symbol {
+  color: var(--primary);
+  font-size: 1.4rem;
+  animation: pulse 2s ease-in-out infinite;
+}
+
+@keyframes pulse {
+  0%, 100% { opacity: 1; }
+  50% { opacity: 0.5; }
+}
+
+.logo-text {
+  color: var(--text);
+}
+
+/* Desktop Menu */
+.menu-main {
+  display: block;
+}
+
+.menu-main ul {
+  display: flex;
+  gap: 4px;
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+.menu-main li a {
+  display: block;
+  padding: 8px 16px;
+  color: var(--text-muted) !important;
+  font-weight: 500;
+  font-size: 0.9rem;
+  text-decoration: none !important;
+  border-radius: 6px;
+  transition: all 0.2s ease;
+}
+
+.menu-main li a:hover {
+  color: var(--text) !important;
+  background: rgba(255, 255, 255, 0.05);
+}
+
+.menu-main li.active a {
+  color: var(--primary) !important;
+  background: rgba(88, 166, 255, 0.1);
+}
+
+/* Mobile Toggle Button */
+.mobile-toggle {
+  display: none;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 5px;
+  width: 36px;
+  height: 36px;
+  background: transparent;
+  border: none;
+  cursor: pointer;
+  padding: 0;
+}
+
+.mobile-toggle .bar {
+  display: block;
+  width: 22px;
+  height: 2px;
+  background: var(--text);
+  border-radius: 2px;
+  transition: all 0.3s ease;
+}
+
+/* Mobile Menu */
+.mobile-menu {
+  display: none;
+  position: fixed;
+  top: 60px;
+  left: 0;
+  right: 0;
+  background: rgba(10, 14, 20, 0.98);
+  border-bottom: 1px solid var(--border);
+  padding: 16px 24px;
+  z-index: 999;
+}
+
+.mobile-menu.open {
+  display: block;
+}
+
+.mobile-menu nav {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.mobile-menu a {
+  display: block;
+  padding: 12px 16px;
+  color: var(--text-muted) !important;
+  font-weight: 500;
+  text-decoration: none !important;
+  border-radius: 6px;
+  background: var(--bg-card);
+}
+
+.mobile-menu a:hover {
+  color: var(--primary) !important;
+  background: rgba(88, 166, 255, 0.1);
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+  .menu-main {
+    display: none;
+  }
+  .mobile-toggle {
+    display: flex;
+  }
+}
+</style>
+
+<script>
+document.addEventListener('DOMContentLoaded', function() {
+  var toggle = document.getElementById('mobile-toggle');
+  var menu = document.getElementById('mobile-menu');
+  
+  if (toggle && menu) {
+    toggle.addEventListener('click', function() {
+      menu.classList.toggle('open');
+      toggle.classList.toggle('active');
+    });
+  }
+  
+  // Close menu when clicking outside
+  document.addEventListener('click', function(e) {
+    if (!toggle.contains(e.target) && !menu.contains(e.target)) {
+      menu.classList.remove('open');
+      toggle.classList.remove('active');
+    }
+  });
+});
+
+window.Hugo = {
+  showAboutPage: {{ .Site.Params.showAboutPage }}
+};
+</script>

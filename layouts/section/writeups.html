@@ -1,0 +1,106 @@
+{{ define "main" }}
+<main class="writeups-section">
+
+{{ if .IsSection }}
+  {{ if eq .RelPermalink "/writeups/" }}
+    <h1 class="page-title">Categorías de Writeups</h1>
+    <div class="writeups-grid">
+      {{ range .Sections }}
+      <a href="{{ .Permalink }}" class="category-card">
+        <span class="cat-icon">
+          {{ if eq .Name "dockerlabs" }}🐳{{ else if eq .Name "tryhackme" }}🚀{{ else if eq .Name "hackthebox" }}📦{{ else }}📁{{ end }}
+        </span>
+        <h3>{{ .Title }}</h3>
+        <p>{{ len .Pages }} máquinas documentadas</p>
+      </a>
+      {{ end }}
+    </div>
+  {{ else }}
+    <header class="section-header">
+      <h1 class="page-title">{{ .Title }}</h1>
+      <p>{{ len .Pages }} writeups disponibles</p>
+    </header>
+
+    <div class="writeups-grid">
+      {{ range .Pages }}
+      <a href="{{ .Permalink }}" class="writeup-card">
+        <div class="card-header">
+          <span class="badge badge-{{ .Section }}">
+            {{ if eq .Section "dockerlabs" }}DockerLabs
+            {{ else if eq .Section "hackthebox" }}HackTheBox
+            {{ else if eq .Section "tryhackme" }}TryHackMe
+            {{ else }}{{ .Section }}{{ end }}
+          </span>
+          {{ if .Params.dificultad }}
+          <span class="badge badge-{{ .Params.dificultad | lower }}">{{ .Params.dificultad }}</span>
+          {{ end }}
+        </div>
+        <h3>{{ .Title }}</h3>
+        {{ with .Description }}
+        <p>{{ . }}</p>
+        {{ end }}
+        <div class="card-footer">
+          <span class="date">{{ .Date.Format "02/01/2006" }}</span>
+        </div>
+      </a>
+      {{ end }}
+    </div>
+  {{ end }}
+{{ end }}
+
+</main>
+
+<style>
+.writeups-section {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 40px 20px;
+}
+
+.page-title {
+  text-align: center;
+  margin-bottom: 40px;
+  color: var(--primary);
+  font-size: 2.5rem;
+}
+
+.section-header {
+  text-align: center;
+  margin-bottom: 50px;
+}
+
+.section-header p {
+  color: var(--text-muted);
+  font-size: 1.1rem;
+}
+
+.cat-icon {
+  font-size: 3rem;
+  display: block;
+  margin-bottom: 16px;
+}
+
+.card-header {
+  display: flex;
+  gap: 10px;
+  margin-bottom: 16px;
+}
+
+.card-footer {
+  margin-top: 16px;
+  padding-top: 12px;
+  border-top: 1px solid var(--border-color);
+  font-size: 0.85rem;
+  color: var(--text-muted);
+}
+
+@media (max-width: 768px) {
+  .writeups-section {
+    padding: 20px 15px;
+  }
+  .page-title {
+    font-size: 1.8rem;
+  }
+}
+</style>
+{{ end }}

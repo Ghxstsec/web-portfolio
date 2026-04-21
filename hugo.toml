@@ -1,0 +1,68 @@
+baseURL = "https://portfolio.soyjoel.com/"
+languageCode = "es-es"
+theme = "hugo-winston-theme"
+themesDir = "themes"
+title = "Ghxstsec | Portfolio de Ciberseguridad"
+
+[pagination]
+pagerSize = 5
+
+pygmentsCodeFences = true
+pygmentsCodefencesGuessSyntax = true
+pygmentsUseClasses = true
+
+[module]
+  [module.hugoVersion]
+    extended = true
+    min = "0.55.0"
+ 
+[params]
+  google_analytics_id = ""
+  twitter_handle = "@Ghxstsec"
+  showAuthorOnHomepage = false
+  showAuthorOnPosts = false
+  showIntroContentOnHomepage = true
+  showPostsOnHomepage = false
+  showReadTimeOnPosts = true
+  usePaginationOnHomepage = false
+  limitPostsOnHomepage = 6
+  sortPostsByDateOldestFirst = false
+  addDot = true
+  addFrame = false
+  enableGoogleFonts = true 
+  googleFontsUrl = "https://fonts.googleapis.com/css2?family=Ubuntu:wght@400;700&family=Ubuntu+Mono:wght@400;700&display=swap"
+  fontFamilyHeading = "Ubuntu"
+  fontFamilyParagraph = "Ubuntu"
+  fontFamilyMonospace = "Ubuntu Mono"
+  showAboutPage = true
+  github_username = "Ghxstsec"
+  kofi_username = ""
+  discord_invite = ""
+  email = "contacto@ghxstsec.com"
+  repo_name = "web-portfolio"
+  footer_text = "Ghxstsec"
+  footer_year = "2024-2026"
+
+[markup]
+  [markup.goldmark]
+    [markup.goldmark.renderer]
+      hardWraps = true
+      unsafe = true
+      xhtml = false
+
+[menu]
+  [[menu.main]]
+    identifier = 'home'
+    name = 'Inicio'
+    url = '/'
+    weight = 1
+  [[menu.main]]
+    name = "Writeups"
+    identifier = "writeups"
+    weight = 2
+    url = "/writeups/"
+  [[menu.main]]
+    name = "Certificaciones"
+    identifier = "certs"
+    weight = 3
+    url = "/certificaciones/"

@@ -1,0 +1,14 @@
+<nav class="mobile-menu">
+  <div class="hamburger">
+    <span></span>
+    <span></span>
+    <span></span>
+  </div>
+  <div class="mobile-menu__inner">
+    {{ range .Site.Menus.main }}
+      <a href="{{ .URL }}" class="mobile-menu__link{{ if $.IsMenuCurrent "main" . }} active{{ end }}">
+        {{ .Name }}
+      </a>
+    {{ end }}
+  </div>
+</nav>

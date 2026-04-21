@@ -1,0 +1,15 @@
+{{ define "body_classes" }}page-home{{ end }}
+
+{{ define "main" }}
+  {{ if eq .RelPermalink "/about/" }}
+    {{ if not .Site.Params.showAboutPage }}
+      {{ return }}
+    {{ end }}
+  {{ end }}
+
+  {{ .Content }}
+
+{{ end }}
+
+{{ define "footer_js" }}
+{{ end }}
