@@ -13,10 +13,12 @@
   --bg-dark: #0a0e14;
   --bg-card: #11161d;
   --border: #1e2733;
+  --border-color: #1e2733;
   --primary: #58A6FF;
   --secondary: #8B5CF6;
   --accent: #7C3AED;
   --text: #f0f6fc;
+  --text-main: #f0f6fc;
   --text-muted: #8b949e;
   --green: #22c55e;
   --orange: #f97316;
@@ -76,6 +78,10 @@ a:hover {
 }
 
 /* --- CARDS GRID (Writeups) --- */
+.writeups-section {
+  padding: 40px 20px;
+}
+
 .writeups-grid {
   display: grid;
   grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
@@ -84,7 +90,7 @@ a:hover {
 }
 
 .category-card, .writeup-card {
-  background: var(--bg-card);
+  background: var(--bg-card) !important;
   border: 1px solid var(--border-color);
   border-radius: 12px;
   padding: 24px;
@@ -92,6 +98,7 @@ a:hover {
   color: var(--text-main) !important;
   transition: all 0.3s ease;
   display: block;
+  box-sizing: border-box;
 }
 
 .category-card:hover, .writeup-card:hover {
