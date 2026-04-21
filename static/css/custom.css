@@ -51,18 +51,32 @@ body {
 
 .intro h1 {
   margin-top: 60px !important;
-  margin-bottom: 30px !important;
-  padding-top: 30px;
+  margin-bottom: 40px !important;
+  padding-bottom: 20px;
   font-size: 2.5rem;
   color: var(--text-main) !important;
+  display: block;
+  border-bottom: 2px solid var(--primary);
 }
 
 .content {
-  padding: 40px 20px !important;
+  padding: 60px 40px !important;
+  max-width: 1000px;
+  margin: 0 auto;
+}
+
+/* Hide the duplicate H1 in writeup content */
+.writeups-section .content > h1,
+.content > h1[id] {
+  margin-top: 60px !important;
+  margin-bottom: 20px !important;
+  padding-top: 40px;
+  border-top: 1px solid var(--border-color);
+  display: block;
 }
 
 /* Hide duplicate H1 in content for writeups */
-.content > h1:first-child {
+.content > h1:first-of-type {
   display: none;
 }
 
