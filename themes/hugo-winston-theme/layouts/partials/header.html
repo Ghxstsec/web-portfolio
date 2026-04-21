@@ -26,14 +26,6 @@
   </div>
 </header>
 
-<div class="mobile-menu" id="mobile-menu">
-  <nav>
-    {{ range .Site.Menus.main }}
-      <a href="{{ .URL }}">{{ .Name }}</a>
-    {{ end }}
-  </nav>
-</div>
-
 <style>
 .header {
   background: rgba(10, 14, 20, 0.98);
@@ -44,6 +36,18 @@
   left: 0;
   right: 0;
   z-index: 1000;
+  height: 70px;
+}
+
+.header-container {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 14px 24px;
+  height: 70px;
+  box-sizing: border-box;
 }
 
 .header-container {
