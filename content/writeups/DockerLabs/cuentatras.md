@@ -1,7 +1,7 @@
 ---
 title: "CuentaAtras"
 description: "Guia completa de la enumeracion y la explotacion de la maquina CuentaAtras de DockerLabs"
-date: 2026-14-03
+date: 2026-03-14
 creator: "mikisbd"
 rating: 4.7
 dificultad: "Medio"

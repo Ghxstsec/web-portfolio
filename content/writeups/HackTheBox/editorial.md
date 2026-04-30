@@ -1,7 +1,7 @@
 ---
 title: "Editorial"
 description: "Guia completa paso a paso de como resolver la maquina Editorial de Hack The Box"
-date: 2026-18-06
+date: 2026-06-18
 creator: "Lanz"
 rating: 4.3 
 dificultad: "Facil"

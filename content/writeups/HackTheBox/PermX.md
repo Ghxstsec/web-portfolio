@@ -1,7 +1,7 @@
 ---
 title: "PermX"
 description: "Guia completa para la enumeracion y posterior explotacion de la maquina PermX de HackTheBox"
-date: 2024-18-06
+date: 2024-06-18
 creator: "mtzsec"
 rating: 4.6
 dificultad: "Facil"

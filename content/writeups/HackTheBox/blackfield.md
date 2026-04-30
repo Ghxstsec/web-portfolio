@@ -1,7 +1,7 @@
 ---
 title: "BlackField"
 description: "Guia completa paso a paso de como resolver la maquina BlackField de Hack The Box"
-date: 12/04/2026
+date: 2026-04-12
 creator: "HTB"
 rating: 4.9 
 dificultad: "Dificil"
