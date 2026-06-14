@@ -1,5 +1,5 @@
 ---
-title: "autoescuela"
+title: "Autoescuela"
 description: "Guia completa paso a paso de como resolver la maquina autoescuela de la plataforma DockerLabs."
 date: 2026-04-30
 creator: "mikisbd"

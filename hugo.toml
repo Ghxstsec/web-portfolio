@@ -62,7 +62,12 @@ pygmentsUseClasses = true
     weight = 2
     url = "/writeups/"
   [[menu.main]]
+    name = "Blog"
+    identifier = "blog"
+    weight = 3
+    url = "/blog/"
+  [[menu.main]]
     name = "Certificaciones"
     identifier = "certs"
-    weight = 3
+    weight = 4
     url = "/certificaciones/"
