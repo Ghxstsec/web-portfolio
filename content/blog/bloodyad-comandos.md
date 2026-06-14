@@ -448,6 +448,3 @@ bloodyAD --host $dc -d $domain -u $username -p $password -k set restore $user_to
 
 - `set restore <objeto>`
 
-## Referencia breve de ejemplos adicionales públicos
-
-Ejemplos documentados públicamente incluyen consultas del nivel funcional del bosque, longitud mínima de contraseña, cuota de equipos, listado de usuarios, equipos, contenedores, trusts, búsquedas LDAP por SPN y cuentas con configuraciones especiales de autenticación, además del volcado de DNS integrado en AD [web:99][page:1].
