@@ -1,4 +1,4 @@
-baseURL = "https://portfolio.soyjoel.com/"
+baseURL = "https://soyjoel.com/"
 languageCode = "es-es"
 theme = "hugo-winston-theme"
 themesDir = "themes"
