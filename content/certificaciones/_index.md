@@ -52,6 +52,18 @@ title: "Mis Certificaciones"
     </div>
   </a>
 
+  <!-- Tarjeta CPTS -->
+  <a href="https://www.hackthebox.com/certificates" target="_blank" class="cert-card">
+    <div class="cert-img-container">
+      <img src="/images/cpts.jpg" alt="CPTS">
+    </div>
+    <div class="cert-info">
+      <h3>Certified Penetration Testing Specialist</h3>
+      <p>Professional Certificate</p>
+      <span class="cert-status done">VERIFICAR CREDENCIAL 🔗</span>
+    </div>
+  </a>
+
 </div>
 
 
