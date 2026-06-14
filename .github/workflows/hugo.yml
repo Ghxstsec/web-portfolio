@@ -39,7 +39,7 @@ jobs:
 
       - name: Build Site
         run: |
-          hugo --minify --baseURL "https://portfolio.soyjoel.com/"
+          hugo --minify --baseURL "https://soyjoel.com/"
 
       - name: Upload Artifact
         uses: actions/upload-pages-artifact@v3
