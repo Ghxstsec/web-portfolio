@@ -1,0 +1,5 @@
+{{- /* Plataforma de un writeup a partir de su sección padre */ -}}
+{{- $key := "" -}}{{- $name := "" -}}
+{{- with .Parent -}}{{ if ne .RelPermalink "/writeups/" }}{{ $key = path.Base .RelPermalink | lower }}{{ $name = .Title }}{{ end }}{{- end -}}
+{{- if eq .Section "blog" -}}{{ $key = "blog" }}{{ $name = .Params.categoria | default "Blog" }}{{- end -}}
+{{- return (dict "key" $key "name" $name) -}}

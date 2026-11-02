@@ -1,0 +1,14 @@
+{{- $p := partial "platform.html" . -}}
+{{- $d := partial "difficulty.html" .Params.dificultad -}}
+<a class="entry" href="{{ .RelPermalink }}" data-reveal data-platform="{{ $p.key }}" data-level="{{ $d.level }}">
+  <time class="entry__date mono" datetime="{{ .Date.Format "2006-01-02" }}">{{ .Date.Format "02.01.06" }}</time>
+  <span class="entry__platform tag tag--{{ $p.key }}">{{ $p.name }}</span>
+  <span class="entry__body">
+    <span class="entry__title">{{ .Title }}</span>
+    {{ with .Description }}<span class="entry__desc">{{ . | plainify | truncate 140 }}</span>{{ end }}
+  </span>
+  <span class="entry__meta">
+    {{ with $d.label }}<span class="diff diff--{{ $d.level }}"><i></i>{{ . }}</span>{{ end }}
+    <span class="entry__arrow" aria-hidden="true">→</span>
+  </span>
+</a>

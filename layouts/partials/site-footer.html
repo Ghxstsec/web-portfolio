@@ -1,0 +1,20 @@
+<footer class="site-footer">
+  <div class="wrap site-footer__grid">
+    <div>
+      <a class="brand" href="{{ "/" | relURL }}"><span class="brand__prompt">~/</span><span class="brand__name">ghxstsec</span></a>
+      <p class="site-footer__note">Writeups, apuntes y laboratorios de seguridad ofensiva.<br>Todo el contenido está pensado para entornos autorizados.</p>
+    </div>
+    <nav class="site-footer__col" aria-label="Secciones">
+      <span class="label">Secciones</span>
+      {{ range site.Menus.main }}<a href="{{ .URL | relURL }}">{{ .Name }}</a>{{ end }}
+    </nav>
+    <nav class="site-footer__col" aria-label="Redes">
+      <span class="label">Redes</span>
+      {{ range site.Data.social }}<a href="{{ .url }}" target="_blank" rel="noopener">{{ .name }}</a>{{ end }}
+    </nav>
+  </div>
+  <div class="wrap site-footer__bottom">
+    <span>&copy; {{ site.Params.footer_year | default (now.Format "2006") }} Ghxstsec</span>
+    <span class="mono">build {{ now.Format "2006.01.02" }}</span>
+  </div>
+</footer>

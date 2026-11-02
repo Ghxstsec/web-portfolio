@@ -1,0 +1,166 @@
+{{ define "body_class" }}page page--home{{ end }}
+
+{{ define "main" }}
+{{- $writeups := where site.RegularPages "Section" "writeups" -}}
+{{- $posts := where site.RegularPages "Section" "blog" -}}
+{{- $certs := site.Data.certs -}}
+
+<section class="hero">
+  <canvas class="hero__field" data-field aria-hidden="true"></canvas>
+  <div class="wrap hero__grid">
+    <div class="hero__copy">
+      <p class="kicker mono" data-reveal><span class="status-dot"></span> pentesting · active directory · red team</p>
+      <h1 class="hero__title">
+        <span class="line" data-reveal><span data-scramble>Security Researcher</span></span>
+        <span class="line line--accent" data-reveal><span data-scramble>&amp; Penetration Tester</span></span>
+      </h1>
+      <p class="hero__lead" data-reveal>Documentando el camino de la seguridad ofensiva: máquinas, Active Directory y herramientas, explicado paso a paso. <em>Breaking things so you don't have to.</em></p>
+      <div class="hero__cta" data-reveal>
+        <a class="btn btn--solid" href="{{ "writeups/" | relURL }}">Explorar writeups <span aria-hidden="true">→</span></a>
+        <a class="btn btn--ghost" href="{{ "certificaciones/" | relURL }}">Certificaciones</a>
+      </div>
+    </div>
+
+    <figure class="feed" data-reveal data-tilt>
+      <div class="feed__screen">
+        <img src="{{ "images/lain.gif" | relURL }}" alt="Lain, avatar de Ghxstsec" width="500" height="375">
+        <span class="feed__scan" aria-hidden="true"></span>
+      </div>
+      <figcaption class="feed__hud mono" aria-hidden="true">
+        <span><i class="rec"></i>REC · node_01</span>
+        <span data-clock>--:--:--</span>
+      </figcaption>
+      <span class="corner corner--tl"></span><span class="corner corner--tr"></span>
+      <span class="corner corner--bl"></span><span class="corner corner--br"></span>
+    </figure>
+  </div>
+  <div class="wrap hero__ticker mono" aria-hidden="true">
+    <div class="ticker">
+      <div class="ticker__track">
+        {{- range (seq 2) }}
+        <span>nmap -p- -sCV</span><span>netexec smb</span><span>bloodyAD</span><span>impacket-GetNPUsers</span><span>john --wordlist</span><span>gobuster dir</span><span>evil-winrm</span><span>sudo -l</span>
+        {{- end }}
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="section wrap">
+  <div class="section__head" data-reveal>
+    <span class="section__idx mono">01</span>
+    <h2 class="section__title">Perfil</h2>
+  </div>
+
+  <div class="profile">
+    <div class="term" data-reveal data-typer>
+      <div class="term__bar"><i></i><i></i><i></i><span class="mono">ghxstsec@node — fish</span></div>
+      <pre class="term__body mono"><code><span class="t-line">whoami</span>
+<span class="t-out">ghxstsec</span>
+<span class="t-line">cat ~/.profile</span>
+<span class="t-out"><b>alias</b>     Ghxstsec
+<b>rol</b>       Pentester &amp; Security Researcher
+<b>ubicación</b> <span class="redacted">REDACTED</span>
+<b>shell</b>     fish
+<b>os</b>        Debian / Arch</span>
+<span class="t-line">ls ~/writeups</span>
+<span class="t-out">{{ with site.GetPage "/writeups" }}{{ range .Sections }}{{ if .RegularPagesRecursive }}<b>{{ path.Base .RelPermalink | lower }}/</b>  {{ end }}{{ end }}{{ end }}</span>
+<span class="t-line t-line--idle"></span></code></pre>
+    </div>
+
+    <dl class="stats">
+      <div class="stat" data-reveal>
+        <dt>Writeups</dt>
+        <dd><span data-count="{{ len $writeups }}">{{ len $writeups }}</span></dd>
+      </div>
+      <div class="stat" data-reveal>
+        <dt>Certificaciones</dt>
+        <dd><span data-count="{{ len $certs }}">{{ len $certs }}</span></dd>
+      </div>
+      <div class="stat" data-reveal>
+        <dt>Artículos</dt>
+        <dd><span data-count="{{ len $posts }}">{{ len $posts }}</span></dd>
+      </div>
+      <div class="stat" data-reveal>
+        <dt>Años aprendiendo</dt>
+        <dd><span data-count="5">5</span><small>+</small></dd>
+      </div>
+    </dl>
+  </div>
+</section>
+
+<section class="section wrap">
+  <div class="section__head" data-reveal>
+    <span class="section__idx mono">02</span>
+    <h2 class="section__title">Stack</h2>
+  </div>
+  <ol class="stack">
+    {{- range $i, $s := site.Data.stack }}
+    <li class="stack__row" data-reveal>
+      <span class="stack__idx mono">{{ printf "%02d" (add $i 1) }}</span>
+      <span class="stack__name">{{ $s.name }}</span>
+      <span class="stack__detail">{{ $s.detail }}</span>
+      <span class="stack__tags">{{ range $s.tags }}<span class="chip mono">{{ . }}</span>{{ end }}</span>
+    </li>
+    {{- end }}
+  </ol>
+</section>
+
+<section class="section wrap">
+  <div class="section__head" data-reveal>
+    <span class="section__idx mono">03</span>
+    <h2 class="section__title">Últimos writeups</h2>
+    <a class="section__more mono" href="{{ "writeups/" | relURL }}">ver todos ({{ len $writeups }}) →</a>
+  </div>
+  <div class="entries">
+    {{ range first 4 $writeups.ByDate.Reverse }}{{ partial "entry-row.html" . }}{{ end }}
+  </div>
+</section>
+
+<section class="section wrap">
+  <div class="section__head" data-reveal>
+    <span class="section__idx mono">04</span>
+    <h2 class="section__title">Certificaciones</h2>
+    <a class="section__more mono" href="{{ "certificaciones/" | relURL }}">verificar credenciales →</a>
+  </div>
+  <div class="cert-strip">
+    {{- range $certs }}
+    <a class="cert-mini" href="{{ .url }}" target="_blank" rel="noopener" data-reveal data-spot>
+      <span class="cert-mini__img"><img src="{{ .image | relURL }}" alt="{{ .short }}" loading="lazy"></span>
+      <span class="cert-mini__name">{{ .short }}</span>
+      <span class="cert-mini__issuer mono">{{ .issuer }}</span>
+    </a>
+    {{- end }}
+  </div>
+</section>
+
+{{ with $posts }}
+<section class="section wrap">
+  <div class="section__head" data-reveal>
+    <span class="section__idx mono">05</span>
+    <h2 class="section__title">Del blog</h2>
+    <a class="section__more mono" href="{{ "blog/" | relURL }}">ver blog →</a>
+  </div>
+  <div class="entries">
+    {{ range first 3 .ByDate.Reverse }}{{ partial "entry-row.html" . }}{{ end }}
+  </div>
+</section>
+{{ end }}
+
+<section class="section section--contact wrap">
+  <div class="section__head" data-reveal>
+    <span class="section__idx mono">{{ if $posts }}06{{ else }}05{{ end }}</span>
+    <h2 class="section__title">Conexiones</h2>
+  </div>
+  <ul class="links">
+    {{- range site.Data.social }}
+    <li data-reveal>
+      <a class="links__row" href="{{ .url }}" target="_blank" rel="noopener">
+        <span class="links__name">{{ .name }}</span>
+        <span class="links__handle mono">{{ .handle }}</span>
+        <span class="links__arrow" aria-hidden="true">↗</span>
+      </a>
+    </li>
+    {{- end }}
+  </ul>
+</section>
+{{ end }}

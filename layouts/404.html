@@ -1,0 +1,12 @@
+{{ define "body_class" }}page page--404{{ end }}
+{{ define "main" }}
+<section class="notfound wrap">
+  <p class="kicker mono" data-reveal>HTTP/1.1 404 Not Found</p>
+  <h1 class="notfound__code" data-scramble data-reveal>404</h1>
+  <p class="notfound__msg" data-reveal>Esta ruta no existe o la han movido. Ni con <code>gobuster</code> la vas a encontrar.</p>
+  <div class="hero__cta" data-reveal>
+    <a class="btn btn--solid" href="{{ "/" | relURL }}">Volver al inicio</a>
+    <a class="btn btn--ghost" href="{{ "writeups/" | relURL }}">Ver writeups</a>
+  </div>
+</section>
+{{ end }}

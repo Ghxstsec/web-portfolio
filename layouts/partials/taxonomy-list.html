@@ -1,0 +1,15 @@
+{{ partial "page-head.html" (dict "kicker" (printf "~%s" .RelPermalink) "title" .Title "lead" "") }}
+<div class="wrap">
+  <div class="entries">
+    {{ range .Pages.ByDate.Reverse }}
+      {{ if .IsPage }}{{ partial "entry-row.html" . }}{{ else }}
+      <a class="entry" href="{{ .RelPermalink }}" data-reveal>
+        <span class="entry__date mono">{{ printf "%02d" (len .Pages) }}</span>
+        <span class="entry__platform tag">#</span>
+        <span class="entry__body"><span class="entry__title">{{ .Title }}</span></span>
+        <span class="entry__meta"><span class="entry__arrow" aria-hidden="true">→</span></span>
+      </a>
+      {{ end }}
+    {{ end }}
+  </div>
+</div>

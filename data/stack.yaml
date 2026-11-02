@@ -1,0 +1,19 @@
+# Áreas de trabajo que aparecen en la home
+- name: Ethical Hacking
+  detail: Penetration Testing
+  tags: [Enumeración, Web, Escalada de privilegios]
+- name: Active Directory
+  detail: Windows Security
+  tags: [Kerberos, BloodyAD, NetExec, Impacket]
+- name: Red Team
+  detail: Offensive Security
+  tags: [Mimikatz, Evasión de Defender]
+- name: Linux
+  detail: System Administration
+  tags: [Debian, Arch, Fish]
+- name: Python
+  detail: Scripting & Automation
+  tags: [Tooling, Automatización]
+- name: Cloud Security
+  detail: AWS & Azure
+  tags: [AWS, Azure]

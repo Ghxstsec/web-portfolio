@@ -1,0 +1,51 @@
+{{ define "body_class" }}page page--article{{ end }}
+
+{{ define "main" }}
+{{- $p := partial "platform.html" . -}}
+{{- $d := partial "difficulty.html" .Params.dificultad -}}
+{{- $toc := .TableOfContents -}}
+{{- $hasToc := gt (len (findRE "<li>" $toc)) 2 -}}
+
+<article class="article">
+  <header class="article__head wrap">
+    <nav class="crumbs mono" aria-label="Ruta" data-reveal>
+      <a href="{{ "/" | relURL }}">~</a>
+      {{- range .Ancestors.Reverse }}{{ if not .IsHome }}<span>/</span><a href="{{ .RelPermalink }}">{{ path.Base .RelPermalink | lower }}</a>{{ end }}{{ end }}
+    </nav>
+    <h1 class="article__title" data-reveal>{{ .Title }}</h1>
+    {{ with .Description }}<p class="article__lead" data-reveal>{{ . }}</p>{{ end }}
+
+    <dl class="meta" data-reveal>
+      <div><dt>Fecha</dt><dd><time datetime="{{ .Date.Format "2006-01-02" }}">{{ .Date.Format "02/01/2006" }}</time></dd></div>
+      {{ with $p.name }}<div><dt>{{ if eq $p.key "blog" }}Categoría{{ else }}Plataforma{{ end }}</dt><dd><span class="tag tag--{{ $p.key }}">{{ . }}</span></dd></div>{{ end }}
+      {{ with $d.label }}<div><dt>Dificultad</dt><dd><span class="diff diff--{{ $d.level }}"><i></i>{{ . }}</span></dd></div>{{ end }}
+      {{ with .Params.creator }}<div><dt>Creador</dt><dd>{{ . }}</dd></div>{{ end }}
+      {{ with .Params.rating }}<div><dt>Rating</dt><dd class="mono">{{ . }}<small>/5</small></dd></div>{{ end }}
+      <div><dt>Lectura</dt><dd class="mono">{{ .ReadingTime }} min</dd></div>
+    </dl>
+  </header>
+
+  <div class="article__layout wrap{{ if $hasToc }} has-toc{{ end }}">
+    {{ if $hasToc }}
+    <aside class="toc" aria-label="Índice">
+      <details class="toc__box" open data-toc>
+        <summary class="mono">índice</summary>
+        {{ $toc }}
+      </details>
+    </aside>
+    {{ end }}
+
+    <div class="prose" data-prose>
+      {{ .Content }}
+    </div>
+  </div>
+
+  {{ $prev := .PrevInSection }}{{ $next := .NextInSection }}
+  {{ if or $prev $next }}
+  <nav class="pager wrap" aria-label="Más entradas">
+    {{ with $next }}<a class="pager__link" href="{{ .RelPermalink }}" data-spot><span class="mono">← anterior</span><strong>{{ .Title }}</strong></a>{{ else }}<span></span>{{ end }}
+    {{ with $prev }}<a class="pager__link pager__link--next" href="{{ .RelPermalink }}" data-spot><span class="mono">siguiente →</span><strong>{{ .Title }}</strong></a>{{ end }}
+  </nav>
+  {{ end }}
+</article>
+{{ end }}

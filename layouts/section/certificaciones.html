@@ -1,0 +1,20 @@
+{{ define "body_class" }}page page--list{{ end }}
+
+{{ define "main" }}
+{{ partial "page-head.html" (dict "kicker" "~/certificaciones" "title" "Certificaciones" "lead" .Description) }}
+<div class="wrap">
+  <div class="certs">
+    {{- range $i, $c := site.Data.certs }}
+    <a class="cert" href="{{ $c.url }}" target="_blank" rel="noopener" data-reveal data-tilt data-spot>
+      <span class="cert__img"><img src="{{ $c.image | relURL }}" alt="Certificado {{ $c.short }}" loading="lazy"></span>
+      <span class="cert__body">
+        <span class="cert__idx mono">{{ printf "%02d" (add $i 1) }} · {{ $c.issuer }}</span>
+        <span class="cert__short">{{ $c.short }}</span>
+        <span class="cert__name">{{ $c.name }}</span>
+        <span class="cert__verify mono">verificar credencial ↗</span>
+      </span>
+    </a>
+    {{- end }}
+  </div>
+</div>
+{{ end }}

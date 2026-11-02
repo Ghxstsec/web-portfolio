@@ -7,9 +7,6 @@ title = "Ghxstsec | Portfolio de Ciberseguridad"
 [pagination]
 pagerSize = 5
 
-pygmentsCodeFences = true
-pygmentsCodefencesGuessSyntax = true
-pygmentsUseClasses = true
 
 [module]
   [module.hugoVersion]
@@ -18,7 +15,7 @@ pygmentsUseClasses = true
  
 [params]
   google_analytics_id = ""
-  twitter_handle = "@Ghxstsec"
+  twitter_handle = "@Louikizz"
   showAuthorOnHomepage = false
   showAuthorOnPosts = false
   showIntroContentOnHomepage = true
@@ -29,11 +26,9 @@ pygmentsUseClasses = true
   sortPostsByDateOldestFirst = false
   addDot = true
   addFrame = false
-  enableGoogleFonts = true 
-  googleFontsUrl = "https://fonts.googleapis.com/css2?family=Ubuntu:wght@400;700&family=Ubuntu+Mono:wght@400;700&display=swap"
-  fontFamilyHeading = "Ubuntu"
-  fontFamilyParagraph = "Ubuntu"
-  fontFamilyMonospace = "Ubuntu Mono"
+  enableGoogleFonts = true
+  googleFontsUrl = "https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500;600&family=IBM+Plex+Sans:wght@400;500;600;700&display=swap"
+  description = "Portfolio de ciberseguridad de Ghxstsec: writeups de HackTheBox y DockerLabs, apuntes de Active Directory y certificaciones."
   showAboutPage = true
   github_username = "Ghxstsec"
   kofi_username = ""
@@ -44,6 +39,13 @@ pygmentsUseClasses = true
   footer_year = "2024-2026"
 
 [markup]
+  [markup.highlight]
+    noClasses = false
+    guessSyntax = true
+  [markup.tableOfContents]
+    startLevel = 1
+    endLevel = 3
+    ordered = false
   [markup.goldmark]
     [markup.goldmark.renderer]
       hardWraps = true

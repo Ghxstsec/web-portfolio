@@ -1,0 +1,10 @@
+{{- /* Normaliza "facil", "Medio", "Dificil"... → dict{level,label} */ -}}
+{{- $raw := lower (trim (string .) " ") -}}
+{{- $out := dict "level" "" "label" "" -}}
+{{- if in (slice "facil" "fácil" "easy") $raw -}}{{ $out = dict "level" "easy" "label" "Fácil" }}
+{{- else if in (slice "medio" "media" "medium") $raw -}}{{ $out = dict "level" "medium" "label" "Medio" }}
+{{- else if in (slice "dificil" "difícil" "hard") $raw -}}{{ $out = dict "level" "hard" "label" "Difícil" }}
+{{- else if in (slice "insane" "locura") $raw -}}{{ $out = dict "level" "insane" "label" "Insane" }}
+{{- else if $raw -}}{{ $out = dict "level" "other" "label" (title $raw) }}
+{{- end -}}
+{{- return $out -}}

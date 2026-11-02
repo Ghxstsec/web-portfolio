@@ -1,0 +1,6 @@
+{{- /* Cabecera de sección: .ctx (página), .kicker, .title, .lead */ -}}
+<header class="page-head wrap">
+  <p class="kicker mono" data-reveal>{{ .kicker }}</p>
+  <h1 class="page-head__title" data-reveal data-scramble>{{ .title }}</h1>
+  {{ with .lead }}<p class="page-head__lead" data-reveal>{{ . }}</p>{{ end }}
+</header>

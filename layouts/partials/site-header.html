@@ -1,0 +1,33 @@
+<header class="site-header" data-header>
+  <div class="site-header__inner">
+    <a class="brand" href="{{ "/" | relURL }}" aria-label="Inicio">
+      <span class="brand__prompt" aria-hidden="true">~/</span><span class="brand__name">ghxstsec</span><span class="brand__caret" aria-hidden="true"></span>
+    </a>
+
+    <nav class="nav" aria-label="Principal" data-nav>
+      <ul class="nav__list">
+        {{- $current := . }}
+        {{- range $i, $m := site.Menus.main }}
+        {{- $active := or (eq $m.URL $current.RelPermalink) (and (ne $m.URL "/") (hasPrefix $current.RelPermalink $m.URL)) }}
+        <li>
+          <a class="nav__link{{ if $active }} is-active{{ end }}" href="{{ $m.URL | relURL }}"{{ if $active }} aria-current="page"{{ end }}>
+            <span class="nav__idx">{{ printf "%02d" (add $i 1) }}</span>{{ $m.Name }}
+          </a>
+        </li>
+        {{- end }}
+      </ul>
+      <span class="nav__indicator" aria-hidden="true" data-nav-indicator></span>
+    </nav>
+
+    <button class="menu-btn" type="button" aria-label="Abrir menú" aria-expanded="false" aria-controls="mobile-nav" data-menu-btn>
+      <span></span><span></span>
+    </button>
+  </div>
+
+  <nav class="mobile-nav" id="mobile-nav" aria-label="Móvil" data-mobile-nav>
+    {{- range $i, $m := site.Menus.main }}
+    <a href="{{ $m.URL | relURL }}" style="--i: {{ $i }}"><span class="nav__idx">{{ printf "%02d" (add $i 1) }}</span>{{ $m.Name }}</a>
+    {{- end }}
+  </nav>
+  <div class="read-progress" aria-hidden="true" data-progress></div>
+</header>
