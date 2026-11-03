@@ -3,6 +3,15 @@
    Orden: tokens · base · layout · header/footer · componentes · páginas · motion
    ========================================================================== */
 
+/* fuentes servidas desde el propio sitio (IBM Plex, licencia OFL) */
+@font-face { font-family: "IBM Plex Sans"; font-style: normal; font-weight: 400; font-display: swap; src: url("../fonts/ibm-plex-sans-latin-400-normal.woff2") format("woff2"); }
+@font-face { font-family: "IBM Plex Sans"; font-style: normal; font-weight: 500; font-display: swap; src: url("../fonts/ibm-plex-sans-latin-500-normal.woff2") format("woff2"); }
+@font-face { font-family: "IBM Plex Sans"; font-style: normal; font-weight: 600; font-display: swap; src: url("../fonts/ibm-plex-sans-latin-600-normal.woff2") format("woff2"); }
+@font-face { font-family: "IBM Plex Sans"; font-style: normal; font-weight: 700; font-display: swap; src: url("../fonts/ibm-plex-sans-latin-700-normal.woff2") format("woff2"); }
+@font-face { font-family: "IBM Plex Mono"; font-style: normal; font-weight: 400; font-display: swap; src: url("../fonts/ibm-plex-mono-latin-400-normal.woff2") format("woff2"); }
+@font-face { font-family: "IBM Plex Mono"; font-style: normal; font-weight: 500; font-display: swap; src: url("../fonts/ibm-plex-mono-latin-500-normal.woff2") format("woff2"); }
+@font-face { font-family: "IBM Plex Mono"; font-style: normal; font-weight: 600; font-display: swap; src: url("../fonts/ibm-plex-mono-latin-600-normal.woff2") format("woff2"); }
+
 :root {
   --bg: #0a0d12;
   --bg-2: #0d1218;
@@ -11,8 +20,8 @@
   --line: #1b2430;
   --line-2: #273242;
   --text: #e6edf3;
-  --muted: #8d99a8;
-  --dim: #5d6877;
+  --muted: #b0b9c3;
+  --dim: #a0a9b5;
   --accent: #58a6ff;
   --accent-soft: rgb(88 166 255 / 0.12);
   --term: #7ee787;
@@ -360,30 +369,12 @@ button { font: inherit; color: inherit; }
   padding: 10px 2px 0;
   font-size: .72rem; color: var(--muted); letter-spacing: .04em;
 }
-.rec { display: inline-block; width: 7px; height: 7px; margin-right: 8px; border-radius: 50%; background: var(--danger); animation: blink 1.4s steps(1) infinite; }
+.rec { display: inline-block; width: 7px; height: 7px; margin-right: 8px; border-radius: 50%; background: var(--danger); }
 .corner { position: absolute; width: 14px; height: 14px; border: 0 solid var(--accent); }
 .corner--tl { top: -1px; left: -1px; border-top-width: 2px; border-left-width: 2px; }
 .corner--tr { top: -1px; right: -1px; border-top-width: 2px; border-right-width: 2px; }
 .corner--bl { bottom: -1px; left: -1px; border-bottom-width: 2px; border-left-width: 2px; }
 .corner--br { bottom: -1px; right: -1px; border-bottom-width: 2px; border-right-width: 2px; }
-
-.hero__ticker { margin-top: clamp(48px, 8vh, 96px); }
-.ticker {
-  overflow: hidden;
-  border-block: 1px solid var(--line);
-  -webkit-mask-image: linear-gradient(90deg, transparent, #000 10%, #000 90%, transparent);
-          mask-image: linear-gradient(90deg, transparent, #000 10%, #000 90%, transparent);
-}
-.ticker__track {
-  display: flex; width: max-content;
-  animation: marquee 48s linear infinite;
-}
-.ticker__track span {
-  padding: 12px 28px;
-  font-size: .8rem; color: var(--dim);
-  white-space: nowrap;
-}
-.ticker__track span::before { content: "$ "; color: var(--accent); opacity: .7; }
 
 @media (max-width: 860px) {
   .hero__grid { grid-template-columns: 1fr; }
@@ -396,7 +387,6 @@ button { font: inherit; color: inherit; }
   display: flex; align-items: baseline; gap: 16px;
   margin-bottom: 36px;
 }
-.section__idx { font-size: .8rem; color: var(--accent); }
 .section__title { margin: 0; font-size: clamp(1.5rem, 3vw, 2rem); font-weight: 600; letter-spacing: -.02em; }
 .section__head::after {
   content: ""; flex: 1; height: 1px; background: var(--line-2);
@@ -897,10 +887,8 @@ button { font: inherit; color: inherit; }
 
 /* ---------- motion ---------- */
 @keyframes caret { 50% { opacity: 0; } }
-@keyframes blink { 50% { opacity: .2; } }
 @keyframes ping { 0% { transform: scale(1); opacity: .7; } 80%, 100% { transform: scale(2.8); opacity: 0; } }
 @keyframes scan { from { transform: translateY(-100%); } to { transform: translateY(340%); } }
-@keyframes marquee { to { transform: translateX(-50%); } }
 @keyframes rise { from { opacity: 0; transform: translateY(10px); } }
 
 /* aparición al hacer scroll (solo con JS activo) */
@@ -927,6 +915,5 @@ button { font: inherit; color: inherit; }
     transition-duration: .001ms !important;
   }
   .js [data-reveal] { opacity: 1; transform: none; }
-  .ticker__track { animation: none; }
   @view-transition { navigation: none; }
 }

@@ -26,8 +26,6 @@ pagerSize = 5
   sortPostsByDateOldestFirst = false
   addDot = true
   addFrame = false
-  enableGoogleFonts = true
-  googleFontsUrl = "https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500;600&family=IBM+Plex+Sans:wght@400;500;600;700&display=swap"
   description = "Portfolio de ciberseguridad de Ghxstsec: writeups de HackTheBox y DockerLabs, apuntes de Active Directory y certificaciones."
   showAboutPage = true
   github_username = "Ghxstsec"

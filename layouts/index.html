@@ -34,20 +34,10 @@
       <span class="corner corner--bl"></span><span class="corner corner--br"></span>
     </figure>
   </div>
-  <div class="wrap hero__ticker mono" aria-hidden="true">
-    <div class="ticker">
-      <div class="ticker__track">
-        {{- range (seq 2) }}
-        <span>nmap -p- -sCV</span><span>netexec smb</span><span>bloodyAD</span><span>impacket-GetNPUsers</span><span>john --wordlist</span><span>gobuster dir</span><span>evil-winrm</span><span>sudo -l</span>
-        {{- end }}
-      </div>
-    </div>
-  </div>
 </section>
 
 <section class="section wrap">
   <div class="section__head" data-reveal>
-    <span class="section__idx mono">01</span>
     <h2 class="section__title">Perfil</h2>
   </div>
 
@@ -90,7 +80,6 @@
 
 <section class="section wrap">
   <div class="section__head" data-reveal>
-    <span class="section__idx mono">02</span>
     <h2 class="section__title">Stack</h2>
   </div>
   <ol class="stack">
@@ -107,7 +96,6 @@
 
 <section class="section wrap">
   <div class="section__head" data-reveal>
-    <span class="section__idx mono">03</span>
     <h2 class="section__title">Últimos writeups</h2>
     <a class="section__more mono" href="{{ "writeups/" | relURL }}">ver todos ({{ len $writeups }}) →</a>
   </div>
@@ -118,7 +106,6 @@
 
 <section class="section wrap">
   <div class="section__head" data-reveal>
-    <span class="section__idx mono">04</span>
     <h2 class="section__title">Certificaciones</h2>
     <a class="section__more mono" href="{{ "certificaciones/" | relURL }}">verificar credenciales →</a>
   </div>
@@ -136,7 +123,6 @@
 {{ with $posts }}
 <section class="section wrap">
   <div class="section__head" data-reveal>
-    <span class="section__idx mono">05</span>
     <h2 class="section__title">Del blog</h2>
     <a class="section__more mono" href="{{ "blog/" | relURL }}">ver blog →</a>
   </div>
@@ -148,7 +134,6 @@
 
 <section class="section section--contact wrap">
   <div class="section__head" data-reveal>
-    <span class="section__idx mono">{{ if $posts }}06{{ else }}05{{ end }}</span>
     <h2 class="section__title">Conexiones</h2>
   </div>
   <ul class="links">
@@ -157,7 +142,7 @@
       <a class="links__row" href="{{ .url }}" target="_blank" rel="noopener">
         <span class="links__name">{{ .name }}</span>
         <span class="links__handle mono">{{ .handle }}</span>
-        <span class="links__arrow" aria-hidden="true">↗</span>
+        <span class="links__arrow mono" aria-hidden="true">/</span>
       </a>
     </li>
     {{- end }}

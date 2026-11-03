@@ -19,12 +19,6 @@
 <meta name="twitter:card" content="summary_large_image">
 {{ with site.Params.twitter_handle }}<meta name="twitter:site" content="{{ . }}">{{ end }}
 
-{{ if site.Params.enableGoogleFonts }}
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link rel="stylesheet" href="{{ site.Params.googleFontsUrl }}">
-{{ end }}
-
 {{ $css := slice (resources.Get "css/main.css") (resources.Get "css/syntax.css") | resources.Concat "css/site.css" }}
 {{ if hugo.IsProduction }}{{ $css = $css | minify }}{{ end }}
 {{ $css = $css | fingerprint }}
