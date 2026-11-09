@@ -99,6 +99,12 @@ function scramble(el, { duration = 900 } = {}) {
   const start = performance.now();
   el.setAttribute('aria-label', target);
 
+  // los símbolos son más anchos que las letras: sin esto la línea se parte y salta
+  const lines = el.getClientRects().length;
+  el.style.display = 'block';
+  el.style.height = `${el.getBoundingClientRect().height}px`;
+  if (lines === 1) el.style.whiteSpace = 'nowrap';
+
   const frame = (now) => {
     const t = now - start;
     let done = true;
@@ -109,7 +115,7 @@ function scramble(el, { duration = 900 } = {}) {
     }
     el.textContent = out;
     if (!done) requestAnimationFrame(frame);
-    else { el.textContent = target; el.removeAttribute('aria-label'); }
+    else { el.textContent = target; el.removeAttribute('aria-label'); el.removeAttribute('style'); }
   };
   requestAnimationFrame(frame);
 }

@@ -14,6 +14,6 @@
 - name: Python
   detail: Scripting & Automation
   tags: [Tooling, Automatización]
-- name: Cloud Security
-  detail: AWS & Azure
-  tags: [AWS, Azure]
+- name: IA
+  detail: AI & LLMs
+  tags: [LLMs, Agentes]

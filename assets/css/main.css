@@ -348,6 +348,10 @@ button { font: inherit; color: inherit; }
   -webkit-background-clip: text; background-clip: text;
   color: transparent;
 }
+/* el degradado solo pinta dentro de la caja: margen para los símbolos del glitch */
+@media (min-width: 861px) {
+  .hero__title .line--accent { padding-right: 1.5em; margin-right: -1.5em; }
+}
 .hero__lead {
   max-width: 52ch;
   margin: 0 0 36px;

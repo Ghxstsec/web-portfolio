@@ -1,15 +1,21 @@
 # Certificaciones: se usan en la home y en /certificaciones/
-- short: eJPT
-  name: eLearnSecurity Junior Penetration Tester
-  issuer: INE Security
-  image: /images/ejpt.jpg
-  url: https://certs.ine.com/b2627dbc-d749-4a7c-b687-6deff004b49a
+- short: CPTS
+  name: Certified Penetration Testing Specialist
+  issuer: Hack The Box
+  image: /images/cpts.jpg
+  url: https://www.hackthebox.com/certificates
 
 - short: eCPPT v2
   name: Certified Professional Penetration Tester
   issuer: INE Security
   image: /images/ecppt.jpg
   url: https://certs.ine.com/8c84494a-a95e-468d-9502-da63722cb6d1#acc.QeJEc7kY
+
+- short: eJPT
+  name: eLearnSecurity Junior Penetration Tester
+  issuer: INE Security
+  image: /images/ejpt.jpg
+  url: https://certs.ine.com/b2627dbc-d749-4a7c-b687-6deff004b49a
 
 - short: Google Cyber
   name: Google Cybersecurity Professional Certificate
@@ -22,9 +28,3 @@
   issuer: CyberWarfare Labs
   image: /images/CRTSv2.png
   url: https://www.credential.net/bf2e0269-1006-43a2-9469-f2a1bfe367ed#acc.hfZ9wRzE
-
-- short: CPTS
-  name: Certified Penetration Testing Specialist
-  issuer: Hack The Box
-  image: /images/cpts.jpg
-  url: https://www.hackthebox.com/certificates
