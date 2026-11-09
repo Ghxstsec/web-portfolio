@@ -1,5 +1,7 @@
-// ghxstsec — interacciones del sitio. Sin dependencias.
+// ghxstsec — interacciones del sitio. Única dependencia: Lenis, copiada en vendor/.
 // Todo es progresivo: sin JS el contenido se ve igual, solo sin animaciones.
+
+import Lenis from './vendor/lenis.mjs';
 
 const reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
 const finePointer = window.matchMedia('(hover: hover) and (pointer: fine)').matches;
@@ -191,6 +193,46 @@ function initReveal() {
   items.forEach((el) => io.observe(el));
   // cabeceras de sección: dibujan su línea al entrar
   $$('.section__head').forEach((h) => { if (!h.hasAttribute('data-reveal')) io.observe(h); });
+}
+
+/* ------------------------------------------------------------ scroll suave */
+function initSmoothScroll() {
+  // los artículos se quedan con el scroll nativo: lectura larga, código y Ctrl+F
+  if (reduceMotion || document.body.classList.contains('page--article')) return;
+  new Lenis({ lerp: 0.06, autoRaf: true, anchors: true });
+}
+
+/* ------------------------------------------------- escenas ligadas al scroll */
+function initScenes() {
+  const scenes = $$('[data-scene]');
+  if (!scenes.length || reduceMotion) return;
+
+  // mismo corte que el @media de las escenas en main.css
+  const stage = window.matchMedia('(min-width: 1024px) and (min-height: 700px)');
+  const clamp = (n) => Math.min(1, Math.max(0, n));
+  const progress = {
+    pin: (r, vh) => clamp(-r.top / Math.max(1, r.height - vh)),
+    enter: (r, vh) => clamp((vh - r.top) / (vh * 0.6)),
+    exit: (r) => clamp(-r.top / r.height),
+  };
+
+  let ticking = false;
+  const last = new Map();
+  const update = () => {
+    ticking = false;
+    if (!stage.matches) return;
+    const vh = window.innerHeight;
+    for (const el of scenes) {
+      const p = progress[el.dataset.scene](el.getBoundingClientRect(), vh).toFixed(4);
+      if (last.get(el) !== p) { last.set(el, p); el.style.setProperty('--p', p); }
+    }
+  };
+  const request = () => {
+    if (!ticking) { ticking = true; requestAnimationFrame(update); }
+  };
+  window.addEventListener('scroll', request, { passive: true });
+  window.addEventListener('resize', request);
+  update();
 }
 
 /* -------------------------------------------------------- hero dot field */
@@ -455,6 +497,8 @@ function initArticle() {
 /* -------------------------------------------------------------------- boot */
 window.__ghx = true;
 try {
+  initSmoothScroll();
+  initScenes();
   initHeader();
   initArticle();
   initFilters();
