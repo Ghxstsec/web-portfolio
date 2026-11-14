@@ -32,6 +32,7 @@
   --c-dockerlabs: #58a6ff;
   --c-tryhackme: #ff5c5c;
   --c-blog: #c3a6ff;
+  --c-provinggrounds: #ffb000;
 
   --sans: "IBM Plex Sans", system-ui, -apple-system, "Segoe UI", sans-serif;
   --mono: "IBM Plex Mono", ui-monospace, "SFMono-Regular", Menlo, monospace;
@@ -289,6 +290,7 @@ button { font: inherit; color: inherit; }
 .tag--dockerlabs { --c: var(--c-dockerlabs); }
 .tag--tryhackme { --c: var(--c-tryhackme); }
 .tag--blog { --c: var(--c-blog); }
+.tag--provinggrounds { --c: var(--c-provinggrounds); }
 
 .diff {
   --c: var(--muted);
@@ -662,6 +664,7 @@ button { font: inherit; color: inherit; }
 .platform--hackthebox:hover .platform__count { color: var(--c-hackthebox); }
 .platform--dockerlabs:hover .platform__count { color: var(--c-dockerlabs); }
 .platform--tryhackme:hover .platform__count { color: var(--c-tryhackme); }
+.platform--provinggrounds:hover .platform__count { color: var(--c-provinggrounds); }
 .platform.is-empty { opacity: .55; }
 
 .filters {
