@@ -1,0 +1,21 @@
+# Webs de demostración (datos ficticios): se muestran en /proyectos/. Las demos viven en static/demos/<slug>/
+- slug: pasteleria
+  short: Pastelería artesana
+  name: Scroll con velas, tartas a medida y calendario de dulces
+  tags: "HTML · CSS · JS · SEO · bilingüe"
+  image: /images/web-pasteleria.jpg
+- slug: peluqueria
+  short: Peluquería y color
+  name: Menú a pantalla completa, ticket de cita y laboratorio de color en SVG
+  tags: "HTML · CSS · JS · SVG · bilingüe"
+  image: /images/web-peluqueria.jpg
+- slug: vermuteria
+  short: Vermutería de playa
+  name: Un día entero al hacer scroll, ritual del vermut y reserva por correo
+  tags: "HTML · CSS · JS · SVG · bilingüe"
+  image: /images/web-vermuteria.jpg
+- slug: coworking
+  short: Espacio de coworking
+  name: Mar en 3D, recorrido por la oficina con scroll y tarifas
+  tags: "Three.js · GSAP · Lenis · bilingüe"
+  image: /images/web-coworking.jpg

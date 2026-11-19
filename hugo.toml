@@ -71,3 +71,8 @@ pagerSize = 5
     identifier = "certs"
     weight = 4
     url = "/certificaciones/"
+  [[menu.main]]
+    name = "Proyectos"
+    identifier = "proyectos"
+    weight = 5
+    url = "/proyectos/"

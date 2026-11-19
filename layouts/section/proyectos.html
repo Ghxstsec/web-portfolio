@@ -1,0 +1,21 @@
+{{ define "body_class" }}page page--list{{ end }}
+
+{{ define "main" }}
+{{ partial "page-head.html" (dict "kicker" "~/proyectos" "title" "Proyectos web" "lead" .Description) }}
+<div class="wrap">
+  <div class="certs">
+    {{- range $i, $w := site.Data.webs }}
+    <a class="cert" href="/demos/{{ $w.slug }}/" target="_blank" rel="noopener" data-reveal data-tilt data-spot>
+      <span class="cert__img"><img src="{{ $w.image | relURL }}" alt="Captura de la demo {{ $w.short }}" loading="lazy"></span>
+      <span class="cert__body">
+        <span class="cert__idx mono">{{ printf "%02d" (add $i 1) }} · {{ $w.tags }}</span>
+        <span class="cert__short">{{ $w.short }}</span>
+        <span class="cert__name">{{ $w.name }}</span>
+        <span class="cert__verify mono">ver demo ↗</span>
+      </span>
+    </a>
+    {{- end }}
+  </div>
+  <p class="mono" style="color:var(--dim);font-size:.8rem;margin-top:24px">Demos con nombres, teléfonos y direcciones ficticios.</p>
+</div>
+{{ end }}
