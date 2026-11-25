@@ -13,10 +13,15 @@
 <meta property="og:description" content="{{ $desc }}">
 <meta property="og:type" content="{{ if .IsPage }}article{{ else }}website{{ end }}">
 <meta property="og:url" content="{{ .Permalink }}">
-<meta property="og:image" content="{{ "images/og-image-webp.webp" | absURL }}">
+{{- $ogImage := "images/og-image.jpg" | absURL }}
+<meta property="og:image" content="{{ $ogImage }}">
+<meta property="og:image:type" content="image/jpeg">
+<meta property="og:image:alt" content="Ghxstsec · Pentester & Security Researcher">
+<meta property="og:site_name" content="Ghxstsec">
 <meta property="og:image:width" content="1200">
 <meta property="og:image:height" content="630">
 <meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:image" content="{{ $ogImage }}">
 {{ with site.Params.twitter_handle }}<meta name="twitter:site" content="{{ . }}">{{ end }}
 
 {{ $css := slice (resources.Get "css/main.css") (resources.Get "css/syntax.css") | resources.Concat "css/site.css" }}
